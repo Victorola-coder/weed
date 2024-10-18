@@ -27,7 +27,7 @@ const RejectionScreen = ({ navigation }: RejectionScreenProps) => {
               className="border border-weed-primary-100 w-weed-12.5 rounded-2xl mx-auto mt-2"
             >
               {" "}
-              Exit Weed Bumble
+              Exit Weed Match
             </PrimaryButton>
           </View>
         </View>
