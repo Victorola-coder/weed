@@ -88,7 +88,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
                   </View>
                   <View className="">
                     <HeaderText className="font-italianno text-4xl text-weed-primary-100">
-                      Weed Bumble
+                      Weed Match
                     </HeaderText>
                   </View>
                 </View>
@@ -105,7 +105,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
               </HeaderText>
               <View className="items-center py-5 gap-5">
                 <SubHeaderText className="text-weed-primary-100 text-center font-inder font-normal text-xl">
-                  Your weed Bumble Key
+                  Your weed match key
                 </SubHeaderText>
                 <View>
                   <Text className="text-center text-sm font-inder font-normal leading-7 text-weed-primary-100">

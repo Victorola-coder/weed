@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "track",
+    "name": "WeedMatch",
     "slug": "track",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,7 +11,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/app-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.heudevgeorge.track"
