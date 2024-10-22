@@ -23,12 +23,12 @@ const UserType = (props: UserTypeProps) => {
 
   const { ViewKey } = props;
   return (
-    <View className="w-weed-20.6 justify-start items-center mt-7" key={ViewKey}>
-      <Text className="text-center max-w-md font-inder font-normal text-black text-lg px-4 mb-12">
+    <View className="w-weed-20.6 justify-start items-center mt-8" key={ViewKey}>
+      <Text className="text-center max-w-md font-inder font-normal text-black text-lg px-4 mb-8">
         Are you a recreational or medical user?
       </Text>
-      <View className="flex-col items-center w-full pb-16">
-        <View className="gap-11 items-center">
+      <View className="flex-col items-center w-full pb-8">
+        <View className="gap-8 items-center">
           <CheckBoxInput
             label="Recreational"
             onChange={handleRecreationalCheckboxChange}
@@ -38,7 +38,7 @@ const UserType = (props: UserTypeProps) => {
             onChange={handleSociallyCheckboxChange}
           />
         </View>
-        <Text className="text-center font-inder font-normal text-black text-lg px-2 pt-24 pb-12">
+        <Text className="text-center font-inder font-normal text-black text-lg px-2 pt-12 pb-8">
           Do you enjoy consuming cannabis socially or prefer alone time?
         </Text>
         <View className="gap-7">

@@ -48,7 +48,7 @@ const FavouritesScreen = () => {
                         />
                       </ImageBackground>
                     </View>
-                    <View className="rounded-lg bg-weed-name opacity-50">
+                    <View className="rounded-lg bg-weed-name">
                       <Text className="px-4 py-2 font-inder font-normal text-base text-white">
                         {item.username}
                       </Text>

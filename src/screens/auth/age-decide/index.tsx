@@ -69,7 +69,7 @@ const AgeSelectionScreen = ({ navigation }: AgeSelectionScreenProps) => {
           />
         )}
         <Header />
-        <View className="mt-28">
+        <View className="mt-10">
           <View
             className="justify-center items-center pb-20"
             style={{ height: FULLHEIGHT }}

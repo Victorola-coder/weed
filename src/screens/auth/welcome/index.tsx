@@ -28,7 +28,7 @@ const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
           className="justify-center max-w-lg w-full items-center mx-auto px-10 mt-3"
         >
           <View
-            className="mx-auto max-w-lg w-full justify-center mt-14"
+            className="mx-auto max-w-lg w-full justify-center mt-10"
             style={{ height: HEIGHT * 0.5 }}
           >
             <View>

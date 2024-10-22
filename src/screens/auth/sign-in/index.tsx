@@ -29,7 +29,7 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
       <View style={{ height: HEIGHT }} className="mt-3">
         <View className="w-full mt-20" style={{ height: FULLHEIGHT }}>
           <View
-            className="mx-auto max-w-sm w-full justify-start pt-16 items-center"
+            className="mx-auto max-w-sm w-full justify-start pt-8 items-center"
             style={{ height: MIDHEIGHT }}
           >
             <View className="gap-7 w-full">

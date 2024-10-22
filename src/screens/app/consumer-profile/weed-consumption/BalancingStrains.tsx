@@ -27,10 +27,10 @@ const BalancingStrain = (props: BalancingStrainProps) => {
       className="w-weed-20.6 justify-start items-center pr-0.5 pt-8"
       key={ViewKey}
     >
-      <Text className="text-center font-inder font-normal text-black text-lg pb-16">
+      <Text className="text-center font-inder font-normal text-black text-lg pb-8">
         Do you prefer THC, CBD, or balanced strains?
       </Text>
-      <View className="flex-col items-center w-full gap-9 pb-10">
+      <View className="flex-col items-center w-full gap-8 pb-8">
         <CheckBoxInput
           label="THC-dominant"
           onChange={handleTHCCheckboxChange}

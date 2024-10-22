@@ -144,13 +144,13 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       <View style={{ height: HEIGHT }}>
         <ScrollView className="w-full mt-14" style={{ height: MIDHEIGHT }}>
           <View
-            className="mx-auto max-w-sm w-full justify-start pt-20 items-center"
+            className="mx-auto max-w-sm w-full justify-start pt-8 items-center"
             style={{ height: MIDHEIGHT }}
           >
-            <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-2.5xl uppercase mb-weed-5.8">
+            <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-2.5xl uppercase mb-16">
               Sign Up
             </Text>
-            <View className="w-full justify-between gap-24 mt-0">
+            <View className="w-full justify-between gap-16 mt-0">
               <FlatList
                 ref={flatListRef}
                 horizontal
@@ -197,7 +197,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 </View>
                 <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
               </View>
-              <View className="w-full">
+              <View className="w-full gap-4">
                 <View className="w-full">
                   <GoogleAuthButton onPress={handleOauth} />
                 </View>

@@ -23,8 +23,8 @@ const WeedEffects = (props: WeedEffectsProps) => {
 
   const { ViewKey } = props;
   return (
-    <View className="w-weed-20.6 justify-start items-center pt-7" key={ViewKey}>
-      <Text className="text-center font-inder font-normal text-black text-lg pb-14">
+    <View className="w-weed-20.6 justify-start items-center pt-8" key={ViewKey}>
+      <Text className="text-center font-inder font-normal text-black text-lg pb-8">
         What effects are you seeking from cannabis?
       </Text>
       <View className="flex-row w-full justify-between gap-16 pb-20 mt-1">
