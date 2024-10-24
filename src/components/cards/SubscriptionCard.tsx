@@ -44,20 +44,18 @@ const SubscriptionCard: React.FC = () => {
     return (
       <View
         key={item.id}
-        className={`rounded-3xl ${
-          activeSlide === index
-            ? "bg-weed-primary-100 mb-5 mt-5"
-            : "bg-weed-primary"
-        } border border-white gap-3 py-5 mt-10 relative mx-3 shadow shadow-base shadow-black`}
+        className={`rounded-3xl ${activeSlide === index
+          ? "bg-weed-primary-100 mb-5 mt-5"
+          : "bg-weed-primary"
+          } border border-white gap-3 py-5 mt-10 relative mx-3 shadow shadow-base shadow-black`}
         style={{
           width: WIDTH * 0.55,
         }}
       >
         {item.id === 2 && (
           <View
-            className={`absolute -top-3 self-center w-28 border border-white rounded-3xl ${
-              activeSlide === index ? "bg-weed-primary-100" : "bg-weed-primary"
-            }  py-1 px-4 z-10`}
+            className={`absolute -top-3 self-center w-28 border border-white rounded-3xl ${activeSlide === index ? "bg-weed-primary-100" : "bg-weed-primary"
+              }  py-1 px-4 z-10`}
           >
             <Text className="text-white font-inder text-xs text-center">
               Most Popular
@@ -103,9 +101,8 @@ const SubscriptionCard: React.FC = () => {
               >
                 <Image
                   source={content.image}
-                  className={`w-4 h-4 mr-2 ${
-                    activeSlide === index ? "" : "tint"
-                  } `}
+                  className={`w-4 h-4 mr-2 ${activeSlide === index ? "" : "tint"
+                    } `}
                   resizeMode="contain"
                   style={{
                     tintColor:
@@ -113,8 +110,8 @@ const SubscriptionCard: React.FC = () => {
                         ? undefined
                         : content.image ===
                           require("../../../assets/image/check.png")
-                        ? "#00500D"
-                        : "",
+                          ? "#00500D"
+                          : "",
                   }}
                 />
                 <Text className="text-white font-inder text-base font-normal">
@@ -124,7 +121,7 @@ const SubscriptionCard: React.FC = () => {
             ))}
           </View>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => { }}
             className="border border-white h-10 items-center justify-center rounded-3xl bg-weed-primary mx-auto mb-2"
           >
             <Text className="text-white font-inder text-base px-4">
@@ -189,13 +186,17 @@ const SubscriptionCard: React.FC = () => {
           />
         ))}
       </View>
-      <Text className="font-inder text-xs text-black px-5 text-center mb-5 px-12">
-        **Subscription fees are billed on a monthly basis. Your subscription
-        will automatically renew unless cancelled at least 24 hours before the
-        end of the current period. Payment will be charged to your iTunes or
-        Google Play account upon confirmation of purchase. You can manage your
-        subscription and turn off auto-renewal in your account settings.
-      </Text>
+      <View className="mb-5">
+        <Text className="font-inder text-xs text-black text-center">**Subscription fees are billed on a monthly basis. Your subscription
+          will</Text>
+        <Text className="font-inder text-xs text-black text-center">automatically renew unless cancelled at least 24 hours before the
+          end of</Text>
+        <Text className="font-inder text-xs text-black text-center">the current period. Payment will be charged to your iTunes or
+          Google Play</Text>
+        <Text className="font-inder text-xs text-black text-center">account upon confirmation of purchase. You can manage your
+          subscription</Text>
+        <Text className="font-inder text-xs text-black text-center">and turn off auto-renewal in your account settings.</Text>
+      </View>
     </View>
   );
 };

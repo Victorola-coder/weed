@@ -69,8 +69,7 @@ const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScre
     <ScreenView className="bg-weed-primary" marginTop={170}>
       <View style={{ height: HEIGHT, alignItems: "center" }}>
         <View
-          className="flex w-full justify-center items-center"
-          style={{ height: FULLHEIGHT }}
+          className="flex-1 w-full justify-center items-center"
         >
           <View
             className="w-full items-center justify-between flex flex-row px-5"
@@ -120,8 +119,8 @@ const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScre
               </TouchableOpacity>
             )}
           </View>
-          <ScrollView className="w-full" showsVerticalScrollIndicator={false}>
-            <View className="flex-1 w-full flex-col items-center gap-2">
+          <ScrollView className="w-full flex-1" showsVerticalScrollIndicator={false}>
+            <View className="flex-1 w-full pb-64 flex-col items-center gap-2">
               {isAddActive ? (
                 <View
                   className="w-full flex items-center justify-start px-16 pt-48"
@@ -159,11 +158,11 @@ const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScre
                   </View>
                 </View>
               ) : (
-                <View className="w-full items-center">
+                <View className="w-full flex-1 items-center">
                   <SubHeaderText className="text-center max-w-sm font-inder font-normal text-weed-primary-100 text-lg pb-8">
                     Filter for weed
                   </SubHeaderText>
-                  <View className="w-weed-20.6 justify-center items-center gap-4 flex-row flex-wrap pb-10">
+                  <View className="w-weed-20.6 justify-center items-center gap-4 flex-row flex-wrap">
                     {weedItems.map((item) => (
                       <TouchableOpacity
                         key={item.name}
@@ -206,7 +205,7 @@ const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScre
                 BackText="Back"
                 nextClassName="bg-weed-primary-100 border border-white"
                 backClassName="bg-weed-primary-100 border border-white"
-                className="absolute bottom-10 justify-between"
+                className="absolute bottom-40 justify-between"
                 handleNext={handleNext}
               />
             </View>

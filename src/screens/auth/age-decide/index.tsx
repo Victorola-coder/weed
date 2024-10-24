@@ -2,7 +2,7 @@ import { Colors } from "@/constants/Colors";
 import { FULLHEIGHT, HEADERHEIGHT, HEIGHT, MIDHEIGHT } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
 import React, { useState } from "react";
-import { Animated, Text, TouchableOpacity, View } from "react-native";
+import { Animated, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { CheckBox } from "@rneui/themed";
 import PrimaryButton from "@/components/button/PrimaryButton";
 import Header from "@/layouts/Header";
@@ -69,9 +69,9 @@ const AgeSelectionScreen = ({ navigation }: AgeSelectionScreenProps) => {
           />
         )}
         <Header />
-        <View className="mt-10">
+        <View className="mt-14">
           <View
-            className="justify-center items-center pb-20"
+            className="justify-center items-center pb-14"
             style={{ height: FULLHEIGHT }}
           >
             <View className="mx-auto">

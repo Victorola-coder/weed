@@ -39,6 +39,7 @@ export const AppStack = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: "white",
+          borderTopWidth:0,
           elevation: 0,
           shadowOpacity: 0,
           height: HEIGHT * 0.1,

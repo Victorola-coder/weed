@@ -144,7 +144,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       <View style={{ height: HEIGHT }}>
         <ScrollView className="w-full mt-14" style={{ height: MIDHEIGHT }}>
           <View
-            className="mx-auto max-w-sm w-full justify-start pt-8 items-center"
+            className="mx-auto max-w-sm w-full justify-center pt-8 items-center"
             style={{ height: MIDHEIGHT }}
           >
             <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-2.5xl uppercase mb-16">

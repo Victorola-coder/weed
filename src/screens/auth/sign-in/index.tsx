@@ -27,7 +27,7 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
     <ScreenView className="bg-weed-primary" marginTop={190}>
       <Header />
       <View style={{ height: HEIGHT }} className="mt-3">
-        <View className="w-full mt-20" style={{ height: FULLHEIGHT }}>
+        <View className="w-full flex-1 justify-center items-center" style={{ height: FULLHEIGHT }}>
           <View
             className="mx-auto max-w-sm w-full justify-start pt-8 items-center"
             style={{ height: MIDHEIGHT }}
