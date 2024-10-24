@@ -40,7 +40,7 @@ const FavoriteWeedScreen = (props: FavoriteWeedScreenProps) => {
           style={{ height: MIDHEIGHT }}
           showsVerticalScrollIndicator={false}
         >
-          <View className="w-weed-20.6 justify-center items-center gap-4 flex-row flex-wrap pb-10">
+          <View className="w-weed-20.6 justify-center items-center gap-4 flex-row flex-wrap pb-32">
             {weedItems.map((item) => (
               <TouchableOpacity
                 key={item.name}

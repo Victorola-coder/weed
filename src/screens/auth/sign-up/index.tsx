@@ -142,10 +142,10 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
     <ScreenView className="" marginTop={190}>
       <Header />
       <View style={{ height: HEIGHT }}>
-        <ScrollView className="w-full mt-14" style={{ height: MIDHEIGHT }}>
+        <ScrollView className="w-full" style={{ height: FULLHEIGHT }}>
           <View
-            className="mx-auto max-w-sm w-full justify-center pt-8 items-center"
-            style={{ height: MIDHEIGHT }}
+            className="mx-auto max-w-sm w-full justify-center items-center"
+            style={{ height: FULLHEIGHT }}
           >
             <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-2.5xl uppercase mb-16">
               Sign Up
@@ -169,7 +169,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 )}
                 onScrollToIndexFailed={() => {}}
               />
-              <View className="pb-weed-4.8">
+              <View className="pb-weed-4.8 px-5">
                 <DirectionButton
                   handlePrev={goToPreviousPage}
                   NextText={
