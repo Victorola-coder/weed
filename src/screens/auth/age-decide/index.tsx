@@ -61,18 +61,28 @@ const AgeSelectionScreen = ({ navigation }: AgeSelectionScreenProps) => {
         {isUnder18 && (
           <View
             className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-[1]"
+            style={{
+              top: 0, // make sure overlay covers the status bar
+              position: 'absolute',
+            }}
           />
         )}
+
         {showOverlay && (
           <View
             className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-[1]"
+            style={{
+              top: 0,
+              position: 'absolute',
+            }}
           />
         )}
+
         <Header />
         <View className="mt-14">
           <View
-            className="justify-center items-center pb-14"
-            style={{ height: FULLHEIGHT }}
+            className="justify-center items-center pb-40"
+            style={{ height: HEIGHT }}
           >
             <View className="mx-auto">
               <View
