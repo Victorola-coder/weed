@@ -79,17 +79,19 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
         </View>
       )}
       <ScreenView className="bg-weed-primary" marginTop={190}>
-        <Header />
+        <View className="bg-weed-primary w-full h-14">
+          <Header />
+        </View>
         <View style={{ height: HEIGHT }}>
-          <View className="w-full flex-1 justify-center items-center pb-20 mt-4">
+          <View className="w-full flex-1 justify-center items-center pb-20">
             <ScrollView
               ref={scrollViewRef}
               keyboardShouldPersistTaps="handled"
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{ paddingBottom: 68 }}
             >
-              <View className="flex-1 w-full flex-col items-center gap-3 mt-16 py-8 px-10">
-                <Text className="text-center max-w-lg font-inder font-normal text-weed-primary-100 text-2.5xl uppercase pb-8">
+              <View className="flex-1 w-full flex-col items-center gap-3 mt-3 py-3 px-10">
+                <Text className="text-center max-w-lg font-inder font-normal text-weed-primary-100 text-3xl uppercase pb-8">
                   Weed Profile
                 </Text>
                 <View className="w-full flex-col flex items-center gap-4">
@@ -133,7 +135,7 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
                       <CannabisMethod />
                     </View>
                   </View>
-                  <View className="pb-20">
+                  <View className="pb-28">
                     <CustomButton
                       onPress={handleAddProfile}
                       className="border h-weed-3.7 border-white w-weed-20.6 rounded-2xl bg-weed-primary-100 justify-center items-center flex-row gap-5"
@@ -159,7 +161,7 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
               BackText="Back"
               nextClassName="bg-weed-primary-100 border border-white"
               backClassName="bg-weed-primary-100 border border-white"
-              className="w-weed-20.6 absolute bottom-16 mb-11 justify-between"
+              className="w-weed-20.6 absolute bottom-40 justify-between"
               handleNext={handleNext}
             />
           </View>

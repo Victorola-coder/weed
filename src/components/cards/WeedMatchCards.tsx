@@ -77,7 +77,7 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
         >
           <View className="flex-col py-8 px-6 justify-end items-start h-full w-full gap-y-20">
             <View className="gap-8">
-              <Text className="font-inder text-2.5xl text-white uppercase">
+              <Text className="font-inder text-3xl text-white uppercase">
                 {cardData.weedName1}
               </Text>
               <Text className="font-inder text-base text-white w-60 leading-5">
@@ -116,7 +116,7 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
         >
           <View className="flex-col py-8 px-6 justify-end items-start h-full w-full gap-y-20">
             <View className="gap-8">
-              <Text className="font-inder text-2.5xl text-white uppercase">
+              <Text className="font-inder text-3xl text-white uppercase">
                 {cardData.weedName1}
               </Text>
               <Text className="font-inder text-base text-white w-60 leading-5">
@@ -155,7 +155,7 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
         >
           <View className="flex-col py-8 px-6 justify-end items-start h-full w-full gap-y-20">
             <View className="gap-8">
-              <Text className="font-inder text-2.5xl text-white uppercase">
+              <Text className="font-inder text-3xl text-white uppercase">
                 {cardData.weedName1}
               </Text>
               <Text className="font-inder text-lg text-white w-60 leading-5">

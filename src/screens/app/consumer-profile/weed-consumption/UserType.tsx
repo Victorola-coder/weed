@@ -23,7 +23,7 @@ const UserType = (props: UserTypeProps) => {
 
   const { ViewKey } = props;
   return (
-    <View className="w-weed-20.6 justify-start items-center mt-8" key={ViewKey}>
+    <View className="w-weed-20.6 justify-start items-center px-1" key={ViewKey}>
       <Text className="text-center max-w-md font-inder font-normal text-black text-lg px-4 mb-8">
         Are you a recreational or medical user?
       </Text>

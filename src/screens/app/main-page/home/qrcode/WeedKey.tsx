@@ -65,7 +65,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
                     tintColor="#00500D"
                   />
                 </TouchableOpacity>
-                <HeaderText className="text-2.5xl uppercase text-weed-primary-100 font-inder">
+                <HeaderText className="text-3xl uppercase text-weed-primary-100 font-inder">
                   Weed Key
                 </HeaderText>
                 <TouchableOpacity onPress={handleQRCodePress}>
@@ -100,7 +100,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
                   />
                 </View>
               </View>
-              <HeaderText className="uppercase text-2.5xl font-inder font-normal text-weed-primary-100 mt-10">
+              <HeaderText className="uppercase text-3xl font-inder font-normal text-weed-primary-100 mt-10">
                 Activated
               </HeaderText>
               <View className="items-center py-5 gap-5">

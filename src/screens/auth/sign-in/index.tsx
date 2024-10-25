@@ -33,7 +33,7 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
             style={{ height: MIDHEIGHT }}
           >
             <View className="gap-7 w-full">
-              <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-2.5xl uppercase">
+              <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase">
                 Sign in
               </Text>
               <View className="gap-5 w-full items-center flex-col">

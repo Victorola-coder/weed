@@ -18,10 +18,14 @@ const RejectionScreen = ({ navigation }: RejectionScreenProps) => {
       <View className="mt-10" style={{ height: FULLHEIGHT }}>
         <View className="flex-1 justify-center gap-10">
           <View className="mx-auto gap-8">
-            <Text className="text-base leading-6 text-center max-w-sm font-inder font-normal px-4">
-              Sorry, you must be 18 years or older to use this app. Please exit
-              the app.
-            </Text>
+            <View>
+              <Text className="text-base leading-6 text-center max-w-sm font-inder font-normal px-4">
+                Sorry, you must be 18 years or older to use
+              </Text>
+              <Text className="text-base leading-6 text-center max-w-sm font-inder font-normal px-4">
+                this app. Please exit the app.
+              </Text>
+            </View>
             <PrimaryButton
               onPress={handleExit}
               className="border border-weed-primary-100 w-weed-12.5 rounded-2xl mx-auto mt-2"

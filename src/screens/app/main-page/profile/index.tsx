@@ -33,7 +33,7 @@ const ProfileScreen = ({
       <ScreenView height={"100%"} marginTop={135}>
         <View className=" w-full px-5 pt-2 ">
           <View className="w-full flex-row items-center pb-7">
-            <Text className="flex-1 text-center text-2.5xl font-inder font-normal text-weed-primary-100 uppercase">
+            <Text className="flex-1 text-center text-3xl font-inder font-normal text-weed-primary-100 uppercase">
               My Profile
             </Text>
           </View>

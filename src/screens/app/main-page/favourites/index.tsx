@@ -17,8 +17,8 @@ import {
 const FavouritesScreen = () => {
   return (
     <ScreenView height={"100%"} marginTop={190}>
-      <View className="w-full flex flex-row justify-center items-center py-10">
-        <Text className="text-center max-w-sm font-inder font-normal text-weed-primary-100 text-2.5xl uppercase">
+      <View className="w-full flex flex-row justify-center items-center pt-8 pb-4">
+        <Text className="text-center max-w-sm font-inder font-normal text-weed-primary-100 text-3xl uppercase">
           Potential Weed Match
         </Text>
       </View>

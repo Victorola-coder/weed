@@ -98,7 +98,7 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
         >
           <View className="w-full flex-col justify-between">
             <View className="mt-20">
-              <Text className="text-center w-full font-inder text-weed-primary-100 text-2.5xl uppercase">
+              <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase">
                 Consumer Profile
               </Text>
               <FlatList

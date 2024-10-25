@@ -95,7 +95,7 @@ const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScre
                 />
               </TouchableOpacity>
             )}
-            <Text className="text-center max-w-sm font-inder font-normal text-weed-primary-100 text-2.5xl uppercase">
+            <Text className="text-center max-w-sm font-inder font-normal text-weed-primary-100 text-3xl uppercase">
               Weed Filter
             </Text>
             {isSearchActive ? (

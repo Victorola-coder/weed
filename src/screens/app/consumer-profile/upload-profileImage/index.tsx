@@ -13,8 +13,8 @@ const UploadProfileImage = ({ onImageUpload, ViewKey }: UploadProfileImageProps)
   };
 
   return (
-    <View className="w-weed-20.6 justify-start items-center mt-1" key={ViewKey}>
-      <Text className="text-center font-inder text-weed-primary-100 text-base pb-20">
+    <View className="w-weed-20.6 justify-start items-center" key={ViewKey}>
+      <Text className="text-center font-inder text-weed-primary-100 text-lg pb-12">
         Upload one photo / avatar
       </Text>
       <UploadProfileImageButton onImageUpload={handleImageUpload} />

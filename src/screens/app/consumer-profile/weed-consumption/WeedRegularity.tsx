@@ -23,7 +23,7 @@ const WeedRegularity = (props: WeedRegularityProps) => {
 
   const { ViewKey } = props;
   return (
-    <View className="w-weed-20.6 justify-start items-center pt-8" key={ViewKey}>
+    <View className="w-weed-20.6 justify-start items-center px-1" key={ViewKey}>
       <Text className="text-center font-inder font-normal text-black text-lg px-6 pb-8">
         How often do you indulge in cannabis?
       </Text>

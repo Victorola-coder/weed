@@ -22,7 +22,7 @@ const StrainType = (props: StrainTypeProps) => {
 
   const { ViewKey } = props;
   return (
-    <View className="w-weed-20.6 justify-start items-center" key={ViewKey}>
+    <View className="w-weed-20.6 justify-start items-center px-1" key={ViewKey}>
       <Text className="text-center font-inder font-normal text-black text-lg pb-8">
         What's your preferral strain type?
       </Text>

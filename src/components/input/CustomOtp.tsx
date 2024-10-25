@@ -40,7 +40,7 @@ const CustomOtp = (props: Props) => {
           <TextInput
             key={index}
             keyboardType="number-pad"
-            className={`bg-white border border-weed-primary-100 h-14 rounded-xl w-16 text-center text-[#346771] text-[24px] leading-[26px]`}
+            className={`bg-white border border-weed-primary-100 h-14 rounded-xl w-14 text-center text-[#346771] text-[24px] leading-[26px]`}
             value={value ? "*".repeat(value.length) : ""}
             onChangeText={(text) => handleChange(text, index)}
             maxLength={1}

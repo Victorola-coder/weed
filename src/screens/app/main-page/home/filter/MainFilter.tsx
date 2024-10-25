@@ -77,7 +77,7 @@ const MainFilter = ({ navigation }: MainFilterProps) => {
               resizeMode="contain"
             />
           </TouchableOpacity>
-          <Text className="flex-1 text-center text-2.5xl font-inder font-normal text-weed-primary-100 uppercase">
+          <Text className="flex-1 text-center text-3xl font-inder font-normal text-weed-primary-100 uppercase">
             Weed Filter
           </Text>
         </View>

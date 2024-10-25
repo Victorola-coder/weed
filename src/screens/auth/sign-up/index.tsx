@@ -111,7 +111,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
     {
       key: "6",
       content: (
-        <CustomOtp label2="check mobile for your otp" label="ENTER OTP" />
+        <CustomOtp label2="check E-Mail for your otp" label="ENTER OTP" />
       ),
     },
   ];
@@ -144,10 +144,10 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       <View style={{ height: HEIGHT }}>
         <ScrollView className="w-full" style={{ height: FULLHEIGHT }}>
           <View
-            className="mx-auto max-w-sm w-full justify-center items-center"
+            className="mx-auto max-w-sm w-full justify-center mt-4 items-center"
             style={{ height: FULLHEIGHT }}
           >
-            <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-2.5xl uppercase mb-16">
+            <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase mb-16">
               Sign Up
             </Text>
             <View className="w-full justify-between gap-16 mt-0">
@@ -187,7 +187,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 />
               </View>
             </View>
-            <View className="w-full gap-5">
+            <View className="w-full gap-8">
               <View className="flex-row items-center justify-center">
                 <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
                 <View className="bg-weed-primary-100 w-9 h-6">

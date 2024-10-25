@@ -40,7 +40,7 @@ const CardConsumerProfile = ({
                 resizeMode="contain"
               />
             </TouchableOpacity>
-            <Text className="flex-1 text-center text-2.5xl font-inder font-normal text-weed-primary-100 uppercase mr-10">
+            <Text className="flex-1 text-center text-3xl font-inder font-normal text-weed-primary-100 uppercase mr-10">
               Consumer Profile
             </Text>
           </View>

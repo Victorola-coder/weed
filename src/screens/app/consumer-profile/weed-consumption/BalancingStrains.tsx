@@ -24,7 +24,7 @@ const BalancingStrain = (props: BalancingStrainProps) => {
   const { ViewKey } = props;
   return (
     <View
-      className="w-weed-20.6 justify-start items-center pr-0.5 pt-8"
+      className="w-weed-20.6 justify-start items-center px-1"
       key={ViewKey}
     >
       <Text className="text-center font-inder font-normal text-black text-lg pb-8">

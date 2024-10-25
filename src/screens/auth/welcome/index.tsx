@@ -25,17 +25,17 @@ const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
       <Header />
       <View style={{ height: HEIGHT }} className="justify-center items-center">
         <View
-          className="justify-center max-w-lg w-full items-center mx-auto px-10 mt-3"
+          className="justify-center max-w-lg w-full items-center mx-auto px-10 mt-"
         >
           <View
-            className="mx-auto max-w-lg w-full justify-center mt-10"
-            style={{ height: HEIGHT * 0.5 }}
+            className="mx-auto max-w-lg w-full justify-center mt-0 pb-10"
+            style={{ height: HEIGHT * 0.6 }}
           >
             <View>
-              <HeaderText className="text-center max-w-lg font-inder font-medium text-weed-primary-100 text-2.5xl uppercase pb-weed-1.2">
+              <HeaderText className="text-center max-w-lg font-inder font-medium text-weed-primary-100 text-3xl uppercase pb-weed-1.2">
                 welcome
               </HeaderText>
-              <HeaderText className="text-center max-w-lg font-inder font-normal text-weed-primary-100 text-2.5xl uppercase">
+              <HeaderText className="text-center max-w-lg font-inder font-normal text-weed-primary-100 text-3xl uppercase">
                 LET’S GET TO KNOW YOU
               </HeaderText>
             </View>
