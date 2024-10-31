@@ -15,7 +15,7 @@ const PrimaryButton = (props: Props) => {
   return (
     <TouchableOpacity
       onPress={disabled ? undefined : onPress}
-      className={`${className} h-weed-3.4 items-center justify-center`}
+      className={`${className} h-14 items-center justify-center`}
       disabled={disabled}
     >
       <Text

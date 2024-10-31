@@ -141,16 +141,23 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   return (
     <ScreenView className="" marginTop={190}>
       <Header />
-      <View style={{ height: HEIGHT }}>
-        <ScrollView className="w-full" style={{ height: FULLHEIGHT }}>
+      <View
+        className="mt-14"
+        // style={{ height: HEIGHT }}
+      >
+        <View
+          className="w-full flex-1 justify-center items-center"
+
+          // style={{ height: FULLHEIGHT }}
+        >
           <View
-            className="mx-auto max-w-sm w-full justify-center mt-4 items-center"
-            style={{ height: FULLHEIGHT }}
+            className="mx-auto max-w-sm w-full justify-start pt-10 items-center"
+            // style={{ height: FULLHEIGHT }}
           >
             <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase mb-16">
               Sign Up
             </Text>
-            <View className="w-full justify-between gap-16 mt-0">
+            <View className="w-full justify-between gap-16 mt-11">
               <FlatList
                 ref={flatListRef}
                 horizontal
@@ -169,7 +176,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 )}
                 onScrollToIndexFailed={() => {}}
               />
-              <View className="pb-weed-4.8 px-5">
+              <View className="pb-weed-4.8 px-5 mt-8">
                 <DirectionButton
                   handlePrev={goToPreviousPage}
                   NextText={
@@ -197,7 +204,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 </View>
                 <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
               </View>
-              <View className="w-full gap-4">
+              <View className="w-full gap-4 items-center self-center">
                 <View className="w-full">
                   <GoogleAuthButton onPress={handleOauth} />
                 </View>
@@ -216,7 +223,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
               </View>
             </View>
           </View>
-        </ScrollView>
+        </View>
       </View>
     </ScreenView>
   );

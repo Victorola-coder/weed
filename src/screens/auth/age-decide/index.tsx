@@ -2,7 +2,13 @@ import { Colors } from "@/constants/Colors";
 import { FULLHEIGHT, HEADERHEIGHT, HEIGHT, MIDHEIGHT } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
 import React, { useState } from "react";
-import { Animated, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import {
+  Animated,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { CheckBox } from "@rneui/themed";
 import PrimaryButton from "@/components/button/PrimaryButton";
 import Header from "@/layouts/Header";
@@ -63,7 +69,7 @@ const AgeSelectionScreen = ({ navigation }: AgeSelectionScreenProps) => {
             className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-[1]"
             style={{
               top: 0, // make sure overlay covers the status bar
-              position: 'absolute',
+              position: "absolute",
             }}
           />
         )}
@@ -73,25 +79,24 @@ const AgeSelectionScreen = ({ navigation }: AgeSelectionScreenProps) => {
             className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-[1]"
             style={{
               top: 0,
-              position: 'absolute',
+              position: "absolute",
             }}
           />
         )}
 
         <Header />
-        <View className="mt-14">
+        <View>
           <View
-            className="justify-center items-center pb-40"
-            style={{ height: HEIGHT }}
+            className="justify-center items-center mt-24 pt-2"
+            // style={{ height: HEIGHT }}
           >
             <View className="mx-auto">
-              <View
-                className={`${isUnder18 ? 'relative z-[2]' : ''}`}
-              >
+              <View className={`${isUnder18 ? "relative z-[2]" : ""}`}>
                 <PrimaryButton
                   onPress={handleUnder18Press}
-                  className={`border border-weed-primary-100 w-36 mt-12 rounded-2xl mx-auto ${isUnder18 ? "bg-weed-primary-100 border border-white " : ""
-                    }`}
+                  className={`border border-weed-primary-100 w-36 mt-12 rounded-2xl mx-auto ${
+                    isUnder18 ? "bg-weed-primary-100 border border-white " : ""
+                  }`}
                   textClassName={`${isUnder18 ? "text-white" : ""}`}
                 >
                   I am under 18
@@ -100,8 +105,9 @@ const AgeSelectionScreen = ({ navigation }: AgeSelectionScreenProps) => {
               <View>
                 <PrimaryButton
                   onPress={handleAbove18Press}
-                  className={`border border-weed-primary-100 w-36 mt-12 rounded-2xl mx-auto ${isAbove18 ? "bg-weed-primary-100 border-white" : ""
-                    }`}
+                  className={`border border-weed-primary-100 w-36 mt-12 rounded-2xl mx-auto ${
+                    isAbove18 ? "bg-weed-primary-100 border-white" : ""
+                  }`}
                 >
                   I am over 18
                 </PrimaryButton>
@@ -131,8 +137,9 @@ const AgeSelectionScreen = ({ navigation }: AgeSelectionScreenProps) => {
                 </TouchableOpacity>
                 {showLanguages && (
                   <Animated.View
-                    className={`h-${showLanguages ? "auto" : 0
-                      } overflow-hidden`}
+                    className={`h-${
+                      showLanguages ? "auto" : 0
+                    } overflow-hidden`}
                   >
                     {languages.map((item, index) => (
                       <TouchableOpacity
@@ -182,13 +189,12 @@ const AgeSelectionScreen = ({ navigation }: AgeSelectionScreenProps) => {
               </Text>
             </View>
 
-            <View
-              className={`${ageConfirmed ? 'relative z-[2]' : ''}`}
-            >
+            <View className={`${ageConfirmed ? "relative z-[2]" : ""}`}>
               <PrimaryButton
                 onPress={handleDone}
-                className={`border border-weed-primary-100 w-36 rounded-2xl mx-auto ${ageConfirmed ? "bg-weed-primary-100 border border-white" : ""
-                  }`}
+                className={`border border-weed-primary-100 w-36 rounded-2xl mx-auto ${
+                  ageConfirmed ? "bg-weed-primary-100 border border-white" : ""
+                }`}
                 textClassName={`${ageConfirmed ? "text-white" : ""}`}
               >
                 Done

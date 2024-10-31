@@ -26,24 +26,27 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
   return (
     <ScreenView className="bg-weed-primary" marginTop={190}>
       <Header />
-      <View style={{ height: HEIGHT }} className="mt-3">
-        <View className="w-full flex-1 justify-center items-center" style={{ height: FULLHEIGHT }}>
+      <View className="mt-3">
+        <View
+          className="w-full flex-1 justify-center items-center"
+          // style={{ height: FULLHEIGHT }}
+        >
           <View
             className="mx-auto max-w-sm w-full justify-start pt-8 items-center"
-            style={{ height: MIDHEIGHT }}
+            // style={{ height: MIDHEIGHT }}
           >
             <View className="gap-7 w-full">
               <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase">
                 Sign in
               </Text>
-              <View className="gap-5 w-full items-center flex-col">
+              <View className="gap-5 w-full items-center flex-col mx-auto">
                 <CustomInput
                   value={userNamePhone}
                   onChange={(text) => setUserNamePhone(text)}
                   label="Username/Phone Number"
                   textClass="text-base w-72"
-                  viewClass="gap-2 px-4 w-72"
-                  className="w-72 rounded-xl"
+                  viewClass="gap-2 w-72"
+                  className="w-full rounded-xl"
                   labelClassname="w-72"
                 />
                 <CustomInput
@@ -51,7 +54,7 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
                   onChange={(text) => setPassword(text)}
                   label="Password"
                   textClass="text-base w-72"
-                  viewClass="gap-2 px-4 w-72"
+                  viewClass="gap-2 w-72"
                   className="w-72 rounded-xl"
                   labelClassname="w-72"
                 />

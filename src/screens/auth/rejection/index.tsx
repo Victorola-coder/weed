@@ -7,7 +7,6 @@ import Header from "@/layouts/Header";
 import { RejectionScreenProps } from "@/routes/types";
 
 const RejectionScreen = ({ navigation }: RejectionScreenProps) => {
-
   const handleExit = () => {
     BackHandler.exitApp();
   };
@@ -15,7 +14,7 @@ const RejectionScreen = ({ navigation }: RejectionScreenProps) => {
   return (
     <ScreenView className="bg-weed-primary" marginTop={190}>
       <Header />
-      <View className="mt-10" style={{ height: FULLHEIGHT }}>
+      <View className="mt-20" style={{ height: FULLHEIGHT }}>
         <View className="flex-1 justify-center gap-10">
           <View className="mx-auto gap-8">
             <View>
@@ -31,7 +30,7 @@ const RejectionScreen = ({ navigation }: RejectionScreenProps) => {
               className="border border-weed-primary-100 w-weed-12.5 rounded-2xl mx-auto mt-2"
             >
               {" "}
-              Exit Weed Match
+              Exit Weed Bumble
             </PrimaryButton>
           </View>
         </View>

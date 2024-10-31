@@ -26,7 +26,7 @@ const Header = (props: HeaderProps) => {
       className={`flex-row items-center justify-between ${className} ${
         home ? "w-full" : "w-fit"
       } px-6 absolute top-0 self-center`}
-      style={{ height: 60 }}
+      // style={{ height: 60 }}
     >
       {home && (
         <TouchableOpacity onPress={HandleQRCodeNavigation}>
