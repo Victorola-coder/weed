@@ -49,9 +49,7 @@ const ThirdWeedProfileScreen = ({
   return (
     <>
       {overlayVisible && (
-        <View
-          className="absolute top-0 left-0 w-full h-full justify-center items-center bg-transparent z-[1]"
-        >
+        <View className="absolute top-0 left-0 w-full h-full justify-center items-center bg-transparent z-[1]">
           <View className="z-[2]">
             <Text className="text-red-900 font-inder max-w-xs text-center">
               You need at least one
@@ -66,9 +64,7 @@ const ThirdWeedProfileScreen = ({
               OK
             </PrimaryButton>
           </View>
-          <View
-            className="absolute top-0 left-0 w-full h-full bg-black opacity-80 z-[1]"
-          />
+          <View className="absolute top-0 left-0 w-full h-full bg-black opacity-80 z-[1]" />
         </View>
       )}
       <ScreenView className="bg-weed-primary" marginTop={190}>
@@ -144,7 +140,7 @@ const ThirdWeedProfileScreen = ({
               BackText="Back"
               nextClassName="bg-weed-primary-100 border border-white"
               backClassName="bg-weed-primary-100 border border-white"
-              className="w-weed-20.6 absolute bottom-40 justify-between"
+              className="w-weed-20.6 absolute bottom-28 mb-1 justify-between"
               handleNext={handleNext}
             />
           </View>

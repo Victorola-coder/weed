@@ -3,8 +3,10 @@ import { View, Text } from "react-native";
 import UploadProfileImageButton from "@/components/button/UploadProfileImageButton";
 import { UploadProfileImageProps } from "@/data/list";
 
-
-const UploadProfileImage = ({ onImageUpload, ViewKey }: UploadProfileImageProps) => {
+const UploadProfileImage = ({
+  onImageUpload,
+  ViewKey,
+}: UploadProfileImageProps) => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
 
   const handleImageUpload = (uri: string) => {
@@ -13,12 +15,15 @@ const UploadProfileImage = ({ onImageUpload, ViewKey }: UploadProfileImageProps)
   };
 
   return (
-    <View className="w-weed-20.6 justify-start items-center" key={ViewKey}>
-      <Text className="text-center font-inder text-weed-primary-100 text-lg pb-12">
+    <View
+      className="w-weed-20.6 justify-start items-center gap-8 mt-9"
+      key={ViewKey}
+    >
+      <Text className="text-center font-inder text-weed-primary-100 text-lg p-3">
         Upload one photo / avatar
       </Text>
       <UploadProfileImageButton onImageUpload={handleImageUpload} />
-      <Text className="text-center max-w-xs font-inder font-normal text-weed-primary-100 text-lg pt-20">
+      <Text className="text-center max-w-xs font-inder font-normal text-weed-primary-100 text-lg">
         No strict guidelines
       </Text>
     </View>

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Platform } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { WeedRegularityProps } from "@/data/list";
-
 
 const WeedRegularity = (props: WeedRegularityProps) => {
   const [others, setOthers] = useState("");
@@ -23,7 +22,11 @@ const WeedRegularity = (props: WeedRegularityProps) => {
 
   const { ViewKey } = props;
   return (
-    <View className="w-weed-20.6 justify-start items-center px-1" key={ViewKey}>
+    <View
+      style={{ paddingTop: Platform.OS === "android" ? 55 : 15 }}
+      className="w-weed-20.6 justify-start items-center px-1"
+      key={ViewKey}
+    >
       <Text className="text-center font-inder font-normal text-black text-lg px-6 pb-8">
         How often do you indulge in cannabis?
       </Text>

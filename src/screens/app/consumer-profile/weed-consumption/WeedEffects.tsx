@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Platform } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { WeedEffectsProps } from "@/data/list";
-
 
 const WeedEffects = (props: WeedEffectsProps) => {
   const [others, setOthers] = useState("");
@@ -23,7 +22,11 @@ const WeedEffects = (props: WeedEffectsProps) => {
 
   const { ViewKey } = props;
   return (
-    <View className="w-weed-20.6 justify-start items-center px-1" key={ViewKey}>
+    <View
+      style={{ paddingTop: Platform.OS === "android" ? 60 : 25 }}
+      className="w-weed-20.6 justify-start items-center px-1"
+      key={ViewKey}
+    >
       <Text className="text-center font-inder font-normal text-black text-lg pb-8">
         What effects are you seeking from cannabis?
       </Text>

@@ -24,7 +24,7 @@ const SubscriptionScreen = ({ navigation }: SubscriptionScreenProps) => {
   return (
     <>
       <ScreenView className="bg-weed-primary" height={"100%"} sub>
-        <View style={{ height: HEIGHT, marginTop: -40 }}>
+        <View>
           <View
             className="w-full flex-row items-center pt-10 px-5"
             style={{

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Platform } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { WeedConsumeProps } from "@/data/list";
 
@@ -26,8 +26,9 @@ const WeedConsume = (props: WeedConsumeProps) => {
   const { ViewKey } = props;
   return (
     <View
-      className="w-weed-20.6 justify-start items-center px-1"
+      className="w-weed-20.6 justify-start items-center px-1 mt-3"
       key={ViewKey}
+      style={{ paddingTop: Platform.OS === "android" ? 47 : 10 }}
     >
       <Text className="text-center font-inder font-normal text-black text-lg pb-8">
         What's your favorite way to consume cannabis?

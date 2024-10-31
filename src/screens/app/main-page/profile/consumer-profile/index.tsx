@@ -5,10 +5,10 @@ import { Consumercards, ConsumerimageMap } from "@/data/arrays";
 import ScreenView from "@/layouts/ScreenView";
 import { ConsumerProfileProps } from "@/routes/types";
 import React from "react";
+import { Platform } from "react-native";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 
 const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
-
   const card = Consumercards[0];
 
   const handleNavigation = () => {
@@ -18,7 +18,7 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
   return (
     <>
       <ScreenView height={"100%"} marginTop={135}>
-        <View className="w-full px-5 pt-2">
+        <View className="w-full px-5 pt-6">
           <View className="w-full flex-row justify-start pb-7">
             <TouchableOpacity
               className="flex justify-center items-start w-10"
@@ -35,7 +35,9 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
             </Text>
           </View>
           <ScrollView
-            contentContainerClassName="pb-10"
+            contentContainerStyle={{
+              paddingTop: Platform.OS === "android" ? 80 : 30,
+            }}
             showsVerticalScrollIndicator={false}
           >
             <View className="w-full gap-8">
@@ -67,7 +69,11 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
                     >
                       <View className="h-9 items-center justify-center">
                         <Image
-                          source={ConsumerimageMap[weedType as keyof typeof ConsumerimageMap]}
+                          source={
+                            ConsumerimageMap[
+                              weedType as keyof typeof ConsumerimageMap
+                            ]
+                          }
                           className="w-8 h-8"
                           resizeMode="contain"
                         />
@@ -92,7 +98,11 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
                     >
                       <View className="h-10 justify-center items-center">
                         <Image
-                          source={ConsumerimageMap[weedType as keyof typeof ConsumerimageMap]}
+                          source={
+                            ConsumerimageMap[
+                              weedType as keyof typeof ConsumerimageMap
+                            ]
+                          }
                           className="w-9 h-9"
                           resizeMode="contain"
                         />

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AppStackParamsList } from "./types";
 import HomeScreen from "@/screens/app/main-page/home";
 import { HEIGHT } from "@/constants/Size";
-import { Image, Keyboard, View } from "react-native";
+import { Image, Keyboard, Platform, View } from "react-native";
 import MessagesScreen from "@/screens/app/main-page/messages";
 import FavouritesScreen from "@/screens/app/main-page/favourites";
 import ProfileScreen from "@/screens/app/main-page/profile";
@@ -39,10 +39,10 @@ export const AppStack = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: "white",
-          borderTopWidth:0,
+          borderTopWidth: 0,
           elevation: 0,
           shadowOpacity: 0,
-          height: HEIGHT * 0.1,
+          height: Platform.OS === "android" ? 70 : 100,
           display: isKeyboardVisible ? "none" : "flex",
         },
         tabBarIcon: ({ focused }) => {

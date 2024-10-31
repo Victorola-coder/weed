@@ -10,15 +10,13 @@ import {
 } from "@/routes/types";
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
-import { ScrollView, Text, View, Image } from "react-native";
+import { ScrollView, Text, View, Image, Platform } from "react-native";
 
 type CombinedStackParamsList = AuthStackParamsList & AppStackParamsList;
 
 const ProfileScreen = ({
   navigation,
 }: StackScreenProps<CombinedStackParamsList, "profile-screen">) => {
-  
-
   const goToSubscription = () => {
     navigation.navigate("subscription-screen");
   };
@@ -30,16 +28,18 @@ const ProfileScreen = ({
   const card = cards[0];
   return (
     <>
-      <ScreenView height={"100%"} marginTop={135}>
-        <View className=" w-full px-5 pt-2 ">
-          <View className="w-full flex-row items-center pb-7">
+      <ScreenView height={"100%"}>
+        <View className=" w-full px-5 pt-6">
+          <View className="w-full flex-row items-center">
             <Text className="flex-1 text-center text-3xl font-inder font-normal text-weed-primary-100 uppercase">
               My Profile
             </Text>
           </View>
           <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 30 }}
+            contentContainerStyle={{
+              paddingTop: Platform.OS === "android" ? 90 : 30,
+            }}
           >
             <View className="flex-1 gap-8">
               {/* User Image and Name */}
@@ -84,7 +84,6 @@ const ProfileScreen = ({
                   ))}
                 </View>
               </View>
-              
 
               {/* Favorite Weed Section */}
               <View className="w-full gap-3">

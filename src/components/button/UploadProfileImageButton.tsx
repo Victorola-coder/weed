@@ -29,7 +29,7 @@ const UploadProfileImageButton = ({ onImageUpload }: ProfileImageProps) => {
 
   return (
     <TouchableOpacity
-      className="w-weed-12.5 h-weed-15.5 rounded-3xl border border-white border-2 bg-weed-profile-add items-center justify-center"
+      className="w-weed-12.5 h-weed-15.5 rounded-3xl  border-white border-2 bg-weed-profile-add items-center justify-center"
       activeOpacity={0.7}
       onPress={handleChooseImage}
     >

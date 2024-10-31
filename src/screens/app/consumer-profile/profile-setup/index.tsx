@@ -91,14 +91,17 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
   return (
     <ScreenView className="bg-weed-primary" marginTop={190}>
       <Header />
-      <View style={{ height: HEIGHT }}>
+      <View
+        className="mt-10"
+        // style={{ height: HEIGHT }}
+      >
         <View
           className="mx-auto w-weed-20.6  justify-between items-center"
-          style={{ height: MIDHEIGHT * 1.135 }}
+          // style={{ height: MIDHEIGHT * 1.135 }}
         >
           <View className="w-full flex-col justify-between">
-            <View className="mt-20">
-              <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase">
+            <View className="mt-16">
+              <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase pt-7">
                 Consumer Profile
               </Text>
               <FlatList
@@ -111,18 +114,19 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
                 keyExtractor={(item) => item.key}
                 renderItem={({ item }) => (
                   <View
-                    className={`justify-start items-center max-w-sm ${item.key === "8" ? "pt-4" : "pt-10"
-                      } `}
-                    style={{ height: HEIGHT }}
+                    className={`justify-start items-center max-w-sm ${
+                      item.key === "8" ? "pt-4" : "pt-5"
+                    } `}
+                    // style={{ height: HEIGHT }}
                   >
                     {item.content}
                   </View>
                 )}
-                onScrollToIndexFailed={() => { }}
+                onScrollToIndexFailed={() => {}}
               />
             </View>
           </View>
-          <View className="w-weed-20.6 absolute bottom-0">
+          <View className="w-weed-20.6 absolute bottom-20">
             {currentPage < pages.length - 1 && currentPage !== 0 ? (
               <View
                 className={`bg-weed-primary-100 p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
@@ -143,15 +147,15 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
                   isImageUploaded
                     ? "bg-weed-primary-100 border-weed-primary-100"
                     : currentPage === 0
-                      ? "bg-weed-primary border border-weed-primary-100"
-                      : "bg-weed-primary-100 border border-white"
+                    ? "bg-weed-primary border border-weed-primary-100"
+                    : "bg-weed-primary-100 border border-white"
                 }
                 backClassName={
                   isImageUploaded
                     ? "bg-weed-primary-100 border-weed-primary-100"
                     : currentPage === 0
-                      ? "bg-weed-primary border border-weed-primary-100"
-                      : "bg-weed-primary-100 border border-white"
+                    ? "bg-weed-primary border border-weed-primary-100"
+                    : "bg-weed-primary-100 border border-white"
                 }
               />
             </View>

@@ -161,7 +161,7 @@ const ChatScreen = ({ navigation }: ChatScreenProps) => {
                     viewProfile={handleViewConsumerProfile}
                   />
                 </View>
-                <View className="flex-1 w-full pb-5 px-5">
+                <View className="flex-1 w-full pb-28 px-5">
                   <FlatList
                     data={messages}
                     showsVerticalScrollIndicator={false}
@@ -177,11 +177,14 @@ const ChatScreen = ({ navigation }: ChatScreenProps) => {
                         showCallStatus={item.showCallStatus}
                       />
                     )}
-                  className="flex-1"
+                    className="flex-1"
                   />
                 </View>
                 {/* Input and Icons */}
-                <View className="w-full flex-row justify-between items-center gap-2 absolute bg-weed-primary bottom-0 h-16 pt-4">
+                <View
+                  style={{ height: HEIGHT * 0.1 }}
+                  className="w-full flex-row justify-between items-center gap-2 absolute bg-weed-primary bottom-4 pt-4"
+                >
                   <View className="w-full border-b border-black/20 absolute top-0" />
                   <View className="relative px-5">
                     {showIcons && (

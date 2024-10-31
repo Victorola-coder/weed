@@ -20,10 +20,12 @@ type Props = {
 };
 
 const ScreenView = (props: Props) => {
-  const { children, backgroundColor, height, marginTop, sub } = props;
+  const { children, backgroundColor, height, marginTop, sub, className } =
+    props;
 
   return (
     <SafeAreaView
+      className={className}
       style={{
         flex: 1,
         backgroundColor: backgroundColor || "#578461",
@@ -39,7 +41,12 @@ const ScreenView = (props: Props) => {
         {/* Background image with a reduced width */}
         <Image
           source={require("../../assets/backgroundImage.png")}
-          style={{ height: 350, position: "absolute", opacity: 0.1 }}
+          style={{
+            height: 350,
+            position: "absolute",
+            opacity: 0.1,
+            display: sub ? "none" : "flex",
+          }}
         />
         {children}
       </View>

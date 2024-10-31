@@ -8,7 +8,14 @@ import {
   ConsumerProfileProps,
 } from "@/routes/types";
 import React from "react";
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 
 const CardConsumerProfile = ({
   navigation,
@@ -18,7 +25,6 @@ const CardConsumerProfile = ({
   swipeLeft: () => void;
   swipeRight: () => void;
 }) => {
-  
   const card = Consumercards[0];
 
   const handleNavigation = () => {
@@ -28,7 +34,7 @@ const CardConsumerProfile = ({
   return (
     <>
       <ScreenView height={"100%"} marginTop={135}>
-        <View className="flex-1 w-full px-5 pt-2">
+        <View className="flex-1 w-full px-5 pt-6">
           <View className="w-full flex-row justify-start pb-7">
             <TouchableOpacity
               className="flex justify-center items-start w-10"
@@ -45,7 +51,9 @@ const CardConsumerProfile = ({
             </Text>
           </View>
           <ScrollView
-            contentContainerClassName="pb-20"
+            contentContainerStyle={{
+              paddingTop: Platform.OS === "android" ? 80 : 30,
+            }}
             showsVerticalScrollIndicator={false}
           >
             <View className="w-full gap-8">
@@ -70,12 +78,16 @@ const CardConsumerProfile = ({
                 <View className="flex-row justify-start flex-wrap gap-x-8">
                   {card.weedBasics1.map((weedType, index) => (
                     <View
-                    key={index}
-                    className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
-                  >
+                      key={index}
+                      className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
+                    >
                       <View className="h-19 items-center justify-center">
                         <Image
-                          source={ConsumerimageMap[weedType as keyof typeof ConsumerimageMap]}
+                          source={
+                            ConsumerimageMap[
+                              weedType as keyof typeof ConsumerimageMap
+                            ]
+                          }
                           className="w-8 h-8"
                           resizeMode="contain"
                         />
@@ -100,7 +112,11 @@ const CardConsumerProfile = ({
                     >
                       <View className="h-10 justify-center items-center">
                         <Image
-                          source={ConsumerimageMap[weedType as keyof typeof ConsumerimageMap]}
+                          source={
+                            ConsumerimageMap[
+                              weedType as keyof typeof ConsumerimageMap
+                            ]
+                          }
                           className="w-9 h-9"
                           resizeMode="contain"
                         />

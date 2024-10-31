@@ -4,7 +4,7 @@ import { FULLHEIGHT, HEIGHT, MIDHEIGHT } from "@/constants/Size";
 import SubHeaderText from "@/components/texts/SubHeaderText";
 import { weedItems } from "@/data/arrays";
 import { FavoriteWeedScreenProps } from "@/data/list";
-
+import { Platform } from "react-native";
 
 const FavoriteWeedScreen = (props: FavoriteWeedScreenProps) => {
   const { ViewKey } = props;
@@ -26,7 +26,10 @@ const FavoriteWeedScreen = (props: FavoriteWeedScreenProps) => {
   return (
     <View
       className="w-weed-20.6 justify-center items-center"
-      style={{ height: MIDHEIGHT }}
+      style={{
+        height: MIDHEIGHT,
+        paddingTop: Platform.OS === "android" ? 40 : 0,
+      }}
       key={ViewKey}
     >
       <View className="flex-1 w-weed-20.6 flex-col items-center">

@@ -15,12 +15,10 @@ import Swiper from "react-native-deck-swiper";
 import { CardData } from "@/data/list";
 import { WeedCardimageMap, WeedCards } from "@/data/arrays";
 
-
-
 const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const swiperRef = useRef<Swiper<CardData> | null>(null);
-  
+
   const swipeLeft = () => {
     console.log("Attempting to swipe left");
     if (swiperRef.current) {
@@ -42,7 +40,7 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
   const renderCard = (cardData: CardData) => (
     <View
       style={{ height: HEIGHT * 0.76 }}
-      className="rounded-3xl overflow-hidden"
+      className="rounded-3xl overflow-hidden border"
     >
       <TouchableOpacity
         onPress={() => navigation.navigate("card-consumer-profile-screen")}
@@ -96,7 +94,11 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
               >
                 <View className="h-9 items-center justify-center">
                   <Image
-                    source={WeedCardimageMap[weedType as keyof typeof WeedCardimageMap]}
+                    source={
+                      WeedCardimageMap[
+                        weedType as keyof typeof WeedCardimageMap
+                      ]
+                    }
                     className="w-8 h-8"
                     resizeMode="contain"
                   />
@@ -135,7 +137,11 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
               >
                 <View className="h-9 items-center justify-center">
                   <Image
-                    source={WeedCardimageMap[weedType as keyof typeof WeedCardimageMap]}
+                    source={
+                      WeedCardimageMap[
+                        weedType as keyof typeof WeedCardimageMap
+                      ]
+                    }
                     className="w-8 h-8"
                     resizeMode="contain"
                   />
@@ -174,7 +180,11 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
               >
                 <View className="h-9 items-center justify-center">
                   <Image
-                    source={WeedCardimageMap[weedType as keyof typeof WeedCardimageMap]}
+                    source={
+                      WeedCardimageMap[
+                        weedType as keyof typeof WeedCardimageMap
+                      ]
+                    }
                     className="w-8 h-8"
                     resizeMode="contain"
                   />

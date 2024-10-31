@@ -10,28 +10,27 @@ import { View, StatusBar } from "react-native";
 const HomeScreen = ({ navigation, route }: any) => {
   useFocusEffect(
     React.useCallback(() => {
-      StatusBar.setBackgroundColor('white');
-      StatusBar.setBarStyle('dark-content');
+      StatusBar.setBackgroundColor("white");
+      StatusBar.setBarStyle("dark-content");
       return () => {
-        StatusBar.setBackgroundColor('#578461');
-        StatusBar.setBarStyle('dark-content');
+        StatusBar.setBackgroundColor("#578461");
+        StatusBar.setBarStyle("dark-content");
       };
     }, [])
   );
   return (
     <ScreenView backgroundColor="white" height={"100%"} sub>
-      <StatusBar barStyle="dark-content" backgroundColor="white" />
       <Header navigation={navigation} route={route} home />
-      <View style={{ height: HEIGHT, backgroundColor: "#fff", marginTop: 60 }}>
+      {/* <View style={{ backgroundColor: "#fff", marginTop: 45, borderWidth: 1 }}>
         <View
           className="items-start justify-start flex-1"
           style={{ height: MIDHEIGHT }}
-        >
-          <View className="w-full flex-1">
-            <WeedMatchCards navigation={navigation} route={route} />
-          </View>
-        </View>
+        > */}
+      <View className="w-full flex-1 mt-16">
+        <WeedMatchCards navigation={navigation} route={route} />
       </View>
+      {/* </View>
+      </View> */}
     </ScreenView>
   );
 };

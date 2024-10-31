@@ -14,11 +14,11 @@ import CustomInput from "@/components/input/CustomInput";
 import HeaderText from "@/components/texts/HeaderText";
 
 const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     navigation.navigate("profilesetup-screen");
-  //   }, 3000);
-  // }, [navigation]);
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate("profilesetup-screen");
+    }, 3000);
+  }, [navigation]);
 
   return (
     <ScreenView className="bg-weed-primary" marginTop={190}>
@@ -29,7 +29,7 @@ const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
       >
         <View className="justify-center max-w-lg w-full items-center mx-auto px-10 mt-">
           <View
-            className="mx-auto max-w-lg w-full justify-center mt-0 pb-10"
+            className="mx-auto max-w-lg w-full justify-center mt-16"
             // style={{ height: HEIGHT * 0.6 }}
           >
             <View>

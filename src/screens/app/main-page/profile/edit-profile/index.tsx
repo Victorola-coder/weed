@@ -11,6 +11,7 @@ import {
 } from "@/routes/types";
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
+import { Platform } from "react-native";
 import {
   ScrollView,
   Text,
@@ -21,8 +22,6 @@ import {
 } from "react-native";
 
 const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
-  
-
   const goToSubscription = () => {
     navigation.navigate("subscription-screen");
   };
@@ -33,8 +32,8 @@ const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
   return (
     <>
       <ScreenView height={"100%"} marginTop={135}>
-        <View className=" w-full px-5 pt-2">
-          <View className="w-full flex-row items-center pb-6">
+        <View className=" w-full px-5 pt-6">
+          <View className="w-full flex-row items-center">
             <TouchableOpacity
               className="flex justify-end items-start w-10 h-10"
               onPress={handleNavigation}
@@ -51,7 +50,9 @@ const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
           </View>
           <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 30 }}
+            contentContainerStyle={{
+              paddingTop: Platform.OS === "android" ? 80 : 30,
+            }}
           >
             <View className="flex-1 gap-8">
               {/* User Image and Name */}
