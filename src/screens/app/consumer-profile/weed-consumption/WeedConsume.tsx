@@ -28,7 +28,7 @@ const WeedConsume = (props: WeedConsumeProps) => {
     <View
       className="w-weed-20.6 justify-start items-center px-1 mt-3"
       key={ViewKey}
-      style={{ paddingTop: Platform.OS === "android" ? 47 : 10 }}
+      style={{ paddingTop: Platform.OS === "android" ? 65 : 40 }}
     >
       <Text className="text-center font-inder font-normal text-black text-lg pb-8">
         What's your favorite way to consume cannabis?

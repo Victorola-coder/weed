@@ -4,11 +4,13 @@ import {
   ImageBackground,
   View,
   Platform,
+  Dimensions,
 } from "react-native";
 import React, { ReactNode } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DimensionValue } from "react-native";
 import { Image } from "react-native";
+import { PixelRatio } from "react-native";
 
 type Props = {
   children: ReactNode;
@@ -42,7 +44,14 @@ const ScreenView = (props: Props) => {
         <Image
           source={require("../../assets/backgroundImage.png")}
           style={{
-            height: 350,
+            // width: 377.1,
+            // height: 352.26,
+            width: PixelRatio.roundToNearestPixel(
+              Dimensions.get("window").width * 0.97
+            ), // Adjust size relative to screen width
+            height: PixelRatio.roundToNearestPixel(
+              Dimensions.get("window").height * 0.43
+            ),
             position: "absolute",
             opacity: 0.1,
             display: sub ? "none" : "flex",

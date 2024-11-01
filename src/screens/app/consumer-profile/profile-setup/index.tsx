@@ -92,7 +92,7 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
     <ScreenView className="bg-weed-primary" marginTop={190}>
       <Header />
       <View
-        className="mt-10"
+        className=""
         // style={{ height: HEIGHT }}
       >
         <View
@@ -100,8 +100,8 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
           // style={{ height: MIDHEIGHT * 1.135 }}
         >
           <View className="w-full flex-col justify-between">
-            <View className="mt-16">
-              <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase pt-7">
+            <View className="mt-24">
+              <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase">
                 Consumer Profile
               </Text>
               <FlatList
@@ -114,9 +114,7 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
                 keyExtractor={(item) => item.key}
                 renderItem={({ item }) => (
                   <View
-                    className={`justify-start items-center max-w-sm ${
-                      item.key === "8" ? "pt-4" : "pt-5"
-                    } `}
+                    className={`justify-start items-center max-w-sm`}
                     // style={{ height: HEIGHT }}
                   >
                     {item.content}

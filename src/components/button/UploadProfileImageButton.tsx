@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { TouchableOpacity, Image } from "react-native";
+import {
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  Platform,
+  Dimensions,
+  PixelRatio,
+} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 type ProfileImageProps = {
@@ -29,25 +36,60 @@ const UploadProfileImageButton = ({ onImageUpload }: ProfileImageProps) => {
 
   return (
     <TouchableOpacity
-      className="w-weed-12.5 h-weed-15.5 rounded-3xl  border-white border-2 bg-weed-profile-add items-center justify-center"
+      style={styles.button}
       activeOpacity={0.7}
       onPress={handleChooseImage}
     >
       {profileImage ? (
         <Image
           source={{ uri: profileImage }}
+          style={styles.profileImage}
           resizeMode="cover"
-          className="w-full h-full rounded-3xl"
         />
       ) : (
         <Image
           source={require("../../../assets/image/add.png")}
-          className="w-12 h-12"
+          style={styles.icon}
           resizeMode="contain"
         />
       )}
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    width: PixelRatio.roundToNearestPixel(
+      Dimensions.get("window").width * 0.48
+    ), // Adjust size relative to screen width
+    height: PixelRatio.roundToNearestPixel(
+      Dimensions.get("window").width * 0.54
+    ),
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: "white",
+    backgroundColor: "#7C97C280",
+    alignItems: "center",
+    justifyContent: "center",
+    ...Platform.select({
+      android: {
+        paddingVertical: 5, // Fine-tune for Android if needed
+        marginTop: 30,
+      },
+      ios: {
+        marginTop: 0,
+      },
+    }),
+  },
+  profileImage: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 24,
+  },
+  icon: {
+    width: 48,
+    height: 48,
+  },
+});
 
 export default UploadProfileImageButton;

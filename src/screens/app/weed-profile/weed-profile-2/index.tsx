@@ -73,16 +73,19 @@ const SecondWeedProfileScreen = ({
         </View>
       )}
       <ScreenView className="bg-weed-primary" marginTop={190}>
-        <View className="bg-weed-primary w-full h-14">
-          <Header />
-        </View>
-        <View style={{ height: HEIGHT }}>
+        <Header />
+        <View
+          style={{
+            paddingTop: HEIGHT * 0.15,
+            height: HEIGHT,
+          }}
+        >
           <View className="w-full flex-1 justify-center items-center pb-20">
             <ScrollView
               ref={scrollViewRef}
               keyboardShouldPersistTaps="handled"
               showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ paddingBottom: 68 }}
+              // contentContainerStyle={{ paddingBottom: 68 }}
             >
               <View className="flex-1 w-full flex-col items-center gap-3 mt-3 py-3 px-10">
                 <Text className="text-center max-w-lg font-inder font-normal text-weed-primary-100 text-3xl uppercase pb-8">

@@ -35,7 +35,7 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
             className="mx-auto max-w-sm w-full justify-start pt-8 items-center"
             // style={{ height: MIDHEIGHT }}
           >
-            <View className="gap-7 w-full">
+            <View className="gap-8 w-full">
               <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase">
                 Sign in
               </Text>

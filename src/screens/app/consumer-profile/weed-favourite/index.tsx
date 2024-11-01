@@ -28,7 +28,7 @@ const FavoriteWeedScreen = (props: FavoriteWeedScreenProps) => {
       className="w-weed-20.6 justify-center items-center"
       style={{
         height: MIDHEIGHT,
-        paddingTop: Platform.OS === "android" ? 40 : 0,
+        paddingTop: Platform.OS === "android" ? 45 : 20,
       }}
       key={ViewKey}
     >

@@ -16,7 +16,7 @@ const UploadProfileImage = ({
 
   return (
     <View
-      className="w-weed-20.6 justify-start items-center gap-8 mt-9"
+      className="w-weed-20.6 justify-start items-center mt-9 gap-14"
       key={ViewKey}
     >
       <Text className="text-center font-inder text-weed-primary-100 text-lg p-3">

@@ -71,7 +71,12 @@ const ThirdWeedProfileScreen = ({
         <View className="bg-weed-primary w-full h-14">
           <Header />
         </View>
-        <View style={{ height: HEIGHT }}>
+        <View
+          style={{
+            paddingTop: HEIGHT * 0.15,
+            height: HEIGHT,
+          }}
+        >
           <View className="w-full flex-1 justify-center items-center pb-20">
             <ScrollView
               ref={scrollViewRef}

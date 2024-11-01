@@ -23,7 +23,7 @@ const WeedRegularity = (props: WeedRegularityProps) => {
   const { ViewKey } = props;
   return (
     <View
-      style={{ paddingTop: Platform.OS === "android" ? 55 : 15 }}
+      style={{ paddingTop: Platform.OS === "android" ? 65 : 45 }}
       className="w-weed-20.6 justify-start items-center px-1"
       key={ViewKey}
     >
