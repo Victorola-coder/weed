@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Dimensions } from "react-native";
 import UploadProfileImageButton from "@/components/button/UploadProfileImageButton";
 import { UploadProfileImageProps } from "@/data/list";
 
@@ -16,7 +16,11 @@ const UploadProfileImage = ({
 
   return (
     <View
-      className="w-weed-20.6 justify-start items-center mt-9 gap-14"
+      className="w-weed-20.6 justify-start items-center"
+      style={{
+        marginBottom: Dimensions.get("window").width * 0.45,
+        gap: 45,
+      }}
       key={ViewKey}
     >
       <Text className="text-center font-inder text-weed-primary-100 text-lg p-3">

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+} from "react-native";
 import { FULLHEIGHT, HEIGHT, MIDHEIGHT } from "@/constants/Size";
 import SubHeaderText from "@/components/texts/SubHeaderText";
 import { weedItems } from "@/data/arrays";
@@ -27,9 +34,13 @@ const FavoriteWeedScreen = (props: FavoriteWeedScreenProps) => {
     <View
       className="w-weed-20.6 justify-center items-center"
       style={{
+        // marginTop: Dimensions.get("window").width * 0.06,
         height: MIDHEIGHT,
-        paddingTop: Platform.OS === "android" ? 45 : 20,
       }}
+      // style={{
+      //   height: MIDHEIGHT,
+      //   paddingTop: Platform.OS === "android" ? 45 : 20,
+      // }}
       key={ViewKey}
     >
       <View className="flex-1 w-weed-20.6 flex-col items-center">

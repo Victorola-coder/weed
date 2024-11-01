@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Platform } from "react-native";
+import { View, Text, TextInput, Platform, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { WeedRegularityProps } from "@/data/list";
 
@@ -23,7 +23,9 @@ const WeedRegularity = (props: WeedRegularityProps) => {
   const { ViewKey } = props;
   return (
     <View
-      style={{ paddingTop: Platform.OS === "android" ? 65 : 45 }}
+      style={{
+        marginBottom: Dimensions.get("window").width * 0.5,
+      }}
       className="w-weed-20.6 justify-start items-center px-1"
       key={ViewKey}
     >

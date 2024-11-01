@@ -7,6 +7,7 @@ import {
   Alert,
   TouchableOpacity,
   Platform,
+  Dimensions,
 } from "react-native";
 import { HEADERHEIGHT, HEIGHT } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
@@ -83,11 +84,12 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
         {/* </View> */}
         <View
           style={{
-            paddingTop: HEIGHT * 0.15,
+            // paddingTop: HEIGHT * 0.15,
+            paddingTop: Dimensions.get("window").width * 0.2,
             height: HEIGHT,
           }}
         >
-          <View className="w-full flex-1 justify-center items-center pb-20">
+          <View className="w-full flex-1 justify-center items-center pb-10">
             <ScrollView
               ref={scrollViewRef}
               keyboardShouldPersistTaps="handled"
@@ -165,7 +167,7 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
               BackText="Back"
               nextClassName="bg-weed-primary-100 border border-white"
               backClassName="bg-weed-primary-100 border border-white"
-              className="w-weed-20.6 absolute bottom-28 mb-1 justify-between"
+              className="w-weed-20.6 absolute bottom-20 justify-between"
               handleNext={handleNext}
             />
           </View>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Platform } from "react-native";
+import { View, Text, TextInput, Platform, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { StrainTypeProps } from "@/data/list";
 
@@ -24,7 +24,9 @@ const StrainType = (props: StrainTypeProps) => {
   return (
     <View
       className="w-weed-20.6 justify-start items-center px-1"
-      style={{ paddingTop: Platform.OS === "android" ? 60 : 25 }}
+      style={{
+        marginBottom: Dimensions.get("window").width * 0.5,
+      }}
       key={ViewKey}
     >
       <Text className="text-center font-inder font-normal text-black text-lg pb-8">

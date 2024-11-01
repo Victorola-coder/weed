@@ -50,7 +50,7 @@ const ScreenView = (props: Props) => {
               Dimensions.get("window").width * 0.97
             ), // Adjust size relative to screen width
             height: PixelRatio.roundToNearestPixel(
-              Dimensions.get("window").height * 0.43
+              Dimensions.get("window").width * 0.9
             ),
             position: "absolute",
             opacity: 0.1,

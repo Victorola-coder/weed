@@ -16,6 +16,7 @@ import {
   View,
   FlatList,
   Animated,
+  Dimensions,
 } from "react-native";
 import Header from "@/layouts/Header";
 import { SignUpScreenProps } from "@/routes/types";
@@ -151,13 +152,21 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
           // style={{ height: FULLHEIGHT }}
         >
           <View
-            className="mx-auto max-w-sm w-full justify-start pt-10 items-center"
+            style={{
+              paddingTop: Dimensions.get("window").width * 0.1,
+            }}
+            className="mx-auto max-w-sm w-full justify-start items-center"
             // style={{ height: FULLHEIGHT }}
           >
-            <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase mb-16">
+            <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase mb-14">
               Sign Up
             </Text>
-            <View className="w-full justify-between gap-16 mt-11">
+            <View
+              style={{
+                gap: Dimensions.get("window").width * 0.15,
+              }}
+              className="w-full justify-between"
+            >
               <FlatList
                 ref={flatListRef}
                 horizontal
@@ -194,16 +203,16 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 />
               </View>
             </View>
-            <View className="w-full gap-8">
-              <View className="flex-row items-center justify-center">
-                <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
-                <View className="bg-weed-primary-100 w-9 h-6">
-                  <Text className="text-base text-white leading-6 font-inder font-normal text-center">
-                    Or
-                  </Text>
-                </View>
-                <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
+            <View className="flex-row items-center justify-center">
+              <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
+              <View className="bg-weed-primary-100 w-9 h-6">
+                <Text className="text-base text-white leading-6 font-inder font-normal text-center">
+                  Or
+                </Text>
               </View>
+              <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
+            </View>
+            <View className="w-full mt-3">
               <View className="w-full gap-4 items-center self-center">
                 <View className="w-full">
                   <GoogleAuthButton onPress={handleOauth} />

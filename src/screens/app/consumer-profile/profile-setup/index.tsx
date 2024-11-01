@@ -9,7 +9,7 @@ import {
 } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
 import React, { useRef, useState } from "react";
-import { FlatList, Image, Text, View } from "react-native";
+import { Dimensions, FlatList, Image, Text, View } from "react-native";
 import PrimaryButton from "@/components/button/PrimaryButton";
 import Header from "@/layouts/Header";
 import { BackImage } from "@/components/svg/BackImage";
@@ -96,12 +96,16 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
         // style={{ height: HEIGHT }}
       >
         <View
-          className="mx-auto w-weed-20.6  justify-between items-center"
+          className="mx-auto w-weed-20.6 justify-between items-center"
           // style={{ height: MIDHEIGHT * 1.135 }}
         >
           <View className="w-full flex-col justify-between">
-            <View className="mt-24">
-              <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase">
+            <View
+            // style={{
+            //   marginTop: Dimensions.get("window").width * 0.1,
+            // }}
+            >
+              <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase mt-24">
                 Consumer Profile
               </Text>
               <FlatList
@@ -114,7 +118,7 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
                 keyExtractor={(item) => item.key}
                 renderItem={({ item }) => (
                   <View
-                    className={`justify-start items-center max-w-sm`}
+                    className={`justify-center items-center max-w-sm`}
                     // style={{ height: HEIGHT }}
                   >
                     {item.content}
@@ -124,39 +128,39 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
               />
             </View>
           </View>
-          <View className="w-weed-20.6 absolute bottom-20">
-            {currentPage < pages.length - 1 && currentPage !== 0 ? (
-              <View
-                className={`bg-weed-primary-100 p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
-              />
-            ) : currentPage === 0 ? (
-              <View
-                className={`bg-transparent p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
-              />
-            ) : null}
-            <View className="">
-              <DirectionButton
-                handlePrev={handlePrev}
-                handleNext={handleNext}
-                BackText="Back"
-                NextText="Next"
-                className=""
-                nextClassName={
-                  isImageUploaded
-                    ? "bg-weed-primary-100 border-weed-primary-100"
-                    : currentPage === 0
-                    ? "bg-weed-primary border border-weed-primary-100"
-                    : "bg-weed-primary-100 border border-white"
-                }
-                backClassName={
-                  isImageUploaded
-                    ? "bg-weed-primary-100 border-weed-primary-100"
-                    : currentPage === 0
-                    ? "bg-weed-primary border border-weed-primary-100"
-                    : "bg-weed-primary-100 border border-white"
-                }
-              />
-            </View>
+        </View>
+        <View className="w-weed-20.6 absolute bottom-20">
+          {currentPage < pages.length - 1 && currentPage !== 0 ? (
+            <View
+              className={`bg-weed-primary-100 p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
+            />
+          ) : currentPage === 0 ? (
+            <View
+              className={`bg-transparent p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
+            />
+          ) : null}
+          <View className="">
+            <DirectionButton
+              handlePrev={handlePrev}
+              handleNext={handleNext}
+              BackText="Back"
+              NextText="Next"
+              className=""
+              nextClassName={
+                isImageUploaded
+                  ? "bg-weed-primary-100 border-weed-primary-100"
+                  : currentPage === 0
+                  ? "bg-weed-primary border border-weed-primary-100"
+                  : "bg-weed-primary-100 border border-white"
+              }
+              backClassName={
+                isImageUploaded
+                  ? "bg-weed-primary-100 border-weed-primary-100"
+                  : currentPage === 0
+                  ? "bg-weed-primary border border-weed-primary-100"
+                  : "bg-weed-primary-100 border border-white"
+              }
+            />
           </View>
         </View>
       </View>
