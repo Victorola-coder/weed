@@ -55,7 +55,7 @@ const CardConsumerProfile = ({
           </View>
           <ScrollView
             contentContainerStyle={{
-              paddingTop: Dimensions.get("window").height * 0.02,
+              paddingTop: Dimensions.get("window").height * 0.055,
             }}
             showsVerticalScrollIndicator={false}
           >

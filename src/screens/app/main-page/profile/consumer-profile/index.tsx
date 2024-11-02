@@ -37,11 +37,16 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
           </View>
           <ScrollView
             contentContainerStyle={{
-              paddingTop: Platform.OS === "android" ? 80 : 30,
+              paddingTop: Dimensions.get("window").height * 0.055,
             }}
             showsVerticalScrollIndicator={false}
           >
-            <View className="w-full gap-8">
+            <View
+              style={{
+                gap: Dimensions.get("screen").width * 0.06,
+              }}
+              className="w-full"
+            >
               <View className="w-full gap-5 items-center">
                 <View
                   style={styles.imageStyle}
@@ -65,9 +70,13 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
                     Basics
                   </Text>
                 </View>
-                <View className="flex-row justify-start flex-wrap gap-x-9">
+                <View className="flex-row justify-start flex-wrap gap-x-10">
                   {card.weedBasics1.map((weedType, index) => (
                     <View
+                      style={{
+                        marginRight:
+                          card.weedBasics1.length - 1 === index ? 80 : 0,
+                      }}
                       key={index}
                       className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
                     >

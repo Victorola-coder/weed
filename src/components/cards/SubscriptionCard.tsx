@@ -191,23 +191,23 @@ const SubscriptionCard: React.FC = () => {
         ))}
       </View>
       <View className="mb-5">
-        <Text className="font-inder text-xs text-black text-center">
+        <Text className="font-inder text-xxs text-black text-center">
           **Subscription fees are billed on a monthly basis. Your subscription
           will
         </Text>
-        <Text className="font-inder text-xs text-black text-center">
+        <Text className="font-inder text-xxs text-black text-center">
           automatically renew unless cancelled at least 24 hours before the end
           of
         </Text>
-        <Text className="font-inder text-xs text-black text-center">
+        <Text className="font-inder text-xxs text-black text-center">
           the current period. Payment will be charged to your iTunes or Google
           Play
         </Text>
-        <Text className="font-inder text-xs text-black text-center">
+        <Text className="font-inder text-xxs text-black text-center">
           account upon confirmation of purchase. You can manage your
           subscription
         </Text>
-        <Text className="font-inder text-xs text-black text-center">
+        <Text className="font-inder text-xxs text-black text-center">
           and turn off auto-renewal in your account settings.
         </Text>
       </View>
