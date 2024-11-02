@@ -24,12 +24,12 @@ const WeedEffects = (props: WeedEffectsProps) => {
   return (
     <View
       style={{
-        marginBottom: Dimensions.get("window").width * 0.45,
+        marginBottom: Dimensions.get("window").width * 0.52,
       }}
       className="w-weed-20.6 justify-start items-center px-1"
       key={ViewKey}
     >
-      <Text className="text-center font-inder font-normal text-black text-lg pb-8">
+      <Text className="text-center font-inder font-normal text-black text-lg pb-8 px-2">
         What effects are you seeking from cannabis?
       </Text>
       <View className="flex-row w-full justify-between gap-16 pb-20 mt-1">
@@ -54,7 +54,7 @@ const WeedEffects = (props: WeedEffectsProps) => {
           />
         </View>
       </View>
-      <View className="gap-weed-1.6">
+      <View className="gap-weed-1.6 mt-4">
         <View className="flex flex-row gap-weed-1 w-weed-20.6 justify-start items-center">
           <Text className="text-lg font-inder font-normal text-black">
             Others:

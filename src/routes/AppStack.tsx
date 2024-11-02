@@ -7,6 +7,7 @@ import { Dimensions, Image, Keyboard, Platform, View } from "react-native";
 import MessagesScreen from "@/screens/app/main-page/messages";
 import FavouritesScreen from "@/screens/app/main-page/favourites";
 import ProfileScreen from "@/screens/app/main-page/profile";
+import WeedKeyScreen from "@/screens/app/main-page/home/qrcode/WeedKey";
 
 const Tab = createBottomTabNavigator<AppStackParamsList>();
 
@@ -121,6 +122,15 @@ export const AppStack = () => {
         name="profile-screen"
         options={{ tabBarLabel: "" }}
         component={ProfileScreen}
+      />
+      <Tab.Screen
+        name="weed-key"
+        component={WeedKeyScreen}
+        options={{
+          tabBarItemStyle: {
+            display: "none",
+          },
+        }}
       />
     </Tab.Navigator>
   );

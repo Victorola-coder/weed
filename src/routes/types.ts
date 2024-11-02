@@ -119,6 +119,7 @@ export type AppStackParamsList = {
   "home-screen": undefined;
   "favourites-screen": undefined;
   "profile-screen": undefined;
+  "weed-key": undefined;
 };
 
 export type MessagesScreenProps = StackScreenProps<

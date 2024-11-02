@@ -18,7 +18,7 @@ const UploadProfileImage = ({
     <View
       className="w-weed-20.6 justify-start items-center"
       style={{
-        marginBottom: Dimensions.get("window").width * 0.45,
+        marginBottom: Dimensions.get("window").width * 0.5,
         gap: 45,
       }}
       key={ViewKey}

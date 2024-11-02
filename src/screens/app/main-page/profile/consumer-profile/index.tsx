@@ -65,7 +65,7 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
                     Basics
                   </Text>
                 </View>
-                <View className="flex-row justify-start flex-wrap gap-x-8">
+                <View className="flex-row justify-start flex-wrap gap-x-9">
                   {card.weedBasics1.map((weedType, index) => (
                     <View
                       key={index}
@@ -140,7 +140,7 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
                   </Text>
                 </View>
               </View>
-              <View className="px-5 flex-col w-full justify-center items-center gap-8 pb-28">
+              <View className="px-5 flex-col w-full justify-center items-center gap-8 pb-12">
                 <CustomButton
                   onPress={() => {}}
                   className="border h-weed-3.7 border-white w-weed-20.6 rounded-2xl bg-weed-primary-100 justify-center items-center flex-row gap-5"

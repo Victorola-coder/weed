@@ -57,7 +57,7 @@ export const AuthStack = () => {
       <Stack.Screen name="consumerprofile-screen" component={ConsumerProfile} />
       <Stack.Screen name="main-filter" component={MainFilter} />
       <Stack.Screen name="weed-filter" component={WeedFilterScreen} />
-      <Stack.Screen name="weed-key" component={WeedKeyScreen} />
+      {/* <Stack.Screen name="weed-key" component={WeedKeyScreen} /> */}
       <Stack.Screen name="scanning-screen" component={ScanningScreen} />
       <Stack.Screen name="subscription-screen" component={SubscriptionScreen} />
       <Stack.Screen name="edit-profile-screen" component={EditProfileScreen} />

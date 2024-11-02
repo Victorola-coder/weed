@@ -89,82 +89,84 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
   ];
 
   return (
-    <ScreenView className="bg-weed-primary" marginTop={190}>
-      <Header />
-      <View
-        className=""
-        // style={{ height: HEIGHT }}
-      >
+    <>
+      <ScreenView className="bg-weed-primary" marginTop={190}>
+        <Header />
         <View
-          className="mx-auto w-weed-20.6 justify-between items-center"
-          // style={{ height: MIDHEIGHT * 1.135 }}
+          className=""
+          // style={{ height: HEIGHT }}
         >
-          <View className="w-full flex-col justify-between">
-            <View
-            // style={{
-            //   marginTop: Dimensions.get("window").width * 0.1,
-            // }}
-            >
-              <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase mt-24">
-                Consumer Profile
-              </Text>
-              <FlatList
-                ref={flatListRef}
-                horizontal
-                pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                scrollEnabled={false}
-                data={pages}
-                keyExtractor={(item) => item.key}
-                renderItem={({ item }) => (
-                  <View
-                    className={`justify-center items-center max-w-sm`}
-                    // style={{ height: HEIGHT }}
-                  >
-                    {item.content}
-                  </View>
-                )}
-                onScrollToIndexFailed={() => {}}
-              />
+          <View
+            className="mx-auto w-weed-20.6 justify-between items-center"
+            // style={{ height: MIDHEIGHT * 1.135 }}
+          >
+            <View className="w-full flex-col justify-between">
+              <View
+              // style={{
+              //   marginTop: Dimensions.get("window").width * 0.1,
+              // }}
+              >
+                <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase mt-24">
+                  Consumer Profile
+                </Text>
+                <FlatList
+                  ref={flatListRef}
+                  horizontal
+                  pagingEnabled
+                  showsHorizontalScrollIndicator={false}
+                  scrollEnabled={false}
+                  data={pages}
+                  keyExtractor={(item) => item.key}
+                  renderItem={({ item }) => (
+                    <View
+                      className={`justify-center items-center max-w-sm`}
+                      // style={{ height: HEIGHT }}
+                    >
+                      {item.content}
+                    </View>
+                  )}
+                  onScrollToIndexFailed={() => {}}
+                />
+              </View>
             </View>
           </View>
         </View>
-        <View className="w-weed-20.6 absolute bottom-20">
-          {currentPage < pages.length - 1 && currentPage !== 0 ? (
-            <View
-              className={`bg-weed-primary-100 p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
-            />
-          ) : currentPage === 0 ? (
-            <View
-              className={`bg-transparent p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
-            />
-          ) : null}
-          <View className="">
-            <DirectionButton
-              handlePrev={handlePrev}
-              handleNext={handleNext}
-              BackText="Back"
-              NextText="Next"
-              className=""
-              nextClassName={
-                isImageUploaded
-                  ? "bg-weed-primary-100 border-weed-primary-100"
-                  : currentPage === 0
-                  ? "bg-weed-primary border border-weed-primary-100"
-                  : "bg-weed-primary-100 border border-white"
-              }
-              backClassName={
-                isImageUploaded
-                  ? "bg-weed-primary-100 border-weed-primary-100"
-                  : currentPage === 0
-                  ? "bg-weed-primary border border-weed-primary-100"
-                  : "bg-weed-primary-100 border border-white"
-              }
-            />
-          </View>
+      </ScreenView>
+      <View className="w-weed-20.6 absolute bottom-12 self-center">
+        {currentPage < pages.length - 1 && currentPage !== 0 ? (
+          <View
+            className={`bg-weed-primary-100 p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
+          />
+        ) : currentPage === 0 ? (
+          <View
+            className={`bg-transparent p-1 rounded-lg mt-0 mb-8 ${getWidthClass()}`}
+          />
+        ) : null}
+        <View className="">
+          <DirectionButton
+            handlePrev={handlePrev}
+            handleNext={handleNext}
+            BackText="Back"
+            NextText="Next"
+            className=""
+            nextClassName={
+              isImageUploaded
+                ? "bg-weed-primary-100 border-weed-primary-100"
+                : currentPage === 0
+                ? "bg-weed-primary border border-weed-primary-100"
+                : "bg-weed-primary-100 border border-white"
+            }
+            backClassName={
+              isImageUploaded
+                ? "bg-weed-primary-100 border-weed-primary-100"
+                : currentPage === 0
+                ? "bg-weed-primary border border-weed-primary-100"
+                : "bg-weed-primary-100 border border-white"
+            }
+          />
         </View>
       </View>
-    </ScreenView>
+    </>
   );
 };
 

@@ -59,7 +59,7 @@ const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
               <View className="w-full gap-5 items-center">
                 <View
                   style={styles.imageStyle}
-                  className="w-weed-15.6 h-weed-15.6 rounded-3xl overflow-hidden"
+                  className="rounded-3xl overflow-hidden"
                 >
                   <ImageBackground
                     source={card.userImage}
@@ -98,7 +98,7 @@ const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
                     className="w-5 h-5"
                   />
                 </View>
-                <View className="flex-row justify-start flex-wrap gap-x-8">
+                <View className="flex-row justify-start flex-wrap gap-x-9">
                   {card.weedBasics.map((weedType, index) => (
                     <View
                       key={index}
@@ -153,7 +153,7 @@ const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
               </View>
 
               {/* Buttons Section */}
-              <View className="px-5 flex-col w-full justify-center items-center gap-8 pb-28">
+              <View className="px-5 flex-col w-full justify-center items-center gap-8 pb-8">
                 <CustomButton
                   onPress={() => {}}
                   className="border h-weed-3.7 border-white w-weed-20.6 rounded-2xl bg-weed-primary-100 justify-center items-center flex-row gap-4"

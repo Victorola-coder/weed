@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
       Dimensions.get("window").width * 0.52
     ), // Adjust size relative to screen width
     height: PixelRatio.roundToNearestPixel(
-      Dimensions.get("window").width * 0.56
+      Dimensions.get("window").width * 0.65
     ),
     borderRadius: 24,
     borderWidth: 1,

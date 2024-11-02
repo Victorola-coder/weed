@@ -12,8 +12,6 @@ import {
   ImageBackground,
 } from "react-native";
 
-
-
 const FavouritesScreen = () => {
   return (
     <ScreenView height={"100%"} marginTop={190}>
@@ -26,7 +24,7 @@ const FavouritesScreen = () => {
         className="flex-1 w-full"
         showsVerticalScrollIndicator={false}
       >
-        <View className="flex-1 w-full flex-col items-center justify-start pt-4 pb-24">
+        <View className="flex-1 w-full flex-col items-center justify-start pt-4 pb-4">
           <View className="w-full flex-1 flex-row flex-wrap justify-center gap-weed-1.0 items-center">
             {FavouriteweedItems.map((item, index) => (
               <TouchableOpacity key={index}>

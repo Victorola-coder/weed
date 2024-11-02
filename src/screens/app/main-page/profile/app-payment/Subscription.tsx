@@ -26,7 +26,7 @@ const SubscriptionScreen = ({ navigation }: SubscriptionScreenProps) => {
       <ScreenView className="bg-weed-primary" height={"100%"} sub>
         <View>
           <View
-            className="w-full flex-row items-center pt-10 px-5"
+            className="w-full flex-row items-center pt-6 px-5"
             style={{
               justifyContent: "space-between",
               height: HEADERHEIGHT,
@@ -65,8 +65,8 @@ const SubscriptionScreen = ({ navigation }: SubscriptionScreenProps) => {
             </View>
             <View className="w-10 h-10" />
           </View>
-          <View style={{ height: FULLHEIGHT }}>
-            <View className="justify-start items-center mb-4">
+          <View>
+            <View className="justify-start items-center mb-0">
               <Text className="text-black font-italianno text-center text-4xl font-normal">
                 Subscriptions
               </Text>

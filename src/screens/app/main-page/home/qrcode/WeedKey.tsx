@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  PixelRatio,
+  Dimensions,
 } from "react-native";
 import { FULLHEIGHT, HEADERHEIGHT, HEIGHT } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
@@ -23,6 +25,7 @@ import { Colors } from "@/constants/Colors";
 import { useCameraPermissions } from "expo-camera";
 import HeaderText from "@/components/texts/HeaderText";
 import SubHeaderText from "@/components/texts/SubHeaderText";
+import { StyleSheet } from "react-native";
 const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
   const [hasPermission, requestPermission] = useCameraPermissions();
   const [scanned, setScanned] = useState(false);
@@ -48,7 +51,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
     <>
       <ScreenView className="bg-weed-primary" height={"100%"} marginTop={190}>
         <View
-          className="w-full items-center justify-between flex flex-row absolute top-0 mt-4 px-8"
+          className="w-full items-center justify-between flex flex-row absolute z-20 top-0 mt-4 px-8"
           // style={{ height: HEADERHEIGHT }}
         >
           <TouchableOpacity className="" onPress={handleGoBack}>
@@ -75,12 +78,18 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
         // style={{ height: HEIGHT }}
         >
           <View
-            className="w-full justify-center items-center mt-28"
+            // style={{
+            //   marginTop:
+            // }}
+            className="w-full justify-center items-center mt-20"
             // style={{ height: FULLHEIGHT }}
           >
-            <ScrollView className="w-full">
+            <ScrollView showsVerticalScrollIndicator={false} className="w-full">
               <View className="flex-1 w-full flex-col items-center px-8">
-                <View className="border border-weed-primary-100 w-full flex-col justify-between h-weed-25 rounded-3xl px-weed-3.0">
+                <View
+                  style={styles.cardSize}
+                  className="border border-weed-primary-100 w-full flex-col justify-between rounded-3xl px-weed-3.0"
+                >
                   <View className="flex-row justify-center gap-2 mx-auto pt-4">
                     <View className="pt-1.5">
                       <Logo
@@ -95,7 +104,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
                       </HeaderText>
                     </View>
                   </View>
-                  <View className="w-weed-14.5 h-weed-25 self-center pb-6">
+                  <View style={styles.imageStyle} className="self-center pb-6">
                     <Image
                       source={require("../../../../../../assets/image/code.png")}
                       className="h-full w-full"
@@ -106,7 +115,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
                 <HeaderText className="uppercase text-3xl font-inder font-normal text-weed-primary-100 mt-10">
                   Activated
                 </HeaderText>
-                <View className="items-center py-5 gap-5">
+                <View className="items-center py-4 gap-3">
                   <SubHeaderText className="text-weed-primary-100 text-center font-inder font-normal text-xl">
                     Your weed match key
                   </SubHeaderText>
@@ -132,3 +141,17 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
 };
 
 export default WeedKeyScreen;
+
+const styles = StyleSheet.create({
+  imageStyle: {
+    width: PixelRatio.roundToNearestPixel(Dimensions.get("window").width * 0.6), // Adjust size relative to screen width
+    height: PixelRatio.roundToNearestPixel(
+      Dimensions.get("window").width * 0.86
+    ),
+  },
+  cardSize: {
+    height: PixelRatio.roundToNearestPixel(
+      Dimensions.get("window").width * 0.9
+    ),
+  },
+});

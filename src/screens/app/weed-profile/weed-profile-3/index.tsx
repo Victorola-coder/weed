@@ -74,7 +74,7 @@ const ThirdWeedProfileScreen = ({
         {/* </View> */}
         <View
           style={{
-            paddingTop: Dimensions.get("window").width * 0.165,
+            paddingTop: Dimensions.get("window").width * 0.2,
 
             height: HEIGHT,
           }}
@@ -140,19 +140,19 @@ const ThirdWeedProfileScreen = ({
               </View>
             </ScrollView>
           </View>
-          <View className="w-weed-20.6 mx-auto">
-            <DirectionButton
-              handlePrev={handlePrev}
-              NextText="Start"
-              BackText="Back"
-              nextClassName="bg-weed-primary-100 border border-white"
-              backClassName="bg-weed-primary-100 border border-white"
-              className="w-weed-20.6 absolute bottom-28 mb-1 justify-between"
-              handleNext={handleNext}
-            />
-          </View>
         </View>
       </ScreenView>
+      <View className="w-weed-20.6 mx-auto">
+        <DirectionButton
+          handlePrev={handlePrev}
+          NextText="Start"
+          BackText="Back"
+          nextClassName="bg-weed-primary-100 border border-white"
+          backClassName="bg-weed-primary-100 border border-white"
+          className="w-weed-20.6 absolute bottom-12 mb-1 justify-between"
+          handleNext={handleNext}
+        />
+      </View>
     </>
   );
 };

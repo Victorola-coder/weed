@@ -81,7 +81,7 @@ const CardConsumerProfile = ({
                 <Text className="text-weed-primary-100 font-inder font-normal text-lg">
                   Basics
                 </Text>
-                <View className="flex-row justify-start flex-wrap gap-x-8">
+                <View className="flex-row justify-start flex-wrap gap-x-9">
                   {card.weedBasics1.map((weedType, index) => (
                     <View
                       key={index}
@@ -146,7 +146,7 @@ const CardConsumerProfile = ({
                   </Text>
                 </View>
               </View>
-              <View className="w-full flex-row justify-center gap-weed-2.6 items-center">
+              <View className="w-full flex-row justify-center gap-weed-2.6 items-center pb-8">
                 <TouchableOpacity
                   onPress={swipeLeft}
                   className="rounded-full bg-weed-primary-100 w-weed-4.3 h-weed-4.3 p-2 justify-center items-center"
