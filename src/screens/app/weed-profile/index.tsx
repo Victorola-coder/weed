@@ -85,7 +85,7 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
         <View
           style={{
             // paddingTop: HEIGHT * 0.15,
-            marginBottom: Dimensions.get("window").width * 0.2,
+            paddingTop: Dimensions.get("window").width * 0.14,
 
             height: HEIGHT,
           }}

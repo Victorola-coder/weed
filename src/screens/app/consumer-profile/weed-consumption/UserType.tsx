@@ -24,20 +24,15 @@ const UserType = (props: UserTypeProps) => {
   return (
     <View
       style={{
-        marginBottom: Dimensions.get("window").width * 0.32,
+        marginBottom: Dimensions.get("window").width * 0.45,
       }}
       className="w-weed-20.6 justify-start items-center px-1"
       key={ViewKey}
     >
-      <View className="mb-8">
-        <Text className="text-center max-w-md font-inder font-normal text-black text-lg px-2">
-          Are you a recreational or medical
-        </Text>
-        <Text className="text-center max-w-md font-inder font-normal text-black text-lg">
-          user?
-        </Text>
-      </View>
-      <View className="flex-col items-center w-full pt-1">
+      <Text className="text-center max-w-md font-inder font-normal text-black text-lg px-4 mb-8">
+        Are you a recreational or medical user?
+      </Text>
+      <View className="flex-col items-center w-full pb-8">
         <View className="gap-8 items-center">
           <CheckBoxInput
             label="Recreational"
@@ -48,7 +43,7 @@ const UserType = (props: UserTypeProps) => {
             onChange={handleSociallyCheckboxChange}
           />
         </View>
-        <Text className="text-center font-inder font-normal text-black text-lg px-2 pt-32 pb-8">
+        <Text className="text-center font-inder font-normal text-black text-lg px-2 pt-12 pb-8">
           Do you enjoy consuming cannabis socially or prefer alone time?
         </Text>
         <View className="gap-7">

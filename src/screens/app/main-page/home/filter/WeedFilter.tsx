@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  Dimensions,
 } from "react-native";
 import { FULLHEIGHT, HEADERHEIGHT, HEIGHT, MIDHEIGHT } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
@@ -17,8 +18,10 @@ import SubHeaderText from "@/components/texts/SubHeaderText";
 import { weedItems } from "@/data/arrays";
 import { WeedFilterScreenProps } from "@/data/list";
 
-
-const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScreenProps) => {
+const WeedFilterScreen = (
+  { navigation }: WeedFilterProps,
+  props: WeedFilterScreenProps
+) => {
   const { ViewKey } = props;
 
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -68,9 +71,7 @@ const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScre
   return (
     <ScreenView className="bg-weed-primary" marginTop={170}>
       <View style={{ height: HEIGHT, alignItems: "center" }}>
-        <View
-          className="flex-1 w-full justify-center items-center"
-        >
+        <View className="flex-1 w-full justify-center items-center">
           <View
             className="w-full items-center justify-between flex flex-row px-5"
             style={{ height: HEADERHEIGHT }}
@@ -119,11 +120,14 @@ const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScre
               </TouchableOpacity>
             )}
           </View>
-          <ScrollView className="w-full flex-1" showsVerticalScrollIndicator={false}>
+          <ScrollView
+            className="max-w-xl flex-1"
+            showsVerticalScrollIndicator={false}
+          >
             <View className="flex-1 w-full pb-64 flex-col items-center gap-2">
               {isAddActive ? (
                 <View
-                  className="w-full flex items-center justify-start px-16 pt-48"
+                  className="w-full flex items-center justify-start px-0 pt-48"
                   style={{ height: MIDHEIGHT }}
                 >
                   <Text className="text-weed-primary-100 text-lg font-inder font-bold max-w-sm text-center">
@@ -132,7 +136,12 @@ const WeedFilterScreen = ({ navigation }: WeedFilterProps, props: WeedFilterScre
                   <Text className="text-weed-primary-100 text-lg font-inder font-bold max-w-sm text-center">
                     weed. send us the name
                   </Text>
-                  <View className="w-full h-10 border border-2 border-t-0 border-weed-primary-100 justify-center items-center rounded-2xl rounded-t-none mt-8">
+                  <View
+                    style={{
+                      width: Dimensions.get("window").width * 0.7,
+                    }}
+                    className="h-10 border border-2 border-t-0 border-weed-primary-100 justify-center items-center rounded-2xl rounded-t-none mt-8"
+                  >
                     <TextInput
                       placeholder=""
                       className="w-full px-5 text-weed-primary-100 font-inder"

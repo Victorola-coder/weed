@@ -77,7 +77,7 @@ const SecondWeedProfileScreen = ({
         <Header />
         <View
           style={{
-            paddingTop: Dimensions.get("window").width * 0.2,
+            paddingTop: Dimensions.get("window").width * 0.14,
             height: HEIGHT,
           }}
         >
