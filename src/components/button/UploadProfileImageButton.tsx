@@ -60,10 +60,10 @@ const UploadProfileImageButton = ({ onImageUpload }: ProfileImageProps) => {
 const styles = StyleSheet.create({
   button: {
     width: PixelRatio.roundToNearestPixel(
-      Dimensions.get("window").width * 0.48
+      Dimensions.get("window").width * 0.52
     ), // Adjust size relative to screen width
     height: PixelRatio.roundToNearestPixel(
-      Dimensions.get("window").width * 0.54
+      Dimensions.get("window").width * 0.56
     ),
     borderRadius: 24,
     borderWidth: 1,

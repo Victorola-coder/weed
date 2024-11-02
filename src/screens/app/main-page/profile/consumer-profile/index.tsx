@@ -5,6 +5,7 @@ import { Consumercards, ConsumerimageMap } from "@/data/arrays";
 import ScreenView from "@/layouts/ScreenView";
 import { ConsumerProfileProps } from "@/routes/types";
 import React from "react";
+import { Dimensions, PixelRatio, StyleSheet } from "react-native";
 import { Platform } from "react-native";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 
@@ -18,7 +19,7 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
   return (
     <>
       <ScreenView height={"100%"} marginTop={135}>
-        <View className="w-full px-5 pt-6">
+        <View className="w-full px-5 pt-10">
           <View className="w-full flex-row justify-start pb-7">
             <TouchableOpacity
               className="flex justify-center items-start w-10"
@@ -42,7 +43,10 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
           >
             <View className="w-full gap-8">
               <View className="w-full gap-5 items-center">
-                <View className="w-weed-15.6 h-weed-15.6 rounded-3xl">
+                <View
+                  style={styles.imageStyle}
+                  className="rounded-3xl overflow-hidden"
+                >
                   <Image
                     source={require("../../../../../../assets/image/consprof.png")}
                     className="w-full h-full rounded-3xl"
@@ -182,3 +186,12 @@ const ConsumerProfile = ({ navigation }: ConsumerProfileProps) => {
   );
 };
 export default ConsumerProfile;
+
+const styles = StyleSheet.create({
+  imageStyle: {
+    width: PixelRatio.roundToNearestPixel(Dimensions.get("window").width * 0.6), // Adjust size relative to screen width
+    height: PixelRatio.roundToNearestPixel(
+      Dimensions.get("window").height * 0.309
+    ),
+  },
+});

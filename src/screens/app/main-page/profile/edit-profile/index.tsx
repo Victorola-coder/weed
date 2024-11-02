@@ -11,7 +11,7 @@ import {
 } from "@/routes/types";
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
-import { Platform } from "react-native";
+import { Dimensions, PixelRatio, Platform, StyleSheet } from "react-native";
 import {
   ScrollView,
   Text,
@@ -51,13 +51,16 @@ const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
-              paddingTop: Platform.OS === "android" ? 80 : 30,
+              paddingTop: Dimensions.get("window").height * 0.07,
             }}
           >
             <View className="flex-1 gap-8">
               {/* User Image and Name */}
               <View className="w-full gap-5 items-center">
-                <View className="w-weed-15.6 h-weed-15.6 rounded-3xl">
+                <View
+                  style={styles.imageStyle}
+                  className="w-weed-15.6 h-weed-15.6 rounded-3xl overflow-hidden"
+                >
                   <ImageBackground
                     source={card.userImage}
                     className="w-full h-full rounded-3xl"
@@ -183,3 +186,12 @@ const EditProfileScreen = ({ navigation }: EditProfileScreenProps) => {
   );
 };
 export default EditProfileScreen;
+
+const styles = StyleSheet.create({
+  imageStyle: {
+    width: PixelRatio.roundToNearestPixel(Dimensions.get("window").width * 0.6), // Adjust size relative to screen width
+    height: PixelRatio.roundToNearestPixel(
+      Dimensions.get("window").height * 0.309
+    ),
+  },
+});

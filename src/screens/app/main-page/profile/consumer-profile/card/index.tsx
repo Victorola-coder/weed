@@ -15,6 +15,9 @@ import {
   ScrollView,
   TouchableOpacity,
   Platform,
+  StyleSheet,
+  Dimensions,
+  PixelRatio,
 } from "react-native";
 
 const CardConsumerProfile = ({
@@ -52,13 +55,16 @@ const CardConsumerProfile = ({
           </View>
           <ScrollView
             contentContainerStyle={{
-              paddingTop: Platform.OS === "android" ? 80 : 30,
+              paddingTop: Dimensions.get("window").height * 0.02,
             }}
             showsVerticalScrollIndicator={false}
           >
             <View className="w-full gap-8">
               <View className="w-full gap-5 items-center">
-                <View className="w-weed-15.6 h-weed-15.6 rounded-3xl">
+                <View
+                  style={styles.imageStyle}
+                  className="rounded-3xl overflow-hidden"
+                >
                   <Image
                     source={require("../../../../../../../assets/image/consprof.png")}
                     className="w-full h-full rounded-3xl"
@@ -180,3 +186,12 @@ const CardConsumerProfile = ({
   );
 };
 export default CardConsumerProfile;
+
+const styles = StyleSheet.create({
+  imageStyle: {
+    width: PixelRatio.roundToNearestPixel(Dimensions.get("window").width * 0.6), // Adjust size relative to screen width
+    height: PixelRatio.roundToNearestPixel(
+      Dimensions.get("window").height * 0.309
+    ),
+  },
+});

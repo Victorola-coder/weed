@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AppStackParamsList } from "./types";
 import HomeScreen from "@/screens/app/main-page/home";
 import { HEIGHT } from "@/constants/Size";
-import { Image, Keyboard, Platform, View } from "react-native";
+import { Dimensions, Image, Keyboard, Platform, View } from "react-native";
 import MessagesScreen from "@/screens/app/main-page/messages";
 import FavouritesScreen from "@/screens/app/main-page/favourites";
 import ProfileScreen from "@/screens/app/main-page/profile";
@@ -42,7 +42,7 @@ export const AppStack = () => {
           borderTopWidth: 0,
           elevation: 0,
           shadowOpacity: 0,
-          height: Platform.OS === "android" ? 70 : 100,
+          height: Dimensions.get("window").height * 0.12,
           display: isKeyboardVisible ? "none" : "flex",
         },
         tabBarIcon: ({ focused }) => {

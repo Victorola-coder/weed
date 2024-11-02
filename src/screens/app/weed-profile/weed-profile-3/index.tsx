@@ -6,6 +6,7 @@ import {
   ScrollView,
   Alert,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import { HEADERHEIGHT, HEIGHT } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
@@ -68,12 +69,13 @@ const ThirdWeedProfileScreen = ({
         </View>
       )}
       <ScreenView className="bg-weed-primary" marginTop={190}>
-        <View className="bg-weed-primary w-full h-14">
-          <Header />
-        </View>
+        {/* <View className="bg-weed-primary w-full h-14"> */}
+        <Header />
+        {/* </View> */}
         <View
           style={{
-            paddingTop: HEIGHT * 0.15,
+            paddingTop: Dimensions.get("window").width * 0.165,
+
             height: HEIGHT,
           }}
         >
@@ -82,9 +84,9 @@ const ThirdWeedProfileScreen = ({
               ref={scrollViewRef}
               keyboardShouldPersistTaps="handled"
               showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ paddingBottom: 68 }}
+              // contentContainerStyle={{ paddingBottom: 68 }}
             >
-              <View className="flex-1 w-full flex-col items-center gap-3 mt-3 py-3 px-10">
+              <View className="flex-1 w-full flex-col items-center gap-3 py-3 px-10">
                 <Text className="text-center max-w-lg font-inder font-normal text-weed-primary-100 text-3xl uppercase pb-8">
                   Weed Profile 3
                 </Text>
@@ -92,7 +94,7 @@ const ThirdWeedProfileScreen = ({
                   <View className="">
                     <UploadProfileImageButton />
                   </View>
-                  <View className="gap-2 mt-4">
+                  <View className="gap-2 mt-2">
                     <View className="">
                       <CustomInput
                         value={weedname}

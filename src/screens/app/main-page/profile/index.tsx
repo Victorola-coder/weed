@@ -10,7 +10,16 @@ import {
 } from "@/routes/types";
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
-import { ScrollView, Text, View, Image, Platform } from "react-native";
+import {
+  ScrollView,
+  Text,
+  View,
+  Image,
+  Platform,
+  Dimensions,
+  StyleSheet,
+  PixelRatio,
+} from "react-native";
 
 type CombinedStackParamsList = AuthStackParamsList & AppStackParamsList;
 
@@ -38,13 +47,13 @@ const ProfileScreen = ({
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
-              paddingTop: Platform.OS === "android" ? 90 : 30,
+              paddingTop: Dimensions.get("window").height * 0.02,
             }}
           >
             <View className="flex-1 gap-8">
               {/* User Image and Name */}
               <View className="w-full gap-5 items-center">
-                <View className="w-weed-15.6 h-weed-15.6 rounded-3xl">
+                <View style={styles.imageStyle} className="rounded-3xl">
                   <Image
                     source={card.userImage}
                     className="w-full h-full rounded-3xl"
@@ -185,3 +194,13 @@ const ProfileScreen = ({
   );
 };
 export default ProfileScreen;
+
+const styles = StyleSheet.create({
+  imageStyle: {
+    width: PixelRatio.roundToNearestPixel(Dimensions.get("window").width * 0.6), // Adjust size relative to screen width
+    height: PixelRatio.roundToNearestPixel(
+      Dimensions.get("window").height * 0.303
+    ),
+  },
+});
+// console.log(Dimensions.get("window").width);

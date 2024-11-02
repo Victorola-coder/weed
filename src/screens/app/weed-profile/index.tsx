@@ -85,7 +85,8 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
         <View
           style={{
             // paddingTop: HEIGHT * 0.15,
-            paddingTop: Dimensions.get("window").width * 0.2,
+            paddingTop: Dimensions.get("window").width * 0.165,
+
             height: HEIGHT,
           }}
         >
@@ -96,7 +97,7 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
               showsVerticalScrollIndicator={false}
               // contentContainerStyle={{ paddingBottom: 68 }}
             >
-              <View className="flex-1 w-full flex-col items-center gap-3 mt-3 py-3 px-10">
+              <View className="flex-1 w-full flex-col items-center gap-3 py-3 px-10">
                 <Text className="text-center max-w-lg font-inder font-normal text-weed-primary-100 text-3xl uppercase pb-8">
                   Weed Profile
                 </Text>
@@ -104,7 +105,7 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
                   <View className="">
                     <UploadProfileImageButton />
                   </View>
-                  <View className="gap-2 mt-4">
+                  <View className="gap-2 mt-2">
                     <View className="">
                       <CustomInput
                         value={weedname}
@@ -167,7 +168,7 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
               BackText="Back"
               nextClassName="bg-weed-primary-100 border border-white"
               backClassName="bg-weed-primary-100 border border-white"
-              className="w-weed-20.6 absolute bottom-20 justify-between"
+              className="w-weed-20.6 absolute bottom-20 -mb-1 justify-between"
               handleNext={handleNext}
             />
           </View>
