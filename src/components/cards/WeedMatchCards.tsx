@@ -39,8 +39,8 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
 
   const renderCard = (cardData: CardData) => (
     <View
-      style={{ height: HEIGHT * 0.76 }}
-      className="rounded-3xl overflow-hidden border"
+      style={{ height: HEIGHT * 0.75 }}
+      className="rounded-3xl overflow-hidden"
     >
       <TouchableOpacity
         onPress={() => navigation.navigate("card-consumer-profile-screen")}

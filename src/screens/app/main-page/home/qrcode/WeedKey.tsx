@@ -112,7 +112,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
                     />
                   </View>
                 </View>
-                <HeaderText className="uppercase text-3xl font-inder font-normal text-weed-primary-100 mt-10">
+                <HeaderText className="uppercase text-3xl font-inder font-normal text-weed-primary-100 mt-2">
                   Activated
                 </HeaderText>
                 <View className="items-center py-4 gap-3">
@@ -146,12 +146,12 @@ const styles = StyleSheet.create({
   imageStyle: {
     width: PixelRatio.roundToNearestPixel(Dimensions.get("window").width * 0.6), // Adjust size relative to screen width
     height: PixelRatio.roundToNearestPixel(
-      Dimensions.get("window").width * 0.86
+      Dimensions.get("window").width * 0.83
     ),
   },
   cardSize: {
     height: PixelRatio.roundToNearestPixel(
-      Dimensions.get("window").width * 0.9
+      Dimensions.get("window").width * 0.95
     ),
   },
 });

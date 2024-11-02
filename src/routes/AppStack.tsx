@@ -43,7 +43,7 @@ export const AppStack = () => {
           borderTopWidth: 0,
           elevation: 0,
           shadowOpacity: 0,
-          height: Dimensions.get("window").height * 0.12,
+          height: Dimensions.get("window").width * 0.15,
           display: isKeyboardVisible ? "none" : "flex",
         },
         tabBarIcon: ({ focused }) => {
