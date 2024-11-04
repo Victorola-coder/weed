@@ -84,7 +84,7 @@ const WeedMatchCards = ({
         translateY: interpolate(
           activeIndex.value,
           [curIndex - 1, curIndex, curIndex + 1],
-          [-30, 0, 0]
+          [0, 0, 0]
         ),
       },
       {
