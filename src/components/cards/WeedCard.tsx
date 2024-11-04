@@ -304,13 +304,13 @@ const WeedMatchCards = ({
             </View>
           </View>
         </TouchableOpacity>
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
           <ImageBackground
             source={user.weedImage1 as ImageSourcePropType}
             className="w-full justify-between rounded-3xl"
-            style={{ height: HEIGHT * 0.76 }}
+            style={{ height: WeedCardWidth * 1.69 }}
           >
-            <View className="flex-col pb-28 px-6 justify-end items-start h-full w-full gap-y-20">
+            <View className="flex-col pb-10 px-6 justify-end items-start h-full w-full gap-y-20">
               <View className="gap-8">
                 <Text className="font-inder text-3xl text-white uppercase">
                   {user.weedName1}
@@ -321,9 +321,9 @@ const WeedMatchCards = ({
               </View>
             </View>
           </ImageBackground>
-          <View className="w-full bg-weed-primary p-6 gap-4">
+          <View className="w-full bg-weed-primary px-4 py-3 gap-4">
             <Text className="text-white font-inder text-lg">Weed Basics</Text>
-            <View className="flex-row justify-start gap-x-8 flex-wrap">
+            <View className="flex-row justify-start gap-x-4 flex-wrap">
               {user.weedBasics1.map((weedType, index) => (
                 <View
                   key={index}
@@ -351,7 +351,7 @@ const WeedMatchCards = ({
           <ImageBackground
             source={user.weedImage2 as ImageSourcePropType}
             className="w-full justify-between rounded-3xl"
-            style={{ height: HEIGHT * 0.7 }}
+            style={{ height: WeedCardWidth * 1.69 }}
           >
             <View className="flex-col py-8 px-6 justify-end items-start h-full w-full gap-y-20">
               <View className="gap-8">
@@ -364,9 +364,9 @@ const WeedMatchCards = ({
               </View>
             </View>
           </ImageBackground>
-          <View className="w-full bg-weed-primary p-6 gap-3">
+          <View className="w-full bg-weed-primary px-4 py-3 gap-4">
             <Text className="text-white font-inder text-lg">Weed Basics</Text>
-            <View className="flex-row justify-start gap-x-8 flex-wrap">
+            <View className="flex-row justify-start gap-x-4 flex-wrap">
               {user.weedBasics1.map((weedType, index) => (
                 <View
                   key={index}
@@ -394,7 +394,7 @@ const WeedMatchCards = ({
           <ImageBackground
             source={user.weedImage3 as ImageSourcePropType}
             className="w-full justify-between rounded-3xl"
-            style={{ height: HEIGHT * 0.7 }}
+            style={{ height: WeedCardWidth * 1.69 }}
           >
             <View className="flex-col py-8 px-6 justify-end items-start h-full w-full gap-y-20">
               <View className="gap-8">
@@ -407,9 +407,9 @@ const WeedMatchCards = ({
               </View>
             </View>
           </ImageBackground>
-          <View className="w-full bg-weed-primary p-6 gap-3">
+          <View className="w-full bg-weed-primary px-4 py-3 gap-4">
             <Text className="text-white font-inder text-lg">Weed Basics</Text>
-            <View className="flex-row justify-start gap-x-8 flex-wrap">
+            <View className="flex-row justify-start gap-x-4 flex-wrap">
               {user.weedBasics1.map((weedType, index) => (
                 <View
                   key={index}
