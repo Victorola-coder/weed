@@ -67,7 +67,7 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
         </View>
       </TouchableOpacity>
       {/* First Profile */}
-      <ScrollView>
+      <ScrollView style={{ flex: 1 }}>
         <ImageBackground
           source={cardData.weedImage1 as ImageSourcePropType}
           className="w-full justify-between rounded-3xl"
@@ -248,7 +248,7 @@ const WeedMatchCards = ({ navigation, route }: ConsumerProfileProps) => {
   return (
     <View
       className="justify-start items-start w-full"
-      style={{ height: HEIGHT * 0.7 }}
+      style={{ height: HEIGHT * 0.7, width: "100%" }}
     >
       <Swiper
         ref={swiperRef}

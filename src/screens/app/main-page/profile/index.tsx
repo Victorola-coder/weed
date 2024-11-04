@@ -76,6 +76,10 @@ const ProfileScreen = ({
                 <View className="flex-row justify-start flex-wrap gap-x-9">
                   {card.weedBasics.map((weedType, index) => (
                     <View
+                      style={{
+                        marginRight:
+                          card.weedBasics.length - 1 === index ? 80 : 0,
+                      }}
                       key={index}
                       className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
                     >
