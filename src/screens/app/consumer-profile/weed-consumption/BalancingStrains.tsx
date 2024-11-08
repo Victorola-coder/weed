@@ -6,21 +6,19 @@ import { BalancingStrainProps } from "@/data/list";
 const BalancingStrain = (props: BalancingStrainProps) => {
   const [others, setOthers] = useState("");
 
-  const [isTHCChecked, setIsTHCChecked] = useState(false);
-  const [isCBDChecked, setIsCBDChecked] = useState(false);
-  const [isBalancedChecked, setIsBalancedChecked] = useState(false);
-  const [isUnsureChecked, setIsUnsureChecked] = useState(false);
+  const { ViewKey, selectedLabels, setSelectedLabels } = props;
 
-  const handleTHCCheckboxChange = (checked: boolean) =>
-    setIsTHCChecked(checked);
-  const handleCBDCheckboxChange = (checked: boolean) =>
-    setIsCBDChecked(checked);
-  const handleBalancedCheckboxChange = (checked: boolean) =>
-    setIsBalancedChecked(checked);
-  const handleUnsureCheckboxChange = (checked: boolean) =>
-    setIsUnsureChecked(checked);
-
-  const { ViewKey } = props;
+  const handleCheckboxChange = (label: string, isChecked: boolean) => {
+    setSelectedLabels((prevLabels) => {
+      if (isChecked) {
+        // Add label if checked
+        return [...prevLabels, label];
+      } else {
+        // Remove label if unchecked
+        return prevLabels.filter((item) => item !== label);
+      }
+    });
+  };
   return (
     <View
       style={{
@@ -35,17 +33,24 @@ const BalancingStrain = (props: BalancingStrainProps) => {
       <View className="flex-col items-center w-full gap-8 pb-8">
         <CheckBoxInput
           label="THC-dominant"
-          onChange={handleTHCCheckboxChange}
+          checked={selectedLabels.includes("THC-dominant")}
+          onChange={handleCheckboxChange}
         />
         <CheckBoxInput
           label="CBD-dominant"
-          onChange={handleBalancedCheckboxChange}
+          checked={selectedLabels.includes("CBD-dominant")}
+          onChange={handleCheckboxChange}
         />
         <CheckBoxInput
           label="Balanced THC/CBD"
-          onChange={handleUnsureCheckboxChange}
+          checked={selectedLabels.includes("Balanced THC/CBD")}
+          onChange={handleCheckboxChange}
         />
-        <CheckBoxInput label="Unsure" onChange={handleUnsureCheckboxChange} />
+        <CheckBoxInput
+          label="Unsure"
+          checked={selectedLabels.includes("Unsure")}
+          onChange={handleCheckboxChange}
+        />
       </View>
       <View className="gap-4 mt-8">
         <View className="flex flex-row gap-weed-1 w-weed-20.6 justify-start items-center">

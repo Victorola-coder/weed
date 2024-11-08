@@ -1,80 +1,106 @@
+import { Dispatch, SetStateAction } from "react";
+
 export type UploadProfileImageProps = {
-    onImageUpload: (uploaded: boolean) => void;
-    ViewKey?: number;
+  onImageUpload: Dispatch<SetStateAction<string | null>>;
+  ViewKey?: number;
 };
 
 export type BalancingStrainProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type StrainTypeProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type UserTypeProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
+  setSelectedEnjoyableCanna: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedEnjoyableCanna: string[];
 };
 
 export type WeedConsumeProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type WeedEffectsProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type WeedRegularityProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type FavoriteWeedScreenProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type CannabisMethodProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type CannabisPropertiesProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type CannabisStrainProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export type StrainEffectsProps = {
-    ViewKey?: number;
+  ViewKey?: number;
+  setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedLabels: string[];
 };
 
 export interface CardData {
-    id: number;
-    userName: string;
-    userImage: string;
-    weedImage1: string;
-    weedName1: string;
-    weedBio1: string;
-    weedBasics1: string[];
-    weedImage2: string;
-    weedName2: string;
-    weedBio2: string;
-    weedBasics2: string[];
-    weedImage3: string;
-    weedName3: string;
-    weedBio3: string;
-    weedBasics3: string[];
+  id: number;
+  userName: string;
+  userImage: string;
+  weedImage1: string;
+  weedName1: string;
+  weedBio1: string;
+  weedBasics1: string[];
+  weedImage2: string;
+  weedName2: string;
+  weedBio2: string;
+  weedBasics2: string[];
+  weedImage3: string;
+  weedName3: string;
+  weedBio3: string;
+  weedBasics3: string[];
 }
 
 export type WeedFilterScreenProps = {
-    ViewKey?: number;
+  ViewKey?: number;
 };
 
 export type ChatCardProps = {
-    onPress: () => void;
-    image: any;
-    name: string;
-    message: string;
-    time: string;
-    unreadCount: number;
-    isOnline: boolean;
-}
+  onPress: () => void;
+  image: any;
+  name: string;
+  message: string;
+  time: string;
+  unreadCount: number;
+  isOnline: boolean;
+};

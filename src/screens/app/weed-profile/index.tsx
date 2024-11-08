@@ -23,19 +23,58 @@ import DirectionButton from "@/components/button/DirectionButton";
 import { WeedProfileScreenProps } from "@/routes/types";
 import CustomButton from "@/components/button/CustomButton";
 import PrimaryButton from "@/components/button/PrimaryButton";
+import { useAppDispatch } from "@/store";
+import { setupWeedProfile } from "@/slice/AuthSlice";
 
 const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
   const [weedname, setWeedName] = useState("");
   const [weedbio, setWeedBio] = useState("");
   const scrollViewRef = useRef<ScrollView | null>(null);
   const [overlayVisible, setOverlayVisible] = useState(false);
+  const dispatch = useAppDispatch();
+  const [selectedCannabisStrain, setSelectedCannabisStrain] = useState<
+    string[]
+  >([]);
+  const [selectedStrainEffects, setSelectedStrainEffects] = useState<string[]>(
+    []
+  );
+  const [selectedCannbisProperty, setSelectedCannbisProperty] = useState<
+    string[]
+  >([]);
+  const [selectedCannbisMethod, setSelectedCannbisMethod] = useState<string[]>(
+    []
+  );
+  const data = {
+    image: "https://example.com/image.jpg",
+    weedname,
+    weedbio,
+    whatStrain: {
+      selectedOption: "Sativa",
+      otherOption: "Hybrid mix", // optional
+    },
+    whatEffect: {
+      selectedOption: "Euphoric",
+      otherOption: "Energetic boost", // optional
+    },
+    describeAroma: {
+      selectedOption: "Citrus",
+      otherOption: "Hints of pine", // optional
+    },
+    method: {
+      selectedOption: "Vaping",
+      otherOption: "Edibles", // optional
+    },
+  };
 
-  const handleNext = () => {
-    if (weedname && weedbio) {
-      navigation.navigate("app-stack");
-    } else {
-      setOverlayVisible(true);
-    }
+  const handleNext = async () => {
+    try {
+      dispatch(setupWeedProfile(data));
+    } catch (error) {}
+    // if (weedname && weedbio) {
+    //   navigation.navigate("app-stack");
+    // } else {
+    //   setOverlayVisible(true);
+    // }
   };
 
   const handleAddProfile = () => {
@@ -136,10 +175,22 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
                       Cannabis questionnaire
                     </Text>
                     <View className="gap-16 pb-16">
-                      <CannabisStrain />
-                      <StrainEffects />
-                      <CannabisProperties />
-                      <CannabisMethod />
+                      <CannabisStrain
+                        selectedLabels={selectedCannabisStrain}
+                        setSelectedLabels={setSelectedCannabisStrain}
+                      />
+                      <StrainEffects
+                        selectedLabels={selectedStrainEffects}
+                        setSelectedLabels={setSelectedStrainEffects}
+                      />
+                      <CannabisProperties
+                        selectedLabels={selectedCannbisProperty}
+                        setSelectedLabels={setSelectedCannbisProperty}
+                      />
+                      <CannabisMethod
+                        selectedLabels={selectedCannbisMethod}
+                        setSelectedLabels={setSelectedCannbisMethod}
+                      />
                     </View>
                   </View>
                   <View className="pb-28">

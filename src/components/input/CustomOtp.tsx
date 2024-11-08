@@ -6,15 +6,20 @@ type Props = {
   className?: string;
   viewClass?: string;
   label2?: string;
+  setOtp: React.Dispatch<React.SetStateAction<null | string[]>>;
+  otp: null | string[];
+  onOtpComplete: () => void;
 };
 const CustomOtp = (props: Props) => {
-  const [otp, setOtp] = useState(["", "", "", ""]);
+  const { otp, setOtp, onOtpComplete } = props;
   const { className, label2, label, textClass, viewClass } = props;
 
   const handleChange = (text: string, index: number) => {
-    const newOtp = [...otp];
-    newOtp[index] = text;
-    setOtp(newOtp);
+    if (otp) {
+      const newOtp = [...otp];
+      newOtp[index] = text;
+      setOtp(newOtp);
+    }
   };
 
   return (
@@ -36,7 +41,7 @@ const CustomOtp = (props: Props) => {
       <View
         className={`mt-8 flex-row gap-6 items-center justify-center w-full`}
       >
-        {otp.map((value, index) => (
+        {otp?.map((value, index) => (
           <TextInput
             key={index}
             keyboardType="number-pad"

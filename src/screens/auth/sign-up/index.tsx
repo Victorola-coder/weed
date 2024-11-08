@@ -6,7 +6,7 @@ import {
   WIDTH,
 } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -24,6 +24,10 @@ import CustomInput from "@/components/input/CustomInput";
 import GoogleAuthButton from "@/components/button/GoogleAuthButton";
 import DirectionButton from "@/components/button/DirectionButton";
 import CustomOtp from "@/components/input/CustomOtp";
+import { RootState, useAppDispatch } from "@/store";
+import { useSelector } from "react-redux";
+import { signupAsync, verifyOtpAsync, logout } from "@/slice/AuthSlice";
+import { SignUpSchema } from "@/utils/common";
 
 const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   const [username, setUsername] = useState("");
@@ -32,24 +36,121 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [otp, setOtp] = useState<null | string[]>(["", "", "", ""]);
+
   const flatListRef = useRef<FlatList<any>>(null);
+  const [errors, setErrors] = useState<{
+    username?: string;
+    phone?: string;
+    email?: string;
+    password?: string;
+    rePassword?: string;
+  }>({});
+  const dispatch = useAppDispatch();
+  const authSelector = useSelector((state: RootState) => state.auth);
 
   const handleOauth = () => {
     // Handle OAuth logic here
   };
 
+  const data = {
+    username: username.toLowerCase().trim(),
+    email: email.toLowerCase().trim(),
+    phone,
+    password,
+    // rePassword,
+  };
+
+  useEffect(() => {
+    if (password !== "" && rePassword !== "") {
+      if (
+        password.toLowerCase() === rePassword.toLowerCase() &&
+        !Object.values(errors).some(Boolean) &&
+        !authSelector.isAuthenticated
+      ) {
+        dispatch(signupAsync(data));
+      }
+    }
+  }, [password, rePassword]);
+
+  // useEffect(() => {
+  //   // Call logout only when the component mounts
+  //   dispatch(logout());
+  // }, [dispatch]);
+
+  // console.log({ authSelector });
+
+  useEffect(() => {
+    if (currentPage === pages.length - 2 && authSelector.token) {
+      goToNextPage();
+    }
+  }, [authSelector.isAuthenticated, authSelector.token, currentPage]);
+
+  useEffect(() => {
+    const otpCode = otp?.join("") ?? "";
+    if (otpCode?.length >= 4 && currentPage === pages.length - 1) {
+      dispatch(verifyOtpAsync({ otpCode }));
+      setOtp(["", "", "", ""]);
+      setEmail("");
+    }
+    if (authSelector.isVerified) {
+      navigation.navigate("welcome-screen");
+    }
+  }, [authSelector.isAuthenticated, currentPage, otp, authSelector.isVerified]);
+
+  const validateField = (
+    fieldName: "username" | "password" | "rePassword" | "email" | "phone",
+    value: string
+  ) => {
+    const fieldData = {
+      email: email,
+      username: username,
+      phone: phone,
+      password: password,
+      rePassword: rePassword,
+      [fieldName]: value,
+    };
+    const parsed = SignUpSchema.safeParse(fieldData);
+
+    if (!parsed.success) {
+      const fieldError = parsed.error.errors.find(
+        (error) => error.path[0] === fieldName
+      );
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [fieldName]: fieldError?.message,
+      }));
+    } else {
+      setErrors((prevErrors) => ({ ...prevErrors, [fieldName]: undefined }));
+      // if (!Object.values(errors).some(Boolean)) {
+      //   goToNextPage();
+      // }
+    }
+  };
+
+  const disabled = authSelector.loading || Object.values(errors).some(Boolean);
+
+  console.log(authSelector.user?.otp, "qwertyuioiujhygfdf");
+  const handleOtpComplete = () => {
+    console.log("OTP is complete! Proceed to next step.");
+    // You can navigate to the next screen or trigger other actions here
+  };
   const pages = [
     {
       key: "1",
       content: (
         <CustomInput
           value={username}
-          onChange={(text) => setUsername(text)}
+          onChange={(text) => {
+            setUsername(text);
+            validateField("username", text);
+          }}
           label="Username"
           textClass="text-center text-2xl uppercase"
           viewClass="gap-8 px-4 w-weed-18"
           className="w-weed-18 rounded-xl"
           labelClassname="w-weed-18"
+          error={errors.username}
         />
       ),
     },
@@ -58,12 +159,16 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       content: (
         <CustomInput
           value={email}
-          onChange={(text) => setEmail(text)}
+          onChange={(text) => {
+            setEmail(text);
+            validateField("email", text);
+          }}
           label="Email"
           textClass="text-center text-2xl uppercase"
           viewClass="gap-8 px-4 w-weed-18"
           className="w-weed-18 rounded-xl"
           labelClassname="w-weed-18"
+          error={errors.email}
         />
       ),
     },
@@ -72,12 +177,16 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       content: (
         <CustomInput
           value={phone}
-          onChange={(text) => setPhone(text)}
+          onChange={(text) => {
+            setPhone(text);
+            validateField("phone", text);
+          }}
           label="Phone number"
           textClass="text-center text-2xl uppercase"
           viewClass="gap-8 px-4 w-weed-18"
           className="w-weed-18 rounded-xl"
           labelClassname="w-weed-18"
+          error={errors.phone}
         />
       ),
     },
@@ -86,12 +195,16 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       content: (
         <CustomInput
           value={password}
-          onChange={(text) => setPassword(text)}
+          onChange={(text) => {
+            setPassword(text);
+            validateField("password", text);
+          }}
           label="Password"
           textClass="text-center text-2xl uppercase"
           viewClass="gap-8 px-4 w-weed-18"
           className="w-weed-18 rounded-xl"
           labelClassname="w-weed-18"
+          error={errors.password}
         />
       ),
     },
@@ -100,19 +213,29 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       content: (
         <CustomInput
           value={rePassword}
-          onChange={(text) => setRePassword(text)}
+          onChange={(text) => {
+            setRePassword(text);
+            validateField("rePassword", text);
+          }}
           label="Re-enter Password"
           textClass="text-center text-2xl uppercase"
           viewClass="gap-8 px-4 w-weed-18"
           className="w-weed-18 rounded-xl"
           labelClassname="w-weed-18"
+          error={errors.rePassword}
         />
       ),
     },
     {
       key: "6",
       content: (
-        <CustomOtp label2="check E-Mail for your otp" label="ENTER OTP" />
+        <CustomOtp
+          otp={otp}
+          setOtp={setOtp}
+          label2="check E-Mail for your otp"
+          label="ENTER OTP"
+          onOtpComplete={handleOtpComplete}
+        />
       ),
     },
   ];
@@ -128,6 +251,8 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       navigation.navigate("welcome-screen");
     }
   };
+
+  // navigation.navigate("welcome-screen");
 
   const goToPreviousPage = () => {
     if (currentPage > 0) {
@@ -189,12 +314,26 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 <DirectionButton
                   handlePrev={goToPreviousPage}
                   NextText={
-                    currentPage === pages.length - 1 ? "Submit" : "Next"
+                    authSelector.loading
+                      ? "Loading....."
+                      : currentPage === pages.length - 1
+                      ? "Submit"
+                      : "Next"
                   }
                   BackText="Back"
                   className="mt-4"
+                  backDisabled={authSelector.loading}
                   handleNext={goToNextPage}
-                  nextClassName="bg-weed-primary-100 border border-white"
+                  nextClassName={`bg-weed-primary-100 border border-white ${
+                    currentPage === pages.length - 2 && disabled
+                      ? "opacity-30"
+                      : "opacity-100"
+                    // : null
+                  }  ${authSelector.loading ? "opacity-30" : "opacity-100"}  `}
+                  disabled={
+                    (currentPage === pages.length - 2 && disabled) ||
+                    authSelector.loading
+                  }
                   backClassName={
                     currentPage === 0
                       ? "bg-weed-primary border-weed-primary-100 border border-weed-profile-100"

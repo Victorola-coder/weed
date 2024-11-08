@@ -6,21 +6,19 @@ import { WeedRegularityProps } from "@/data/list";
 const WeedRegularity = (props: WeedRegularityProps) => {
   const [others, setOthers] = useState("");
 
-  const [isDailyChecked, setIsDailyChecked] = useState(false);
-  const [isWeeklyChecked, setIsWeeklyChecked] = useState(false);
-  const [isOccasionallyChecked, setIsOccasionallyChecked] = useState(false);
-  const [isRarelyChecked, setIsRarelyChecked] = useState(false);
+  const { ViewKey, selectedLabels, setSelectedLabels } = props;
 
-  const handleDailyCheckboxChange = (checked: boolean) =>
-    setIsDailyChecked(checked);
-  const handleWeeklyCheckboxChange = (checked: boolean) =>
-    setIsWeeklyChecked(checked);
-  const handleOccasionallyCheckboxChange = (checked: boolean) =>
-    setIsOccasionallyChecked(checked);
-  const handleRarelyCheckboxChange = (checked: boolean) =>
-    setIsRarelyChecked(checked);
-
-  const { ViewKey } = props;
+  const handleCheckboxChange = (label: string, isChecked: boolean) => {
+    setSelectedLabels((prevLabels) => {
+      if (isChecked) {
+        // Add label if checked
+        return [...prevLabels, label];
+      } else {
+        // Remove label if unchecked
+        return prevLabels.filter((item) => item !== label);
+      }
+    });
+  };
   return (
     <View
       style={{
@@ -34,18 +32,28 @@ const WeedRegularity = (props: WeedRegularityProps) => {
       </Text>
       <View className="flex-row w-full justify-between pb-weed-4">
         <View className="gap-8">
-          <CheckBoxInput label="Daily" onChange={handleDailyCheckboxChange} />
+          <CheckBoxInput
+            label="Daily"
+            checked={selectedLabels.includes("Daily")}
+            onChange={handleCheckboxChange}
+          />
           <CheckBoxInput
             label="Occasionally"
-            onChange={handleRarelyCheckboxChange}
+            checked={selectedLabels.includes("Occasionally")}
+            onChange={handleCheckboxChange}
           />
         </View>
         <View className="gap-8">
           <CheckBoxInput
             label="Weekly"
-            onChange={handleOccasionallyCheckboxChange}
+            checked={selectedLabels.includes("Weekly")}
+            onChange={handleCheckboxChange}
           />
-          <CheckBoxInput label="Rarely" onChange={handleWeeklyCheckboxChange} />
+          <CheckBoxInput
+            label="Rarely"
+            checked={selectedLabels.includes("Rarely")}
+            onChange={handleCheckboxChange}
+          />
         </View>
       </View>
       <View className="gap-weed-1.6 mt-2">

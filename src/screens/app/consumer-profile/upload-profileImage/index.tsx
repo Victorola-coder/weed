@@ -11,7 +11,7 @@ const UploadProfileImage = ({
 
   const handleImageUpload = (uri: string) => {
     setProfileImage(uri);
-    onImageUpload(true);
+    onImageUpload(uri);
   };
 
   return (

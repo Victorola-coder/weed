@@ -7,10 +7,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { AuthStack } from "./AuthStack";
 import { RootStackParamList } from "./types";
 import { AppStack } from "./AppStack";
+import { RootState } from "@/store";
+import { useSelector } from "react-redux";
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
 export const RootRouter = () => {
+  const authSelector = useSelector((state: RootState) => state.auth);
+  console.log(authSelector, "authSelector authSelector authSelector");
   return (
     <NavigationContainer>
       <RootStack.Navigator

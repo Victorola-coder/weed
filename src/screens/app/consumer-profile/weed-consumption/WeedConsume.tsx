@@ -1,29 +1,26 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Platform, Dimensions } from "react-native";
+import { View, Text, TextInput, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { WeedConsumeProps } from "@/data/list";
 
 const WeedConsume = (props: WeedConsumeProps) => {
   const [others, setOthers] = useState("");
+  const { ViewKey, selectedLabels, setSelectedLabels } = props;
 
-  const [isEdiblesChecked, setIsEdiblesChecked] = useState(false);
-  const [isVapingChecked, setIsVapingChecked] = useState(false);
-  const [isDabbingChecked, setIsDabbingChecked] = useState(false);
-  const [isSmokingChecked, setIsSmokingChecked] = useState(false);
-  const [isTopicalChecked, setIsTopicalChecked] = useState(false);
+  const handleCheckboxChange = (label: string, isChecked: boolean) => {
+    setSelectedLabels((prevLabels) => {
+      if (isChecked) {
+        // Add label if checked
+        return [...prevLabels, label];
+      } else {
+        // Remove label if unchecked
+        return prevLabels.filter((item) => item !== label);
+      }
+    });
+  };
 
-  const handleEdiblesCheckboxChange = (checked: boolean) =>
-    setIsEdiblesChecked(checked);
-  const handleVapingCheckboxChange = (checked: boolean) =>
-    setIsVapingChecked(checked);
-  const handleDabbingCheckboxChange = (checked: boolean) =>
-    setIsDabbingChecked(checked);
-  const handleSmokingCheckboxChange = (checked: boolean) =>
-    setIsSmokingChecked(checked);
-  const handleTopicalCheckboxChange = (checked: boolean) =>
-    setIsTopicalChecked(checked);
+  console.log("Selected labels:", selectedLabels);
 
-  const { ViewKey } = props;
   return (
     <View
       className="w-weed-20.6 justify-start items-center px-1 mt-3"
@@ -39,22 +36,30 @@ const WeedConsume = (props: WeedConsumeProps) => {
         <View className="gap-8">
           <CheckBoxInput
             label="Edibles"
-            onChange={handleEdiblesCheckboxChange}
+            checked={selectedLabels.includes("Edibles")}
+            onChange={handleCheckboxChange}
           />
           <CheckBoxInput
             label="Dabbing"
-            onChange={handleDabbingCheckboxChange}
+            checked={selectedLabels.includes("Dabbing")}
+            onChange={handleCheckboxChange}
           />
           <CheckBoxInput
             label="Topicals"
-            onChange={handleTopicalCheckboxChange}
+            checked={selectedLabels.includes("Topicals")}
+            onChange={handleCheckboxChange}
           />
         </View>
         <View className="gap-8">
-          <CheckBoxInput label="Vaping" onChange={handleVapingCheckboxChange} />
+          <CheckBoxInput
+            label="Vaping"
+            checked={selectedLabels.includes("Vaping")}
+            onChange={handleCheckboxChange}
+          />
           <CheckBoxInput
             label="Smoking"
-            onChange={handleSmokingCheckboxChange}
+            checked={selectedLabels.includes("Smoking")}
+            onChange={handleCheckboxChange}
           />
         </View>
       </View>

@@ -6,21 +6,44 @@ import { UserTypeProps } from "@/data/list";
 const UserType = (props: UserTypeProps) => {
   const [others, setOthers] = useState("");
 
-  const [isRecreationalChecked, setIsRecreationalChecked] = useState(false);
-  const [isMedicalChecked, setIsMedicalChecked] = useState(false);
-  const [isSociallyChecked, setIsSociallyChecked] = useState(false);
-  const [isAloneChecked, setIsAloneChecked] = useState(false);
+  const {
+    ViewKey,
+    selectedLabels,
+    setSelectedLabels,
+    selectedEnjoyableCanna,
+    setSelectedEnjoyableCanna,
+  } = props;
 
-  const handleRecreationalCheckboxChange = (checked: boolean) =>
-    setIsRecreationalChecked(checked);
-  const handleMedicalCheckboxChange = (checked: boolean) =>
-    setIsMedicalChecked(checked);
-  const handleSociallyCheckboxChange = (checked: boolean) =>
-    setIsSociallyChecked(checked);
-  const handleAloneCheckboxChange = (checked: boolean) =>
-    setIsAloneChecked(checked);
+  const handleCheckboxChange = (label: string, isChecked: boolean) => {
+    if (selectedLabels.length !== 1) {
+      setSelectedLabels((prevLabels) => {
+        if (isChecked) {
+          // Add label if checked
+          return [...prevLabels, label];
+        } else {
+          // Remove label if unchecked
+          return prevLabels.filter((item) => item !== label);
+        }
+      });
+    }
+  };
+  const handleCheckboxEnjoyConsumeChange = (
+    label: string,
+    isChecked: boolean
+  ) => {
+    if (selectedEnjoyableCanna.length !== 1) {
+      setSelectedEnjoyableCanna((prevLabels) => {
+        if (isChecked) {
+          // Add label if checked
+          return [...prevLabels, label];
+        } else {
+          // Remove label if unchecked
+          return prevLabels.filter((item) => item !== label);
+        }
+      });
+    }
+  };
 
-  const { ViewKey } = props;
   return (
     <View
       style={{
@@ -36,11 +59,13 @@ const UserType = (props: UserTypeProps) => {
         <View className="gap-8 items-center">
           <CheckBoxInput
             label="Recreational"
-            onChange={handleRecreationalCheckboxChange}
+            checked={selectedLabels.includes("Recreational")}
+            onChange={handleCheckboxChange}
           />
           <CheckBoxInput
             label="Medical"
-            onChange={handleSociallyCheckboxChange}
+            checked={selectedLabels.includes("Medical")}
+            onChange={handleCheckboxChange}
           />
         </View>
         <Text className="text-center font-inder font-normal text-black text-lg px-2 pt-12 pb-8">
@@ -49,9 +74,14 @@ const UserType = (props: UserTypeProps) => {
         <View className="gap-7">
           <CheckBoxInput
             label="Socially"
-            onChange={handleAloneCheckboxChange}
+            checked={selectedEnjoyableCanna.includes("Socially")}
+            onChange={handleCheckboxEnjoyConsumeChange}
           />
-          <CheckBoxInput label="Alone" onChange={handleMedicalCheckboxChange} />
+          <CheckBoxInput
+            label="Alone"
+            checked={selectedEnjoyableCanna.includes("Alone")}
+            onChange={handleCheckboxEnjoyConsumeChange}
+          />
         </View>
       </View>
     </View>

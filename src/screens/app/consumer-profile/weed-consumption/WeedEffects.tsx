@@ -6,21 +6,19 @@ import { WeedEffectsProps } from "@/data/list";
 const WeedEffects = (props: WeedEffectsProps) => {
   const [others, setOthers] = useState("");
 
-  const [isRelaxationChecked, setIsRelaxationChecked] = useState(false);
-  const [isPainReliefChecked, setIsPainReliefChecked] = useState(false);
-  const [isCreativityChecked, setIsCreativityChecked] = useState(false);
-  const [isEnergyBoostChecked, setIsEnergyBoostChecked] = useState(false);
+  const { ViewKey, selectedLabels, setSelectedLabels } = props;
 
-  const handleRelaxationCheckboxChange = (checked: boolean) =>
-    setIsRelaxationChecked(checked);
-  const handlePainReliefCheckboxChange = (checked: boolean) =>
-    setIsPainReliefChecked(checked);
-  const handleCreativityCheckboxChange = (checked: boolean) =>
-    setIsCreativityChecked(checked);
-  const handleEnergyBoostCheckboxChange = (checked: boolean) =>
-    setIsEnergyBoostChecked(checked);
-
-  const { ViewKey } = props;
+  const handleCheckboxChange = (label: string, isChecked: boolean) => {
+    setSelectedLabels((prevLabels) => {
+      if (isChecked) {
+        // Add label if checked
+        return [...prevLabels, label];
+      } else {
+        // Remove label if unchecked
+        return prevLabels.filter((item) => item !== label);
+      }
+    });
+  };
   return (
     <View
       style={{
@@ -36,21 +34,25 @@ const WeedEffects = (props: WeedEffectsProps) => {
         <View className="gap-8 ">
           <CheckBoxInput
             label="Relaxation"
-            onChange={handleRelaxationCheckboxChange}
+            checked={selectedLabels.includes("Relaxation")}
+            onChange={handleCheckboxChange}
           />
           <CheckBoxInput
             label="Creativity"
-            onChange={handleEnergyBoostCheckboxChange}
+            checked={selectedLabels.includes("Creativity")}
+            onChange={handleCheckboxChange}
           />
         </View>
         <View className="gap-8">
           <CheckBoxInput
             label="Pain relief"
-            onChange={handleCreativityCheckboxChange}
+            checked={selectedLabels.includes("Pain relief")}
+            onChange={handleCheckboxChange}
           />
           <CheckBoxInput
             label="Energy boost"
-            onChange={handlePainReliefCheckboxChange}
+            checked={selectedLabels.includes("Energy boost")}
+            onChange={handleCheckboxChange}
           />
         </View>
       </View>

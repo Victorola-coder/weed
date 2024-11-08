@@ -6,21 +6,19 @@ import { StrainTypeProps } from "@/data/list";
 const StrainType = (props: StrainTypeProps) => {
   const [others, setOthers] = useState("");
 
-  const [isIndicaChecked, setIsIndicaChecked] = useState(false);
-  const [isSativaChecked, setIsSativaChecked] = useState(false);
-  const [isHybridChecked, setIsHybridChecked] = useState(false);
-  const [isRarelyChecked, setIsRarelyChecked] = useState(false);
+  const { ViewKey, selectedLabels, setSelectedLabels } = props;
 
-  const handleIndicaCheckboxChange = (checked: boolean) =>
-    setIsIndicaChecked(checked);
-  const handleSativaCheckboxChange = (checked: boolean) =>
-    setIsSativaChecked(checked);
-  const handleHybridCheckboxChange = (checked: boolean) =>
-    setIsHybridChecked(checked);
-  const handleRarelyCheckboxChange = (checked: boolean) =>
-    setIsRarelyChecked(checked);
-
-  const { ViewKey } = props;
+  const handleCheckboxChange = (label: string, isChecked: boolean) => {
+    setSelectedLabels((prevLabels) => {
+      if (isChecked) {
+        // Add label if checked
+        return [...prevLabels, label];
+      } else {
+        // Remove label if unchecked
+        return prevLabels.filter((item) => item !== label);
+      }
+    });
+  };
   return (
     <View
       className="w-weed-20.6 justify-start items-center px-1"
@@ -34,11 +32,23 @@ const StrainType = (props: StrainTypeProps) => {
       </Text>
       <View className="w-full gap-11 pb-20 mt-3">
         <View className="justify-evenly gap-16 flex-row">
-          <CheckBoxInput label="Indica" onChange={handleIndicaCheckboxChange} />
-          <CheckBoxInput label="Sativa" onChange={handleHybridCheckboxChange} />
+          <CheckBoxInput
+            label="Indica"
+            checked={selectedLabels.includes("Indica")}
+            onChange={handleCheckboxChange}
+          />
+          <CheckBoxInput
+            label="Sativa"
+            checked={selectedLabels.includes("Sativa")}
+            onChange={handleCheckboxChange}
+          />
         </View>
         <View className="w-full justify-center items-center">
-          <CheckBoxInput label="Hybrid" onChange={handleRarelyCheckboxChange} />
+          <CheckBoxInput
+            label="Hybrid"
+            checked={selectedLabels.includes("Hybrid")}
+            onChange={handleCheckboxChange}
+          />
         </View>
       </View>
       <View className="gap-weed-1.6 mt-1">

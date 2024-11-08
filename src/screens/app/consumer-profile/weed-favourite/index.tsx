@@ -14,18 +14,16 @@ import { FavoriteWeedScreenProps } from "@/data/list";
 import { Platform } from "react-native";
 
 const FavoriteWeedScreen = (props: FavoriteWeedScreenProps) => {
-  const { ViewKey } = props;
-
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const { ViewKey, selectedLabels, setSelectedLabels } = props;
 
   const handleSelectItem = (name: string) => {
-    setSelectedItems((prevItems) =>
+    setSelectedLabels((prevItems) =>
       prevItems.includes(name)
         ? prevItems.filter((item) => item !== name)
         : [...prevItems, name]
     );
     console.log(
-      selectedItems.includes(name) ? "Unselected:" : "Selected:",
+      selectedLabels.includes(name) ? "Unselected:" : "Selected:",
       name
     );
   };
@@ -60,7 +58,7 @@ const FavoriteWeedScreen = (props: FavoriteWeedScreenProps) => {
                 key={item.name}
                 onPress={() => handleSelectItem(item.name)}
                 className={`border border-white border-1 w-weed-9.7 h-weed-14.8 rounded-[1.25rem] my-1 flex-col items-center ${
-                  selectedItems.includes(item.name)
+                  selectedLabels?.includes(item.name)
                     ? "bg-weed-primary-100"
                     : "bg-transparent"
                 }`}

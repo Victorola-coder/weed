@@ -10,6 +10,7 @@ type Props = {
   nextClassName?: string;
   className?: string;
   disabled?: boolean;
+  backDisabled?: boolean;
 };
 
 const DirectionButton = (props: Props) => {
@@ -24,6 +25,7 @@ const DirectionButton = (props: Props) => {
     NextText,
     nextClassName,
     disabled,
+    backDisabled,
   } = props;
   return (
     <>
@@ -32,6 +34,7 @@ const DirectionButton = (props: Props) => {
       >
         <TouchableOpacity
           onPress={handlePrev}
+          disabled={backDisabled}
           className={`${backClassName} h-full w-weed-8 rounded-3xl justify-center items-center flex-row gap-5 mb-2`}
         >
           <Image
