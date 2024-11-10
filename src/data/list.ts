@@ -53,24 +53,32 @@ export type CannabisMethodProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type CannabisPropertiesProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type CannabisStrainProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  // others: string;
+  // setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type StrainEffectsProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export interface CardData {

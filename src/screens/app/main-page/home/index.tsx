@@ -5,6 +5,9 @@ import { WeedCards, weedItems } from "@/data/arrays";
 import Header from "@/layouts/Header";
 import HomeHeader from "@/layouts/HomeHeader";
 import ScreenView from "@/layouts/ScreenView";
+import { completeSetup } from "@/slice/AuthSlice";
+import { RootState, useAppDispatch } from "@/store";
+import { getUserProfileAsync } from "@/thunks/profileThunks";
 import { useFocusEffect } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { View, StatusBar } from "react-native";
@@ -13,12 +16,15 @@ import {
   useAnimatedReaction,
   runOnJS,
 } from "react-native-reanimated";
+import { useSelector } from "react-redux";
 
 const HomeScreen = ({ navigation, route }: any) => {
   const activeIndex = useSharedValue(0);
   const [index, setIndex] = useState(0);
   const [users, setUsers] = useState(WeedCards);
-
+  const [hasFetchedProfile, setHasFetchedProfile] = useState(false);
+  const dispatch = useAppDispatch();
+  const selector = useSelector((state: RootState) => state.auth);
   useAnimatedReaction(
     () => activeIndex.value,
     (cur, prev) => {
@@ -28,8 +34,6 @@ const HomeScreen = ({ navigation, route }: any) => {
       }
     }
   );
-
-  console.log(index, WeedCards.length);
 
   useEffect(() => {
     if (index > WeedCards.length - 3) {
@@ -47,6 +51,17 @@ const HomeScreen = ({ navigation, route }: any) => {
       };
     }, [])
   );
+  // console.log(selector?.user, "jjsjsjjsjssjjssj");
+  useEffect(() => {
+    dispatch(completeSetup());
+
+    // Fetch profile only once if authenticated
+    if (selector.isAuthenticated && !hasFetchedProfile) {
+      dispatch(getUserProfileAsync());
+      setHasFetchedProfile(true); // Set the flag to true to prevent refetching
+    }
+  }, [selector.isAuthenticated, dispatch, hasFetchedProfile]);
+
   return (
     <ScreenView backgroundColor="white" height={"100%"} sub>
       <Header navigation={navigation} route={route} home />

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Platform, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { BalancingStrainProps } from "@/data/list";
+import { balancedStrainLabels } from "@/data/arrays";
 
 const BalancingStrain = (props: BalancingStrainProps) => {
   const [others, setOthers] = useState("");
@@ -10,7 +11,7 @@ const BalancingStrain = (props: BalancingStrainProps) => {
 
   const handleCheckboxChange = (label: string, isChecked: boolean) => {
     setSelectedLabels((prevLabels) => {
-      if (isChecked) {
+      if (isChecked && selectedLabels.length !== 1) {
         // Add label if checked
         return [...prevLabels, label];
       } else {
@@ -31,26 +32,14 @@ const BalancingStrain = (props: BalancingStrainProps) => {
         Do you prefer THC, CBD, or balanced strains?
       </Text>
       <View className="flex-col items-center w-full gap-8 pb-8">
-        <CheckBoxInput
-          label="THC-dominant"
-          checked={selectedLabels.includes("THC-dominant")}
-          onChange={handleCheckboxChange}
-        />
-        <CheckBoxInput
-          label="CBD-dominant"
-          checked={selectedLabels.includes("CBD-dominant")}
-          onChange={handleCheckboxChange}
-        />
-        <CheckBoxInput
-          label="Balanced THC/CBD"
-          checked={selectedLabels.includes("Balanced THC/CBD")}
-          onChange={handleCheckboxChange}
-        />
-        <CheckBoxInput
-          label="Unsure"
-          checked={selectedLabels.includes("Unsure")}
-          onChange={handleCheckboxChange}
-        />
+        {balancedStrainLabels.map((label) => (
+          <CheckBoxInput
+            label={label}
+            checked={selectedLabels.includes(label)}
+            onChange={handleCheckboxChange}
+            key={label}
+          />
+        ))}
       </View>
       <View className="gap-4 mt-8">
         <View className="flex flex-row gap-weed-1 w-weed-20.6 justify-start items-center">

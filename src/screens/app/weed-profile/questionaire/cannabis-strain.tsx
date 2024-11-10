@@ -9,7 +9,7 @@ const CannabisStrain = (props: CannabisStrainProps) => {
 
   const handleCheckboxChange = (label: string, isChecked: boolean) => {
     setSelectedLabels((prevLabels) => {
-      if (isChecked) {
+      if (isChecked && selectedLabels.length !== 1) {
         // Add label if checked
         return [...prevLabels, label];
       } else {

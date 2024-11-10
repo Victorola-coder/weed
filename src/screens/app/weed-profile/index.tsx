@@ -23,64 +23,40 @@ import DirectionButton from "@/components/button/DirectionButton";
 import { WeedProfileScreenProps } from "@/routes/types";
 import CustomButton from "@/components/button/CustomButton";
 import PrimaryButton from "@/components/button/PrimaryButton";
-import { useAppDispatch } from "@/store";
-import { setupWeedProfile } from "@/slice/AuthSlice";
+import { RootState, useAppDispatch } from "@/store";
+import { useSelector } from "react-redux";
+import useWeedProfile from "@/hooks/useWeedProfile";
 
-const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
-  const [weedname, setWeedName] = useState("");
-  const [weedbio, setWeedBio] = useState("");
+const WeedProfileScreen = ({ navigation, route }: WeedProfileScreenProps) => {
   const scrollViewRef = useRef<ScrollView | null>(null);
-  const [overlayVisible, setOverlayVisible] = useState(false);
-  const dispatch = useAppDispatch();
-  const [selectedCannabisStrain, setSelectedCannabisStrain] = useState<
-    string[]
-  >([]);
-  const [selectedStrainEffects, setSelectedStrainEffects] = useState<string[]>(
-    []
-  );
-  const [selectedCannbisProperty, setSelectedCannbisProperty] = useState<
-    string[]
-  >([]);
-  const [selectedCannbisMethod, setSelectedCannbisMethod] = useState<string[]>(
-    []
-  );
-  const data = {
-    image: "https://example.com/image.jpg",
-    weedname,
+  const authSelector = useSelector((state: RootState) => state.weedProfile);
+  const {
+    handleAddProfile,
+    handleSignupWeedProfile,
+    isImageUploaded,
+    isValidStuff,
+    othersCannbisMethod,
+    othersCannbisProperty,
+    othersStrainEffects,
+    overlayVisible,
+    selectedCannabisStrain,
+    selectedCannbisMethod,
+    selectedCannbisProperty,
+    selectedStrainEffects,
+    setIsImageUploaded,
+    setOthersCannbisMethod,
+    setOthersCannbisProperty,
+    setOthersStrainEffects,
+    setOverlayVisible,
+    setSelectedCannabisStrain,
+    setSelectedCannbisMethod,
+    setSelectedCannbisProperty,
+    setSelectedStrainEffects,
+    setWeedBio,
+    setWeedName,
     weedbio,
-    whatStrain: {
-      selectedOption: "Sativa",
-      otherOption: "Hybrid mix", // optional
-    },
-    whatEffect: {
-      selectedOption: "Euphoric",
-      otherOption: "Energetic boost", // optional
-    },
-    describeAroma: {
-      selectedOption: "Citrus",
-      otherOption: "Hints of pine", // optional
-    },
-    method: {
-      selectedOption: "Vaping",
-      otherOption: "Edibles", // optional
-    },
-  };
-
-  const handleNext = async () => {
-    try {
-      dispatch(setupWeedProfile(data));
-    } catch (error) {}
-    // if (weedname && weedbio) {
-    //   navigation.navigate("app-stack");
-    // } else {
-    //   setOverlayVisible(true);
-    // }
-  };
-
-  const handleAddProfile = () => {
-    navigation.navigate("secondweedprofile-screen");
-  };
-
+    weedname,
+  } = useWeedProfile(navigation, "secondweedprofile-screen");
   const handlePrev = () => {
     navigation.goBack();
   };
@@ -142,7 +118,9 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
                 </Text>
                 <View className="w-full flex-col flex items-center gap-4">
                   <View className="">
-                    <UploadProfileImageButton />
+                    <UploadProfileImageButton
+                      onImageUpload={setIsImageUploaded}
+                    />
                   </View>
                   <View className="gap-2 mt-2">
                     <View className="">
@@ -182,14 +160,20 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
                       <StrainEffects
                         selectedLabels={selectedStrainEffects}
                         setSelectedLabels={setSelectedStrainEffects}
+                        others={othersStrainEffects}
+                        setOthers={setOthersStrainEffects}
                       />
                       <CannabisProperties
                         selectedLabels={selectedCannbisProperty}
                         setSelectedLabels={setSelectedCannbisProperty}
+                        others={othersCannbisProperty}
+                        setOthers={setOthersCannbisProperty}
                       />
                       <CannabisMethod
                         selectedLabels={selectedCannbisMethod}
                         setSelectedLabels={setSelectedCannbisMethod}
+                        others={othersCannbisMethod}
+                        setOthers={setOthersCannbisMethod}
                       />
                     </View>
                   </View>
@@ -204,7 +188,9 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
                         className="h-5 w-5"
                       />
                       <Text className="font-inder font-normal text-base text-white">
-                        Add another Weed Profile
+                        {authSelector.loading
+                          ? "Loading...."
+                          : "Add another Weed Profile"}
                       </Text>
                     </CustomButton>
                   </View>
@@ -217,12 +203,14 @@ const WeedProfileScreen = ({ navigation }: WeedProfileScreenProps) => {
       <View className="w-weed-20.6 mx-auto">
         <DirectionButton
           handlePrev={handlePrev}
-          NextText="Start"
+          NextText={authSelector.loading ? "Loading..." : "Next"}
           BackText="Back"
+          backDisabled={authSelector.loading}
+          disabled={authSelector.loading || isValidStuff}
           nextClassName="bg-weed-primary-100 border border-white"
           backClassName="bg-weed-primary-100 border border-white"
           className="w-weed-20.6 absolute bottom-12 mb-1 justify-between"
-          handleNext={handleNext}
+          handleNext={handleSignupWeedProfile}
         />
       </View>
     </>

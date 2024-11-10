@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Platform, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { WeedRegularityProps } from "@/data/list";
+import { oftenIndulgeLabels } from "@/data/arrays";
 
 const WeedRegularity = (props: WeedRegularityProps) => {
   const [others, setOthers] = useState("");
@@ -10,7 +11,7 @@ const WeedRegularity = (props: WeedRegularityProps) => {
 
   const handleCheckboxChange = (label: string, isChecked: boolean) => {
     setSelectedLabels((prevLabels) => {
-      if (isChecked) {
+      if (isChecked && selectedLabels.length !== 1) {
         // Add label if checked
         return [...prevLabels, label];
       } else {
@@ -32,28 +33,24 @@ const WeedRegularity = (props: WeedRegularityProps) => {
       </Text>
       <View className="flex-row w-full justify-between pb-weed-4">
         <View className="gap-8">
-          <CheckBoxInput
-            label="Daily"
-            checked={selectedLabels.includes("Daily")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Occasionally"
-            checked={selectedLabels.includes("Occasionally")}
-            onChange={handleCheckboxChange}
-          />
+          {oftenIndulgeLabels.slice(0, 2).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={label}
+            />
+          ))}
         </View>
         <View className="gap-8">
-          <CheckBoxInput
-            label="Weekly"
-            checked={selectedLabels.includes("Weekly")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Rarely"
-            checked={selectedLabels.includes("Rarely")}
-            onChange={handleCheckboxChange}
-          />
+          {oftenIndulgeLabels.slice(2).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={label}
+            />
+          ))}
         </View>
       </View>
       <View className="gap-weed-1.6 mt-2">

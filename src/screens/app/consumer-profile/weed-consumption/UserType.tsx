@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Platform, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { UserTypeProps } from "@/data/list";
+import { enjoyConsumeLabeels, userTypeLabels } from "@/data/arrays";
 
 const UserType = (props: UserTypeProps) => {
   const [others, setOthers] = useState("");
@@ -15,33 +16,29 @@ const UserType = (props: UserTypeProps) => {
   } = props;
 
   const handleCheckboxChange = (label: string, isChecked: boolean) => {
-    if (selectedLabels.length !== 1) {
-      setSelectedLabels((prevLabels) => {
-        if (isChecked) {
-          // Add label if checked
-          return [...prevLabels, label];
-        } else {
-          // Remove label if unchecked
-          return prevLabels.filter((item) => item !== label);
-        }
-      });
-    }
+    setSelectedLabels((prevLabels) => {
+      if (isChecked && selectedLabels.length !== 1) {
+        // Add label if checked
+        return [...prevLabels, label];
+      } else {
+        // Remove label if unchecked
+        return prevLabels.filter((item) => item !== label);
+      }
+    });
   };
   const handleCheckboxEnjoyConsumeChange = (
     label: string,
     isChecked: boolean
   ) => {
-    if (selectedEnjoyableCanna.length !== 1) {
-      setSelectedEnjoyableCanna((prevLabels) => {
-        if (isChecked) {
-          // Add label if checked
-          return [...prevLabels, label];
-        } else {
-          // Remove label if unchecked
-          return prevLabels.filter((item) => item !== label);
-        }
-      });
-    }
+    setSelectedEnjoyableCanna((prevLabels) => {
+      if (isChecked && selectedEnjoyableCanna.length !== 1) {
+        // Add label if checked
+        return [...prevLabels, label];
+      } else {
+        // Remove label if unchecked
+        return prevLabels.filter((item) => item !== label);
+      }
+    });
   };
 
   return (
@@ -57,31 +54,27 @@ const UserType = (props: UserTypeProps) => {
       </Text>
       <View className="flex-col items-center w-full pb-8">
         <View className="gap-8 items-center">
-          <CheckBoxInput
-            label="Recreational"
-            checked={selectedLabels.includes("Recreational")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Medical"
-            checked={selectedLabels.includes("Medical")}
-            onChange={handleCheckboxChange}
-          />
+          {userTypeLabels.map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={label}
+            />
+          ))}
         </View>
         <Text className="text-center font-inder font-normal text-black text-lg px-2 pt-12 pb-8">
           Do you enjoy consuming cannabis socially or prefer alone time?
         </Text>
         <View className="gap-7">
-          <CheckBoxInput
-            label="Socially"
-            checked={selectedEnjoyableCanna.includes("Socially")}
-            onChange={handleCheckboxEnjoyConsumeChange}
-          />
-          <CheckBoxInput
-            label="Alone"
-            checked={selectedEnjoyableCanna.includes("Alone")}
-            onChange={handleCheckboxEnjoyConsumeChange}
-          />
+          {enjoyConsumeLabeels.map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedEnjoyableCanna.includes(label)}
+              onChange={handleCheckboxEnjoyConsumeChange}
+              key={label}
+            />
+          ))}
         </View>
       </View>
     </View>

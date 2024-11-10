@@ -35,7 +35,7 @@ const DirectionButton = (props: Props) => {
         <TouchableOpacity
           onPress={handlePrev}
           disabled={backDisabled}
-          className={`${backClassName} h-full w-weed-8 rounded-3xl justify-center items-center flex-row gap-5 mb-2`}
+          className={`${backClassName} h-full w-weed-8 rounded-3xl justify-center items-center flex-row gap-3 mb-2`}
         >
           <Image
             source={arrowFront}
@@ -49,7 +49,7 @@ const DirectionButton = (props: Props) => {
         <TouchableOpacity
           disabled={disabled}
           onPress={handleNext}
-          className={`${nextClassName} h-full w-weed-8 rounded-3xl justify-center items-center flex-row gap-5 mb-2.5`}
+          className={`${nextClassName} h-full w-weed-8 rounded-3xl justify-center items-center flex-row gap-3 mb-2.5`}
         >
           <Text className="text-white font-inder font-normal text-lg">
             {NextText}

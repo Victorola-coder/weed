@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Platform, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { StrainTypeProps } from "@/data/list";
+import { preferralStrainLabels } from "@/data/arrays";
 
 const StrainType = (props: StrainTypeProps) => {
   const [others, setOthers] = useState("");
@@ -10,7 +11,7 @@ const StrainType = (props: StrainTypeProps) => {
 
   const handleCheckboxChange = (label: string, isChecked: boolean) => {
     setSelectedLabels((prevLabels) => {
-      if (isChecked) {
+      if (isChecked && selectedLabels.length !== 1) {
         // Add label if checked
         return [...prevLabels, label];
       } else {
@@ -32,23 +33,24 @@ const StrainType = (props: StrainTypeProps) => {
       </Text>
       <View className="w-full gap-11 pb-20 mt-3">
         <View className="justify-evenly gap-16 flex-row">
-          <CheckBoxInput
-            label="Indica"
-            checked={selectedLabels.includes("Indica")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Sativa"
-            checked={selectedLabels.includes("Sativa")}
-            onChange={handleCheckboxChange}
-          />
+          {preferralStrainLabels.slice(0, 2).map((label, index) => (
+            <CheckBoxInput
+              key={label}
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+            />
+          ))}
         </View>
         <View className="w-full justify-center items-center">
-          <CheckBoxInput
-            label="Hybrid"
-            checked={selectedLabels.includes("Hybrid")}
-            onChange={handleCheckboxChange}
-          />
+          {preferralStrainLabels.slice(2).map((label, index) => (
+            <CheckBoxInput
+              key={label}
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+            />
+          ))}
         </View>
       </View>
       <View className="gap-weed-1.6 mt-1">

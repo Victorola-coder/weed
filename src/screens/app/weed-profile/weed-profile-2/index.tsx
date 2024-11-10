@@ -23,23 +23,43 @@ import CannabisStrain from "../questionaire/cannabis-strain";
 import CannabisMethod from "../questionaire/cannabis-method";
 import CannabisProperties from "../questionaire/cannabis-properties";
 import StrainEffects from "../questionaire/strain-effects";
+import { RootState, useAppDispatch } from "@/store";
+import { useSelector } from "react-redux";
+import { CustomToaster } from "@/utils/core";
+import useWeedProfile from "@/hooks/useWeedProfile";
 
 const SecondWeedProfileScreen = ({
   navigation,
 }: SecondWeedProfileScreenProps) => {
-  const [weedname, setWeedName] = useState("");
-  const [weedbio, setWeedBio] = useState("");
   const scrollViewRef = useRef<ScrollView | null>(null);
-  const [overlayVisible, setOverlayVisible] = useState(false);
-
-  const handleNext = () => {
-    navigation.navigate("app-stack");
-  };
-
-  const handleAddProfile = () => {
-    navigation.navigate("thirdweedprofile-screen");
-  };
-
+  const authSelector = useSelector((state: RootState) => state.weedProfile);
+  const {
+    handleAddProfile,
+    handleSignupWeedProfile,
+    isImageUploaded,
+    isValidStuff,
+    othersCannbisMethod,
+    othersCannbisProperty,
+    othersStrainEffects,
+    overlayVisible,
+    selectedCannabisStrain,
+    selectedCannbisMethod,
+    selectedCannbisProperty,
+    selectedStrainEffects,
+    setIsImageUploaded,
+    setOthersCannbisMethod,
+    setOthersCannbisProperty,
+    setOthersStrainEffects,
+    setOverlayVisible,
+    setSelectedCannabisStrain,
+    setSelectedCannbisMethod,
+    setSelectedCannbisProperty,
+    setSelectedStrainEffects,
+    setWeedBio,
+    setWeedName,
+    weedbio,
+    weedname,
+  } = useWeedProfile(navigation, "thirdweedprofile-screen");
   const handlePrev = () => {
     navigation.goBack();
   };
@@ -127,10 +147,28 @@ const SecondWeedProfileScreen = ({
                       Cannabis questionnaire
                     </Text>
                     <View className="gap-16 pb-16">
-                      <CannabisStrain />
-                      <StrainEffects />
-                      <CannabisProperties />
-                      <CannabisMethod />
+                      <CannabisStrain
+                        selectedLabels={selectedCannabisStrain}
+                        setSelectedLabels={setSelectedCannabisStrain}
+                      />
+                      <StrainEffects
+                        selectedLabels={selectedStrainEffects}
+                        setSelectedLabels={setSelectedStrainEffects}
+                        others={othersStrainEffects}
+                        setOthers={setOthersStrainEffects}
+                      />
+                      <CannabisProperties
+                        selectedLabels={selectedCannbisProperty}
+                        setSelectedLabels={setSelectedCannbisProperty}
+                        others={othersCannbisProperty}
+                        setOthers={setOthersCannbisProperty}
+                      />
+                      <CannabisMethod
+                        selectedLabels={selectedCannbisMethod}
+                        setSelectedLabels={setSelectedCannbisMethod}
+                        others={othersCannbisMethod}
+                        setOthers={setOthersCannbisMethod}
+                      />
                     </View>
                   </View>
                   <View className="pb-28">
@@ -144,7 +182,9 @@ const SecondWeedProfileScreen = ({
                         className="h-5 w-5"
                       />
                       <Text className="font-inder font-normal text-base text-white">
-                        Add another Weed Profile
+                        {authSelector.loading
+                          ? "Loading...."
+                          : "Add another Weed Profile"}
                       </Text>
                     </CustomButton>
                   </View>
@@ -157,12 +197,14 @@ const SecondWeedProfileScreen = ({
       <View className="w-weed-20.6 mx-auto">
         <DirectionButton
           handlePrev={handlePrev}
-          NextText="Start"
+          NextText={authSelector.loading ? "Loading..." : "Next"}
           BackText="Back"
+          backDisabled={authSelector.loading}
+          disabled={authSelector.loading || isValidStuff}
           nextClassName="bg-weed-primary-100 border border-white"
           backClassName="bg-weed-primary-100 border border-white"
           className="w-weed-20.6 absolute bottom-12 mb-1 justify-between"
-          handleNext={handleNext}
+          handleNext={handleSignupWeedProfile}
         />
       </View>
     </>

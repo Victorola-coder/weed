@@ -8,8 +8,10 @@ import {
   AuthStackParamsList,
   ProfileScreenProps,
 } from "@/routes/types";
+import { logout } from "@/slice/AuthSlice";
+import { RootState, useAppDispatch } from "@/store";
 import { StackScreenProps } from "@react-navigation/stack";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ScrollView,
   Text,
@@ -20,21 +22,60 @@ import {
   StyleSheet,
   PixelRatio,
 } from "react-native";
+import { useSelector } from "react-redux";
 
 type CombinedStackParamsList = AuthStackParamsList & AppStackParamsList;
 
 const ProfileScreen = ({
   navigation,
 }: StackScreenProps<CombinedStackParamsList, "profile-screen">) => {
+  const selector = useSelector((state: RootState) => state.auth);
+  const dispatch = useAppDispatch();
   const goToSubscription = () => {
     navigation.navigate("subscription-screen");
   };
-
+  // console.log(selector.user, "profile screen");
   const goToEditProfile = () => {
     navigation.navigate("edit-profile-screen");
   };
 
+  const handleLogoutUser = async () => {
+    dispatch(logout());
+    navigation.navigate("signin-screen");
+  };
+
+  useEffect(() => {}, []);
+
+  const mergeToArray = (
+    favouriteWay: Record<string, any>,
+    oftenIndulge: Record<string, any>,
+    preferredStrain: Record<string, any>,
+    preferBalance: Record<string, any>,
+    effectCana: Record<string, any>,
+    recreOrMed: Record<string, any>,
+    enjoyCana: Record<string, any>
+  ) => {
+    return [
+      ...Object.values(favouriteWay),
+      ...Object.values(oftenIndulge),
+      ...Object.values(preferredStrain),
+      ...Object.values(preferBalance),
+      ...Object.values(effectCana),
+      ...Object.values(recreOrMed),
+      ...Object.values(enjoyCana),
+    ];
+  };
+  const mergedData = mergeToArray(
+    selector?.user?.favouriteWay || {},
+    selector?.user?.oftenIndulge || {},
+    selector?.user?.preferredStrain || {},
+    selector?.user?.preferBalance || {},
+    selector?.user?.effectCana || {},
+    selector?.user?.recreOrMed || {},
+    selector?.user?.enjoyCana || {}
+  );
   const card = cards[0];
+  console.log(mergedData, "smokeeee", selector?.user);
   return (
     <>
       <ScreenView height={"100%"}>
@@ -61,7 +102,7 @@ const ProfileScreen = ({
                 </View>
                 <View className="rounded-lg bg-[#104F1EB2]">
                   <Text className="px-4 py-2 font-inder font-normal text-base text-white">
-                    {card.userName}
+                    {selector?.user?.username}
                   </Text>
                 </View>
               </View>
@@ -74,12 +115,15 @@ const ProfileScreen = ({
                   </Text>
                 </View>
                 <View className="flex-row justify-start flex-wrap gap-x-9">
-                  {card.weedBasics.map((weedType, index) => (
+                  {/* {selector?.user?.weedprofile.map(()=>(
+
+                  ))} */}
+                  {mergedData.map((weedType, index) => (
                     <View
-                      style={{
-                        marginRight:
-                          card.weedBasics.length - 1 === index ? 80 : 0,
-                      }}
+                      // style={{
+                      //   marginRight:
+                      //     card.weedBasics.length - 1 === index ? 80 : 0,
+                      // }}
                       key={index}
                       className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
                     >
@@ -95,6 +139,26 @@ const ProfileScreen = ({
                       </Text>
                     </View>
                   ))}
+                  <View
+                    // style={{
+                    //   marginRight:
+                    //     card.weedBasics.length - 1 === index ? 80 : 0,
+                    // }}
+                    className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
+                  >
+                    <View className="h-9 items-center justify-center">
+                      <Image
+                        source={
+                          imageMap["THC-dominant" as keyof typeof imageMap]
+                        }
+                        className="w-8 h-8"
+                        resizeMode="contain"
+                      />
+                    </View>
+                    <Text className="text-white font-inder font-normal text-base">
+                      THC-dominant
+                    </Text>
+                  </View>
                 </View>
               </View>
 
@@ -175,6 +239,12 @@ const ProfileScreen = ({
                   <Text className="text-white text-base">
                     Upgrade Membership
                   </Text>
+                </CustomButton>
+                <CustomButton
+                  onPress={handleLogoutUser}
+                  className="border h-weed-3.7 border-white w-weed-20.6 rounded-2xl bg-weed-red justify-center items-center flex-row gap-5"
+                >
+                  <Text className="text-white text-base">Log out</Text>
                 </CustomButton>
                 <CustomButton
                   onPress={() => {}}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Platform, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { WeedEffectsProps } from "@/data/list";
+import { weedEffectsLabels } from "@/data/arrays";
 
 const WeedEffects = (props: WeedEffectsProps) => {
   const [others, setOthers] = useState("");
@@ -10,7 +11,7 @@ const WeedEffects = (props: WeedEffectsProps) => {
 
   const handleCheckboxChange = (label: string, isChecked: boolean) => {
     setSelectedLabels((prevLabels) => {
-      if (isChecked) {
+      if (isChecked && selectedLabels.length !== 1) {
         // Add label if checked
         return [...prevLabels, label];
       } else {
@@ -30,30 +31,26 @@ const WeedEffects = (props: WeedEffectsProps) => {
       <Text className="text-center font-inder font-normal text-black text-lg pb-8 px-2">
         What effects are you seeking from cannabis?
       </Text>
-      <View className="flex-row w-full justify-between gap-16 pb-20 mt-1">
+      <View className="flex-row w-full justify-between gap-12 pb-20 mt-1">
         <View className="gap-8 ">
-          <CheckBoxInput
-            label="Relaxation"
-            checked={selectedLabels.includes("Relaxation")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Creativity"
-            checked={selectedLabels.includes("Creativity")}
-            onChange={handleCheckboxChange}
-          />
+          {weedEffectsLabels.slice(0, 2).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={label}
+            />
+          ))}
         </View>
         <View className="gap-8">
-          <CheckBoxInput
-            label="Pain relief"
-            checked={selectedLabels.includes("Pain relief")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Energy boost"
-            checked={selectedLabels.includes("Energy boost")}
-            onChange={handleCheckboxChange}
-          />
+          {weedEffectsLabels.slice(2).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={label}
+            />
+          ))}
         </View>
       </View>
       <View className="gap-weed-1.6 mt-4">

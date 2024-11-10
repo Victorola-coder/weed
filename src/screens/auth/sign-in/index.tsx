@@ -15,64 +15,34 @@ import { SignInScreenProps } from "@/routes/types";
 import CustomInput from "@/components/input/CustomInput";
 import GoogleAuthButton from "@/components/button/GoogleAuthButton";
 import { useDispatch, useSelector } from "react-redux";
-import { loginAsync } from "@/slice/AuthSlice";
 import { RootState, useAppDispatch } from "@/store";
-import { SignInSchema } from "@/utils/common";
+// import { SignInSchema } from "@/utils/common";
+import useAuth from "@/hooks/useAuth";
+// import useValidateField from "@/hooks/useValidateField";
 
 const SignInScreen = ({ navigation }: SignInScreenProps) => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const authSelector = useSelector((state: RootState) => state.auth);
-  const [userNamePhone, setUserNamePhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{
-    username?: string;
-    password?: string;
-  }>({});
-
-  const SignIn = () => {
-    navigation.navigate("app-stack");
+  const [toggle, setToggle] = useState(true);
+  const handleToggle = () => {
+    setToggle(!toggle);
   };
-  const data = {
-    username: userNamePhone.toLowerCase().trim(),
-    password: password.trim(),
-  };
-  const handleLogin = () => {
-    // console.log("dddddd");
-    dispatch(loginAsync(data));
-  };
-
-  const validateField = (fieldName: "username" | "password", value: string) => {
-    const fieldData = {
-      username: userNamePhone,
-      password: password,
-      [fieldName]: value,
-    };
-    const parsed = SignInSchema.safeParse(fieldData);
-
-    if (!parsed.success) {
-      const fieldError = parsed.error.errors.find(
-        (error) => error.path[0] === fieldName
-      );
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [fieldName]: fieldError?.message,
-      }));
-    } else {
-      setErrors((prevErrors) => ({ ...prevErrors, [fieldName]: undefined }));
+  const { handleLogin, userNamePhone, password, handleFieldChange, errors } =
+    useAuth("signIn");
+  const disabled =
+    (errors && Object?.values(errors)?.some(Boolean)) ||
+    !userNamePhone ||
+    !password ||
+    authSelector.loading;
+  // console.log(authSelector.user);
+  const handleSubmit = async () => {
+    const success = await handleLogin();
+    // if(success)
+    // console.log(success.token, "ddd");
+    if (success) {
+      navigation.navigate("app-stack");
     }
   };
-
-  // useEffect(() => {
-  //   if (authSelector.isAuthenticated && authSelector.token !== "") {
-  //     navigation.navigate("app-stack");
-  //   }
-  // }, [authSelector.isAuthenticated, authSelector.token]);
-
-  const disabled =
-    authSelector.loading ||
-    Object.values(errors).some(Boolean) ||
-    !userNamePhone ||
-    !password;
 
   return (
     <ScreenView className="bg-weed-primary" marginTop={190}>
@@ -94,28 +64,29 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
                 <CustomInput
                   value={userNamePhone}
                   onChange={(text) => {
-                    setUserNamePhone(text);
-                    validateField("username", text);
+                    handleFieldChange("username", text);
                   }}
                   label="Username/Phone Number"
                   textClass="text-base w-72"
                   viewClass="gap-2 w-72"
-                  className="w-full rounded-xl"
+                  className="w-72 rounded-xl"
                   labelClassname="w-72"
-                  error={errors.username}
+                  error={errors?.username}
                 />
                 <CustomInput
                   value={password}
                   onChange={(text) => {
-                    setPassword(text);
-                    validateField("password", text);
+                    handleFieldChange("password", text);
                   }}
                   label="Password"
                   textClass="text-base w-72"
                   viewClass="gap-2 w-72"
                   className="w-72 rounded-xl"
                   labelClassname="w-72"
-                  error={errors.password}
+                  error={errors?.password}
+                  secureTextEntry={toggle}
+                  handleToggle={handleToggle}
+                  isPassword
                 />
                 <TouchableOpacity className="mx-auto mt-2">
                   <Text className="text-black font-inder font-normal text-lg">
@@ -125,7 +96,7 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
               </View>
               <PrimaryButton
                 disabled={disabled}
-                onPress={handleLogin}
+                onPress={handleSubmit}
                 className={`border border-white w-weed-12.5 rounded-full bg-weed-primary-100 mx-auto mt-1 ${
                   disabled ? "opacity-30" : "opacity-100"
                 }`}

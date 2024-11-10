@@ -14,7 +14,7 @@ const RootStack = createStackNavigator<RootStackParamList>();
 
 export const RootRouter = () => {
   const authSelector = useSelector((state: RootState) => state.auth);
-  console.log(authSelector, "authSelector authSelector authSelector");
+  // console.log(authSelector, "authSelector authSelector authSelector");
   return (
     <NavigationContainer>
       <RootStack.Navigator

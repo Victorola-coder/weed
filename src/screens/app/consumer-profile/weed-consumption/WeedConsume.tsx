@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Dimensions } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { WeedConsumeProps } from "@/data/list";
+import { favoriteWayLabels } from "@/data/arrays";
 
 const WeedConsume = (props: WeedConsumeProps) => {
   const [others, setOthers] = useState("");
@@ -9,7 +10,7 @@ const WeedConsume = (props: WeedConsumeProps) => {
 
   const handleCheckboxChange = (label: string, isChecked: boolean) => {
     setSelectedLabels((prevLabels) => {
-      if (isChecked) {
+      if (isChecked && selectedLabels.length !== 1) {
         // Add label if checked
         return [...prevLabels, label];
       } else {
@@ -18,8 +19,6 @@ const WeedConsume = (props: WeedConsumeProps) => {
       }
     });
   };
-
-  console.log("Selected labels:", selectedLabels);
 
   return (
     <View
@@ -34,33 +33,24 @@ const WeedConsume = (props: WeedConsumeProps) => {
       </Text>
       <View className="flex-row w-full justify-between pb-16">
         <View className="gap-8">
-          <CheckBoxInput
-            label="Edibles"
-            checked={selectedLabels.includes("Edibles")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Dabbing"
-            checked={selectedLabels.includes("Dabbing")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Topicals"
-            checked={selectedLabels.includes("Topicals")}
-            onChange={handleCheckboxChange}
-          />
+          {favoriteWayLabels.slice(0, 3).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={label}
+            />
+          ))}
         </View>
         <View className="gap-8">
-          <CheckBoxInput
-            label="Vaping"
-            checked={selectedLabels.includes("Vaping")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Smoking"
-            checked={selectedLabels.includes("Smoking")}
-            onChange={handleCheckboxChange}
-          />
+          {favoriteWayLabels.slice(3).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={label}
+            />
+          ))}
         </View>
       </View>
       <View className="gap-10 mt-6">
