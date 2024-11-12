@@ -94,16 +94,19 @@ const ThirdWeedProfileScreen = ({
       )}
       <ScreenView className="bg-weed-primary" marginTop={190}>
         {/* <View className="bg-weed-primary w-full h-14"> */}
-        <Header />
+        {/* <Header /> */}
         {/* </View> */}
         <View
-          style={{
-            paddingTop: Dimensions.get("window").width * 0.14,
-
-            height: HEIGHT,
-          }}
+          style={
+            {
+              // paddingTop: Dimensions.get("window").width * 0.14,
+              // height: HEIGHT,
+            }
+          }
         >
-          <View className="w-full flex-1 justify-center items-center pb-20">
+          <Header className="relative" />
+
+          <View className="w-full flex-1 justify-center items-center pb-28">
             <ScrollView
               ref={scrollViewRef}
               keyboardShouldPersistTaps="handled"

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { CannabisPropertiesProps } from "@/data/list";
+import { cannabisProperties } from "@/data/arrays";
 
 const CannabisProperties = (props: CannabisPropertiesProps) => {
   const [isOthersSelected, setIsOthersSelected] = useState(false); // To track if 'Others' is selected
@@ -36,48 +37,24 @@ const CannabisProperties = (props: CannabisPropertiesProps) => {
       </View>
       <View className="flex-row gap-weed-5 flex-wrap w-full justify-evenly pb-8">
         <View className="gap-weed-1.2">
-          <CheckBoxInput
-            label="Earthy"
-            checked={selectedLabels.includes("Earthy")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Spicy"
-            checked={selectedLabels.includes("Spicy")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Woody"
-            checked={selectedLabels.includes("Woody")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Fruity"
-            checked={selectedLabels.includes("Fruity")}
-            onChange={handleCheckboxChange}
-          />
+          {cannabisProperties.slice(0, 4).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={index}
+            />
+          ))}
         </View>
         <View className="gap-weed-1.2">
-          <CheckBoxInput
-            label="Citrusy"
-            checked={selectedLabels.includes("Citrusy")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Floral"
-            checked={selectedLabels.includes("Floral")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Sweet"
-            checked={selectedLabels.includes("Sweet")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Skunky"
-            checked={selectedLabels.includes("Skunky")}
-            onChange={handleCheckboxChange}
-          />
+          {cannabisProperties.slice(4).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={index}
+            />
+          ))}
         </View>
       </View>
       <View className="flex flex-row gap-4 w-full justify-center items-center">

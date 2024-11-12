@@ -240,13 +240,36 @@ export const getUserProfileAsync = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      console.log(response.data, "qwsdfghjuytrdfgh");
       dispatch(setUser(response.data));
-      return response.data; // Use response.data for only the JSON content
     } catch (error: any) {
       CustomToaster("error", error.response.data.message, 2500);
       console.error(
         "profile/getUserProfileAsync:",
+        error.response ? error.response.data : error.message
+      );
+      return rejectWithValue(error.response?.data || "Upload failed");
+    }
+  }
+);
+export const getAllUsersProfilesAsync = createAsyncThunk(
+  "profile/getAllUsersProfilesAsync",
+  async (_, { rejectWithValue, getState }) => {
+    const auth: any = getState();
+    const token = auth?.auth?.token;
+    try {
+      const response = await axiosInstance.get("/profile/get-users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response.data, "qwsdfghjuytrdfgh");
+      // dispatch(setUser(response.data));
+      return response.data; // Use response.data for only the JSON content
+    } catch (error: any) {
+      CustomToaster("error", error.response.data.message, 2500);
+      console.error(
+        "profile/getAllUsersProfilesAsync:",
         error.response ? error.response.data : error.message
       );
       return rejectWithValue(error.response?.data || "Upload failed");

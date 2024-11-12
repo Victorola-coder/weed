@@ -1,5 +1,7 @@
+import { User } from "@/model/user.model";
 import {
   favouriteWayAsync,
+  getAllUsersProfilesAsync,
   getUserProfileAsync,
   setupEffectCanaAsync,
   setupEnjoyCanAsync,
@@ -15,12 +17,14 @@ export interface ProfileSlice {
   loading: boolean;
   success: boolean;
   error: boolean;
+  users: User[] | null;
 }
 
 const initialState: ProfileSlice = {
   loading: false,
   error: false,
   success: false,
+  users: null,
 };
 
 const profileSlice = createSlice({
@@ -158,6 +162,29 @@ const profileSlice = createSlice({
       .addCase(getUserProfileAsync.fulfilled, (state, payload) => {
         state.loading = false;
         state.error = false;
+        state.success = false;
+        state.users = null;
+        // state.user = payload.payload;
+        // console.log(payload.payload, "get user profile ");
+      })
+      .addCase(getAllUsersProfilesAsync.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllUsersProfilesAsync.rejected, (state) => {
+        state.loading = false;
+        state.error = true;
+        state.success = false;
+        state.users = null;
+      })
+      .addCase(getAllUsersProfilesAsync.fulfilled, (state, payload) => {
+        state.loading = false;
+        state.error = false;
+        state.success = true;
+        state.users = payload.payload;
+        // console.log(
+        //   payload.payload,
+        //   "users allllllllllllllllllll users profile"
+        // );
         // state.user = payload.payload;
         // console.log(payload.payload, "get user profile ");
       });

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { StrainEffectsProps } from "@/data/list";
+import { effectStrainLabels } from "@/data/arrays";
 
 const StrainEffects = (props: StrainEffectsProps) => {
   const [isOthersSelected, setIsOthersSelected] = useState(false); // To track if 'Others' is selected
@@ -36,43 +37,24 @@ const StrainEffects = (props: StrainEffectsProps) => {
       </View>
       <View className="flex-row gap-2 flex-wrap w-full justify-evenly pb-8">
         <View className="gap-weed-1.2">
-          <CheckBoxInput
-            label="Relaxing"
-            checked={selectedLabels.includes("Relaxing")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Creative"
-            checked={selectedLabels.includes("Creative")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Energizing"
-            checked={selectedLabels.includes("Energizing")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Instant Pain-relief"
-            checked={selectedLabels.includes("Instant Pain-relief")}
-            onChange={handleCheckboxChange}
-          />
+          {effectStrainLabels.slice(0, 4).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={index}
+            />
+          ))}
         </View>
         <View className="gap-weed-1.2">
-          <CheckBoxInput
-            label="Euphoric"
-            checked={selectedLabels.includes("Euphoric")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Uplifting"
-            checked={selectedLabels.includes("Uplifting")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Calm"
-            checked={selectedLabels.includes("Calm")}
-            onChange={handleCheckboxChange}
-          />
+          {effectStrainLabels.slice(4).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={index}
+            />
+          ))}
         </View>
       </View>
       <View className="flex flex-row gap-4 w-full justify-center items-center">

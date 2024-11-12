@@ -45,7 +45,7 @@ const WeedKeyScreen = ({ navigation }: WeedKeyProps) => {
     navigation.navigate("scanning-screen");
   };
   const handleGoBack = () => {
-    navigation.goBack();
+    navigation.navigate("home-screen");
   };
   return (
     <>

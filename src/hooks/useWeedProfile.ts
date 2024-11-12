@@ -74,7 +74,10 @@ const useWeedProfile = (navigation: any, screenName?: string) => {
         navigation.navigate("app-stack");
       }
       console.log(res, "qsdfghbnmkjhntgfhgfhjk");
-    } catch (error) {
+    } catch (error: any) {
+      if (error.error === "You can only create up to 3 profiles") {
+        navigation.navigate("app-stack");
+      }
       console.log(error, "ffffff");
       console.log("errorrr");
     }
@@ -95,7 +98,10 @@ const useWeedProfile = (navigation: any, screenName?: string) => {
         navigation.navigate(screenName);
       }
       console.log(res, "qsdfghbnmkjhntgfhgfhjk");
-    } catch (error) {
+    } catch (error: any) {
+      if (error.error === "You can only create up to 3 profiles") {
+        navigation.navigate("app-stack");
+      }
       console.log(error, "ffffff");
     }
   };

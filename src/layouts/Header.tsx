@@ -24,8 +24,8 @@ const Header = (props: HeaderProps) => {
   return (
     <View
       className={`flex-row items-center justify-between ${className} ${
-        home ? "w-full" : "w-fit"
-      } px-6 absolute top-0 self-center`}
+        home ? "w-full absolute top-0" : "w-fit absolute top-0"
+      } px-6 self-center z-50`}
       // style={{ height: 60 }}
     >
       {home && (

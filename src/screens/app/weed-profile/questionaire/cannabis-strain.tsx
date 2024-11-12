@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { CannabisStrainProps } from "@/data/list";
+import { whatStrainLabels } from "@/data/arrays";
 
 const CannabisStrain = (props: CannabisStrainProps) => {
   const [others, setOthers] = useState("");
@@ -28,28 +29,24 @@ const CannabisStrain = (props: CannabisStrainProps) => {
       </View>
       <View className="flex-row gap-weed-5 flex-wrap w-full justify-evenly pb-8">
         <View className="gap-weed-1.2">
-          <CheckBoxInput
-            label="Indica"
-            checked={selectedLabels.includes("Indica")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Sativa"
-            checked={selectedLabels.includes("Sativa")}
-            onChange={handleCheckboxChange}
-          />
+          {whatStrainLabels.slice(0, 2).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={index}
+            />
+          ))}
         </View>
         <View className="gap-weed-1.2">
-          <CheckBoxInput
-            label="Hybrid"
-            checked={selectedLabels.includes("Hybrid")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Unsure"
-            checked={selectedLabels.includes("Unsure")}
-            onChange={handleCheckboxChange}
-          />
+          {whatStrainLabels.slice(2).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={index}
+            />
+          ))}
         </View>
       </View>
     </View>

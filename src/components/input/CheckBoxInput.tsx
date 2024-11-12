@@ -31,7 +31,7 @@ const CheckBoxInput = (props: Props) => {
         onPress={toggleCheckbox}
       />
       <Text
-        className={`${textClassName} text-lg font-inder font-normal text-black`}
+        className={`${textClassName} text-base font-inder font-normal text-black`}
       >
         {label}
       </Text>

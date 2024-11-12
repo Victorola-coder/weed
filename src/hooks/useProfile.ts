@@ -1,6 +1,7 @@
 import { useAppDispatch } from "@/store";
 import {
   favouriteWayAsync,
+  getAllUsersProfilesAsync,
   setupEffectCanaAsync,
   setupEnjoyCanAsync,
   setupOftenIndulgeAsync,
@@ -172,6 +173,15 @@ const useProfile = () => {
     }
   };
 
+  const getAllUserProfile = async () => {
+    try {
+      const res = dispatch(getAllUsersProfilesAsync()).unwrap();
+      return res;
+    } catch (error: any) {
+      console.log(error, "userrrrrrr");
+    }
+  };
+
   return {
     apiCalls,
     isNextButtonDisabled,
@@ -194,6 +204,7 @@ const useProfile = () => {
     setSelectedEnjoyableCanna,
     selectedWeedType,
     setSelectedWeedType,
+    getAllUserProfile,
   };
 };
 

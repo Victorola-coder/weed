@@ -95,17 +95,18 @@ const WeedProfileScreen = ({ navigation, route }: WeedProfileScreenProps) => {
       )}
       <ScreenView className="bg-weed-primary" marginTop={190}>
         {/* <View className="bg-weed-primary w-full h-14"> */}
-        <Header />
         {/* </View> */}
         <View
-          style={{
-            // paddingTop: HEIGHT * 0.15,
-            paddingTop: Dimensions.get("window").width * 0.14,
-
-            height: HEIGHT,
-          }}
+          style={
+            {
+              // paddingTop: HEIGHT * 0.15,
+              // paddingTop: Dimensions.get("window").width * 0.1,
+              // height: HEIGHT,
+            }
+          }
         >
-          <View className="w-full flex-1 justify-center items-center pb-10">
+          <Header className="relative" />
+          <View className="w-full flex-1 justify-center items-center pb-28">
             <ScrollView
               ref={scrollViewRef}
               keyboardShouldPersistTaps="handled"

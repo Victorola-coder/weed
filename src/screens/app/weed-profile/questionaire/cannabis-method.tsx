@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput } from "react-native";
 import CheckBoxInput from "@/components/input/CheckBoxInput";
 import { CannabisMethodProps } from "@/data/list";
+import { cannabisMethod } from "@/data/arrays";
 
 const CannabisMethod = (props: CannabisMethodProps) => {
   const [isOthersSelected, setIsOthersSelected] = useState(false); // To track if 'Others' is selected
@@ -36,33 +37,24 @@ const CannabisMethod = (props: CannabisMethodProps) => {
       </View>
       <View className="flex-row gap-weed-5 flex-wrap w-full justify-evenly pb-8">
         <View className="gap-weed-1.2">
-          <CheckBoxInput
-            label="Indoor"
-            checked={selectedLabels.includes("Indoor")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Hydroponic"
-            checked={selectedLabels.includes("Hydroponic")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Greenhouse"
-            checked={selectedLabels.includes("Greenhouse")}
-            onChange={handleCheckboxChange}
-          />
+          {cannabisMethod.slice(0, 3).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={index}
+            />
+          ))}
         </View>
         <View className="gap-weed-1.2">
-          <CheckBoxInput
-            label="Outdoor"
-            checked={selectedLabels.includes("Outdoor")}
-            onChange={handleCheckboxChange}
-          />
-          <CheckBoxInput
-            label="Unsure"
-            checked={selectedLabels.includes("Unsure")}
-            onChange={handleCheckboxChange}
-          />
+          {cannabisMethod.slice(3).map((label, index) => (
+            <CheckBoxInput
+              label={label}
+              checked={selectedLabels.includes(label)}
+              onChange={handleCheckboxChange}
+              key={index}
+            />
+          ))}
         </View>
       </View>
       <View className="flex flex-row gap-4 w-full justify-center items-center">

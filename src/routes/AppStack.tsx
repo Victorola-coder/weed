@@ -114,6 +114,15 @@ export const AppStack = () => {
         component={HomeScreen}
       />
       <Tab.Screen
+        name="weed-key"
+        component={WeedKeyScreen}
+        options={{
+          tabBarItemStyle: {
+            display: "none",
+          },
+        }}
+      />
+      <Tab.Screen
         name="favourites-screen"
         options={{ tabBarLabel: "" }}
         component={FavouritesScreen}
@@ -122,15 +131,6 @@ export const AppStack = () => {
         name="profile-screen"
         options={{ tabBarLabel: "" }}
         component={ProfileScreen}
-      />
-      <Tab.Screen
-        name="weed-key"
-        component={WeedKeyScreen}
-        options={{
-          tabBarItemStyle: {
-            display: "none",
-          },
-        }}
       />
     </Tab.Navigator>
   );

@@ -666,3 +666,32 @@ export const weedEffectsLabels = [
 export const userTypeLabels = ["Recreational", "Medical"];
 
 export const enjoyConsumeLabeels = ["Socially", "Alone"];
+
+export const whatStrainLabels = ["Indica", "Sativa", "Hybrid", "Unsure"];
+export const effectStrainLabels = [
+  "Relaxing",
+  "Creative",
+  "Energizing",
+  "Instant Pain-relief",
+  "Euphoric",
+  "Uplifting",
+  "Calm",
+];
+export const cannabisProperties = [
+  "Earthy",
+  "Spicy",
+  "Woody",
+  "Fruity",
+  "Citrusy",
+  "Floral",
+  "Sweet",
+  "Skunky",
+];
+
+export const cannabisMethod = [
+  "Indoor",
+  "Hydroponic",
+  "Greenhouse",
+  "Outdoor",
+  "Unsure",
+];
