@@ -111,10 +111,12 @@ export const imageMap = {
   Alone: require("../../assets/image/alone.png"),
   Socially: require("../../assets/image/alone.png"),
   Rarely: require("../../assets/image/rarely.png"),
+  Weekly: require("../../assets/image/rarely.png"),
   Creativity: require("../../assets/image/straineffect.png"),
   Recreational: require("../../assets/image/recreational.png"),
   Relaxation: require("../../assets/image/straineffect.png"),
   Smoking: require("../../assets/image/smoking.png"),
+  Edibles: require("../../assets/image/smoking.png"),
   Topicals: require("../../assets/image/smoking.png"),
   "THC-dominant": require("../../assets/image/thc.png"),
 };

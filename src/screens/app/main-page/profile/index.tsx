@@ -115,15 +115,8 @@ const ProfileScreen = ({
                   </Text>
                 </View>
                 <View className="flex-row justify-start flex-wrap gap-x-9">
-                  {/* {selector?.user?.weedprofile.map(()=>(
-
-                  ))} */}
-                  {mergedData.map((weedType, index) => (
+                  {/* {mergedData?.slice(0, 2)?.map((weedType, index) => (
                     <View
-                      // style={{
-                      //   marginRight:
-                      //     card.weedBasics.length - 1 === index ? 80 : 0,
-                      // }}
                       key={index}
                       className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
                     >
@@ -139,26 +132,77 @@ const ProfileScreen = ({
                       </Text>
                     </View>
                   ))}
-                  <View
-                    // style={{
-                    //   marginRight:
-                    //     card.weedBasics.length - 1 === index ? 80 : 0,
-                    // }}
-                    className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
-                  >
-                    <View className="h-9 items-center justify-center">
-                      <Image
-                        source={
-                          imageMap["THC-dominant" as keyof typeof imageMap]
-                        }
-                        className="w-8 h-8"
-                        resizeMode="contain"
-                      />
+                  {mergedData?.slice(2, 4)?.map((weedType, index) => (
+                    <View
+                      key={index}
+                      className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
+                    >
+                      <View className="h-9 items-center justify-center">
+                        <Image
+                          source={imageMap[weedType as keyof typeof imageMap]}
+                          className="w-8 h-8"
+                          resizeMode="contain"
+                        />
+                      </View>
+                      <Text className="text-white font-inder font-normal text-base">
+                        {weedType}
+                      </Text>
                     </View>
-                    <Text className="text-white font-inder font-normal text-base">
-                      THC-dominant
-                    </Text>
-                  </View>
+                  ))}
+                  {mergedData?.slice(4, 5)?.map((weedType, index) => (
+                    <View
+                      key={index}
+                      className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
+                    >
+                      <View className="h-9 items-center justify-center">
+                        <Image
+                          source={imageMap[weedType as keyof typeof imageMap]}
+                          className="w-8 h-8"
+                          resizeMode="contain"
+                        />
+                      </View>
+                      <Text className="text-white font-inder font-normal text-base">
+                        {weedType}
+                      </Text>
+                    </View>
+                  ))}
+                  {mergedData?.slice(5)?.map((weedType, index) => (
+                    <View
+                      key={index}
+                      className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
+                    >
+                      <View className="h-9 items-center justify-center">
+                        <Image
+                          source={imageMap[weedType as keyof typeof imageMap]}
+                          className="w-8 h-8"
+                          resizeMode="contain"
+                        />
+                      </View>
+                      <Text className="text-white font-inder font-normal text-base">
+                        {weedType}
+                      </Text>
+                    </View>
+                  ))} */}
+                  {card.weedBasics.map((list, index) => (
+                    <View
+                      style={{
+                        marginRight:
+                          card.weedBasics.length - 1 === index ? 80 : 0,
+                      }}
+                      className="flex-row my-2 gap-3 px-8 h-10 bg-weed-primary-100 rounded-full justify-center items-center"
+                    >
+                      <View className="h-9 items-center justify-center">
+                        <Image
+                          source={imageMap[list as keyof typeof imageMap]}
+                          className="w-8 h-8"
+                          resizeMode="contain"
+                        />
+                      </View>
+                      <Text className="text-white font-inder font-normal text-base">
+                        {list}
+                      </Text>
+                    </View>
+                  ))}
                 </View>
               </View>
 

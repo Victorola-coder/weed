@@ -42,7 +42,11 @@ export const signupAsync = createAsyncThunk<
       "/auth/signup",
       credentials
     );
-    CustomToaster("success", "Signup successfully", 2500);
+    CustomToaster(
+      "success",
+      `Signup successfully ${response.data.user.otp.code}`,
+      12000
+    );
     return response; // Now correctly returns AuthResponse type
   } catch (error: any) {
     console.log(error?.response.data.error, "dddddd");

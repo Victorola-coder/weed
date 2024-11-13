@@ -101,7 +101,7 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
                   disabled ? "opacity-30" : "opacity-100"
                 }`}
               >
-                {" "}
+                {/* Sign in */}
                 {authSelector.loading ? "Loading......" : "Sign in"}
               </PrimaryButton>
               <View className="flex-row items-center justify-center mt-5">
