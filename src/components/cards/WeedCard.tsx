@@ -170,7 +170,7 @@ const WeedMatchCards = ({
                   source={{ uri: weedsection.image }}
                   className="w-full justify-between rounded-3xl"
                   style={{
-                    height: WeedCardWidth * 1.75,
+                    height: WeedCardWidth * 1.6,
                     borderRadius: 15,
                     overflow: "hidden",
                     marginBottom: 30,
@@ -309,7 +309,7 @@ export default WeedMatchCards;
 const styles = StyleSheet.create({
   card: {
     width: WeedCardWidth,
-    height: WeedCardWidth * 1.72,
+    height: WeedCardWidth * 1.45,
     // height: WeedCardWidth * 1.67,
     // aspectRatio: 1 / 1.67,
     borderRadius: 15,
