@@ -23,6 +23,8 @@
       "eas": {
         "projectId": "17db6487-89f6-4b75-b66d-1a4e39367abf"
       }
-    }
+    },
+    "plugins": ["expo-font"],
+    "sdkVersion": "52.0.0"
   }
 }
