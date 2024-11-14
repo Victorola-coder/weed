@@ -9,12 +9,16 @@ export type BalancingStrainProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type StrainTypeProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type UserTypeProps = {
@@ -23,24 +27,32 @@ export type UserTypeProps = {
   selectedLabels: string[];
   setSelectedEnjoyableCanna: React.Dispatch<React.SetStateAction<string[]>>;
   selectedEnjoyableCanna: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type WeedConsumeProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type WeedEffectsProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type WeedRegularityProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+  others: string;
+  setOthers: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type FavoriteWeedScreenProps = {
@@ -69,6 +81,7 @@ export type CannabisStrainProps = {
   ViewKey?: number;
   setSelectedLabels: React.Dispatch<React.SetStateAction<string[]>>;
   selectedLabels: string[];
+
   // others: string;
   // setOthers: React.Dispatch<React.SetStateAction<string>>;
 };

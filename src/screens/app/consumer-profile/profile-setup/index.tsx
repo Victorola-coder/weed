@@ -9,7 +9,15 @@ import {
 } from "@/constants/Size";
 import ScreenView from "@/layouts/ScreenView";
 import React, { useEffect, useRef, useState } from "react";
-import { Dimensions, FlatList, Image, Text, View } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  View,
+} from "react-native";
 import PrimaryButton from "@/components/button/PrimaryButton";
 import Header from "@/layouts/Header";
 import { BackImage } from "@/components/svg/BackImage";
@@ -54,6 +62,18 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
     setSelectedWeedType,
     getWidthClass,
     isNextButtonDisabled,
+    othersBalancingStrain,
+    othersConsumeCanna,
+    othersStrainType,
+    othersUserType,
+    othersWeedEffects,
+    othersWeedRegular,
+    setOthersBalancingStrain,
+    setOthersConsumeCanna,
+    setOthersStrainType,
+    setOthersUserType,
+    setOthersWeedEffects,
+    setOthersWeedRegular,
   } = useProfile();
   const selector = useSelector((state: RootState) => state.profile);
   const isNextDisabled = isNextButtonDisabled(currentPage);
@@ -97,6 +117,8 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
         <ConsumeCanna
           selectedLabels={selectedLabels}
           setSelectedLabels={setSelectedLabels}
+          others={othersConsumeCanna}
+          setOthers={setOthersConsumeCanna}
         />
       ),
     },
@@ -106,6 +128,8 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
         <WeedRegularity
           selectedLabels={selectedFrequency}
           setSelectedLabels={setSelectedFrequency}
+          others={othersWeedRegular}
+          setOthers={setOthersWeedRegular}
         />
       ),
     },
@@ -115,6 +139,8 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
         <StrainType
           selectedLabels={selectedStrainType}
           setSelectedLabels={setSelectedStrainType}
+          others={othersStrainType}
+          setOthers={setOthersStrainType}
         />
       ),
     },
@@ -124,6 +150,8 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
         <BalancingStrain
           selectedLabels={selectedBalancedStrains}
           setSelectedLabels={setSelectedBalancedStrains}
+          others={othersBalancingStrain}
+          setOthers={setOthersBalancingStrain}
         />
       ),
     },
@@ -133,6 +161,8 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
         <WeedEffects
           selectedLabels={selectedEffectCann}
           setSelectedLabels={setSelectedEffectCann}
+          others={othersWeedEffects}
+          setOthers={setOthersWeedEffects}
         />
       ),
     },
@@ -144,6 +174,8 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
           setSelectedLabels={setSelectedUsertype}
           selectedEnjoyableCanna={selectedEnjoyableCanna}
           setSelectedEnjoyableCanna={setSelectedEnjoyableCanna}
+          others={othersUserType}
+          setOthers={setOthersUserType}
         />
       ),
     },
@@ -162,45 +194,51 @@ const ProfileSetupScreen = ({ navigation }: ProfileSetupScreenProps) => {
     <>
       <ScreenView className="bg-weed-primary" marginTop={190}>
         <Header />
-        <View
-          className=""
-          // style={{ height: HEIGHT }}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+
+          // style={{ flex: 1 }}
         >
           <View
-            className="mx-auto w-weed-20.6 justify-between items-center"
-            // style={{ height: MIDHEIGHT * 1.135 }}
+            className=""
+            // style={{ height: HEIGHT }}
           >
-            <View className="w-full flex-col justify-between">
-              <View
-              // style={{
-              //   marginTop: Dimensions.get("window").width * 0.1,
-              // }}
-              >
-                <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase mt-24">
-                  Consumer Profile
-                </Text>
-                <FlatList
-                  ref={flatListRef}
-                  horizontal
-                  pagingEnabled
-                  showsHorizontalScrollIndicator={false}
-                  scrollEnabled={false}
-                  data={pages}
-                  keyExtractor={(item) => item.key}
-                  renderItem={({ item }) => (
-                    <View
-                      className={`justify-center items-center max-w-sm`}
-                      // style={{ height: HEIGHT }}
-                    >
-                      {item.content}
-                    </View>
-                  )}
-                  onScrollToIndexFailed={() => {}}
-                />
+            <View
+              className="mx-auto w-weed-20.6 justify-between items-center"
+              // style={{ height: MIDHEIGHT * 1.135 }}
+            >
+              <View className="w-full flex-col justify-between">
+                <View
+                // style={{
+                //   marginTop: Dimensions.get("window").width * 0.1,
+                // }}
+                >
+                  <Text className="text-center w-full font-inder text-weed-primary-100 text-3xl uppercase mt-24">
+                    Consumer Profile
+                  </Text>
+                  <FlatList
+                    ref={flatListRef}
+                    horizontal
+                    pagingEnabled
+                    showsHorizontalScrollIndicator={false}
+                    scrollEnabled={false}
+                    data={pages}
+                    keyExtractor={(item) => item.key}
+                    renderItem={({ item }) => (
+                      <View
+                        className={`justify-center items-center max-w-sm`}
+                        // style={{ height: HEIGHT }}
+                      >
+                        {item.content}
+                      </View>
+                    )}
+                    onScrollToIndexFailed={() => {}}
+                  />
+                </View>
               </View>
             </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </ScreenView>
       <View className="w-weed-20.6 absolute bottom-12 self-center">
         {currentPage < pages.length - 1 && currentPage !== 0 ? (

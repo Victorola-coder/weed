@@ -26,6 +26,13 @@ const useProfile = () => {
     string[]
   >([]);
   const [selectedWeedType, setSelectedWeedType] = useState<string[]>([]);
+  const [othersConsumeCanna, setOthersConsumeCanna] = useState<string>("");
+  const [othersWeedRegular, setOthersWeedRegular] = useState<string>("");
+  const [othersStrainType, setOthersStrainType] = useState<string>("");
+  const [othersBalancingStrain, setOthersBalancingStrain] =
+    useState<string>("");
+  const [othersWeedEffects, setOthersWeedEffects] = useState<string>("");
+  const [othersUserType, setOthersUserType] = useState<string>("");
   const dispatch = useAppDispatch();
 
   const apiCalls = async (currentPage: number) => {
@@ -44,44 +51,48 @@ const useProfile = () => {
           }
           break;
         case 1:
-          if (selectedLabels.length > 0) {
+          if (selectedLabels.length > 0 || othersConsumeCanna) {
             result = await dispatch(
-              favouriteWayAsync({ selectedOption: selectedLabels.join("") })
+              favouriteWayAsync({
+                selectedOption: selectedLabels.join("") || othersConsumeCanna,
+              })
             ).unwrap();
           }
           break;
         case 2:
-          if (selectedFrequency.length > 0) {
+          if (selectedFrequency.length > 0 || othersWeedRegular) {
             result = await dispatch(
               setupOftenIndulgeAsync({
-                selectedOption: selectedFrequency.join(""),
+                selectedOption: selectedFrequency.join("") || othersWeedRegular,
               })
             ).unwrap();
           }
           break;
         case 3:
-          if (selectedStrainType.length > 0) {
+          if (selectedStrainType.length > 0 || othersStrainType) {
             result = await dispatch(
               setupPreferredStrainAsync({
-                selectedOption: selectedStrainType.join(""),
+                selectedOption: selectedStrainType.join("") || othersStrainType,
               })
             ).unwrap();
           }
           break;
         case 4:
-          if (selectedBalancedStrains.length > 0) {
+          if (selectedBalancedStrains.length > 0 || othersBalancingStrain) {
             result = await dispatch(
               setupPreferBalanceAsync({
-                selectedOtion: selectedBalancedStrains.join(""),
+                selectedOtion:
+                  selectedBalancedStrains.join("") || othersBalancingStrain,
               })
             ).unwrap();
           }
           break;
         case 5:
-          if (selectedEffectCann.length > 0) {
+          if (selectedEffectCann.length > 0 || othersWeedEffects) {
             result = await dispatch(
               setupEffectCanaAsync({
-                selectedOption: selectedEffectCann.join(""),
+                selectedOption:
+                  selectedEffectCann.join("") || othersWeedEffects,
               })
             ).unwrap();
           }
@@ -153,15 +164,24 @@ const useProfile = () => {
       case 0:
         return !isImageUploaded;
       case 1:
-        return selectedLabels.length === 0;
+        return selectedLabels.length === 0 && othersConsumeCanna.trim() === "";
       case 2:
-        return selectedFrequency.length === 0;
+        return (
+          selectedFrequency.length === 0 && othersWeedRegular.trim() === ""
+        );
       case 3:
-        return selectedStrainType.length === 0;
+        return (
+          selectedStrainType.length === 0 && othersStrainType.trim() === ""
+        );
       case 4:
-        return selectedBalancedStrains.length === 0;
+        return (
+          selectedBalancedStrains.length === 0 &&
+          othersBalancingStrain.trim() === ""
+        );
       case 5:
-        return selectedEffectCann.length === 0;
+        return (
+          selectedEffectCann.length === 0 && othersWeedEffects.trim() === ""
+        );
       case 6:
         return (
           selectedUsertype.length === 0 || selectedEnjoyableCanna.length === 0
@@ -205,6 +225,18 @@ const useProfile = () => {
     selectedWeedType,
     setSelectedWeedType,
     getAllUserProfile,
+    othersConsumeCanna,
+    setOthersConsumeCanna,
+    othersWeedRegular,
+    setOthersWeedRegular,
+    othersStrainType,
+    setOthersStrainType,
+    othersBalancingStrain,
+    setOthersBalancingStrain,
+    othersWeedEffects,
+    setOthersWeedEffects,
+    othersUserType,
+    setOthersUserType,
   };
 };
 

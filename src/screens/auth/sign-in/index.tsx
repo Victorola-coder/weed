@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   Platform,
+  KeyboardAvoidingView,
 } from "react-native";
 import PrimaryButton from "@/components/button/PrimaryButton";
 import Header from "@/layouts/Header";
@@ -47,6 +48,7 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
   return (
     <ScreenView className="bg-weed-primary" marginTop={190}>
       <Header />
+      {/* <Touchap */}
       <View className="mt-3">
         <View
           className="w-full flex-1 justify-center items-center"
@@ -60,50 +62,57 @@ const SignInScreen = ({ navigation }: SignInScreenProps) => {
               <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase">
                 Sign in
               </Text>
-              <View className="gap-5 w-full items-center flex-col mx-auto">
-                <CustomInput
-                  value={userNamePhone}
-                  onChange={(text) => {
-                    handleFieldChange("username", text);
-                  }}
-                  label="Username/Phone Number"
-                  textClass="text-base w-72"
-                  viewClass="gap-2 w-72"
-                  className="w-72 rounded-xl"
-                  labelClassname="w-72"
-                  error={errors?.username}
-                />
-                <CustomInput
-                  value={password}
-                  onChange={(text) => {
-                    handleFieldChange("password", text);
-                  }}
-                  label="Password"
-                  textClass="text-base w-72"
-                  viewClass="gap-2 w-72"
-                  className="w-72 rounded-xl"
-                  labelClassname="w-72"
-                  error={errors?.password}
-                  secureTextEntry={toggle}
-                  handleToggle={handleToggle}
-                  isPassword
-                />
-                <TouchableOpacity className="mx-auto mt-2">
-                  <Text className="text-black font-inder font-normal text-lg">
-                    Forgot Password?
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <PrimaryButton
-                disabled={disabled}
-                onPress={handleSubmit}
-                className={`border border-white w-weed-12.5 rounded-full bg-weed-primary-100 mx-auto mt-1 ${
-                  disabled ? "opacity-30" : "opacity-100"
-                }`}
+              <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
               >
-                {/* Sign in */}
-                {authSelector.loading ? "Loading......" : "Sign in"}
-              </PrimaryButton>
+                <View>
+                  <View className="gap-5 w-full items-center flex-col mx-auto">
+                    <CustomInput
+                      value={userNamePhone}
+                      onChange={(text) => {
+                        handleFieldChange("username", text);
+                      }}
+                      label="Username/Phone Number"
+                      textClass="text-base w-72"
+                      viewClass="gap-2 w-72"
+                      className="w-72 rounded-xl"
+                      labelClassname="w-72"
+                      error={errors?.username}
+                    />
+                    <CustomInput
+                      value={password}
+                      onChange={(text) => {
+                        handleFieldChange("password", text);
+                      }}
+                      label="Password"
+                      textClass="text-base w-72"
+                      viewClass="gap-2 w-72"
+                      className="w-72 rounded-xl"
+                      labelClassname="w-72"
+                      error={errors?.password}
+                      secureTextEntry={toggle}
+                      handleToggle={handleToggle}
+                      isPassword
+                    />
+                    <TouchableOpacity className="mx-auto mt-2">
+                      <Text className="text-black font-inder font-normal text-lg">
+                        Forgot Password?
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  <PrimaryButton
+                    disabled={disabled}
+                    onPress={handleSubmit}
+                    className={`border border-white w-weed-12.5 rounded-full bg-weed-primary-100 mx-auto mt-1 ${
+                      disabled ? "opacity-30" : "opacity-100"
+                    }`}
+                  >
+                    {/* Sign in */}
+                    {authSelector.loading ? "Loading......" : "Sign in"}
+                  </PrimaryButton>
+                </View>
+              </KeyboardAvoidingView>
+
               <View className="flex-row items-center justify-center mt-5">
                 <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
                 <View className="bg-weed-primary-100 w-8 h-5">

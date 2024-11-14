@@ -5,20 +5,28 @@ import { WeedRegularityProps } from "@/data/list";
 import { oftenIndulgeLabels } from "@/data/arrays";
 
 const WeedRegularity = (props: WeedRegularityProps) => {
-  const [others, setOthers] = useState("");
-
-  const { ViewKey, selectedLabels, setSelectedLabels } = props;
+  const { ViewKey, selectedLabels, setSelectedLabels, others, setOthers } =
+    props;
+  const [isOthersSelected, setIsOthersSelected] = useState(false); // To track if 'Others' is selected
 
   const handleCheckboxChange = (label: string, isChecked: boolean) => {
-    setSelectedLabels((prevLabels) => {
-      if (isChecked && selectedLabels.length !== 1) {
-        // Add label if checked
-        return [...prevLabels, label];
-      } else {
-        // Remove label if unchecked
-        return prevLabels.filter((item) => item !== label);
-      }
-    });
+    if (label === "Others" && isChecked) {
+      // If 'Others' is selected, clear all other selections
+      setSelectedLabels([]);
+      setIsOthersSelected(true);
+    } else if (label === "Others" && !isChecked) {
+      // If 'Others' is unchecked, allow other selections
+      setIsOthersSelected(false);
+    } else {
+      // Regular checkbox behavior
+      setSelectedLabels((prevLabels) => {
+        if (isChecked && selectedLabels.length !== 1) {
+          return [...prevLabels, label];
+        } else {
+          return prevLabels.filter((item) => item !== label);
+        }
+      });
+    }
   };
   return (
     <View
@@ -59,6 +67,7 @@ const WeedRegularity = (props: WeedRegularityProps) => {
             Others:
           </Text>
           <TextInput
+            onPressIn={() => handleCheckboxChange("Others", true)}
             value={others}
             onChangeText={setOthers}
             className="bg-white h-12 w-weed-15.5 rounded-[0.3rem] px-4"

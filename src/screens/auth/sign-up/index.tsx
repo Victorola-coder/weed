@@ -17,6 +17,7 @@ import {
   FlatList,
   Animated,
   Dimensions,
+  KeyboardAvoidingView,
 } from "react-native";
 import Header from "@/layouts/Header";
 import { SignUpScreenProps } from "@/routes/types";
@@ -30,6 +31,7 @@ import { useSelector } from "react-redux";
 import { SignUpSchema } from "@/utils/common";
 import { CustomToaster } from "@/utils/core";
 import useAuth from "@/hooks/useAuth";
+import { Platform } from "react-native";
 
 const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   const dispatch = useAppDispatch();
@@ -232,102 +234,109 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
 
           // style={{ height: FULLHEIGHT }}
         >
-          <View
-            style={{
-              paddingTop: Dimensions.get("window").width * 0.1,
-            }}
-            className="mx-auto max-w-sm w-full justify-start items-center"
-            // style={{ height: FULLHEIGHT }}
+          <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={{ flex: 1 }}
           >
-            <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase mb-14">
-              Sign Up
-            </Text>
             <View
               style={{
-                gap: Dimensions.get("window").width * 0.15,
+                paddingTop: Dimensions.get("window").width * 0.1,
               }}
-              className="w-full justify-between"
+              className="mx-auto max-w-sm w-full justify-start items-center"
+              // style={{ height: FULLHEIGHT }}
             >
-              <FlatList
-                ref={flatListRef}
-                horizontal
-                pagingEnabled
-                scrollEnabled={false}
-                showsHorizontalScrollIndicator={false}
-                data={pages}
-                keyExtractor={(item) => item.key}
-                renderItem={({ item }) => (
-                  <View
-                    className="justify-center items-center max-w-sm"
-                    style={{ width: WIDTH }}
-                  >
-                    {item.content}
-                  </View>
-                )}
-                onScrollToIndexFailed={() => {}}
-              />
-              <View className="pb-weed-4.8 px-5 mt-8">
-                <DirectionButton
-                  handlePrev={goToPreviousPage}
-                  NextText={
-                    authSelector.loading
-                      ? "Loading....."
-                      : currentPage === pages.length - 1
-                      ? "Submit"
-                      : "Next"
-                  }
-                  BackText="Back"
-                  className="mt-4"
-                  backDisabled={
-                    authSelector.loading || currentPage === pages.length - 1
-                  }
-                  handleNext={goToNextPage}
-                  nextClassName={`bg-weed-primary-100 border border-white ${
-                    isDisabled ? "opacity-30" : "opacity-100"
-                    // : null
-                  }  ${authSelector.loading ? "opacity-30" : "opacity-100"}  `}
-                  disabled={isDisabled || authSelector.loading}
-                  backClassName={`${
-                    currentPage === 0
-                      ? "bg-weed-primary border-weed-primary-100 border border-weed-profile-100"
-                      : "bg-weed-primary-100 border border-white"
-                  } ${
-                    authSelector.loading || currentPage === pages.length - 1
-                      ? "opacity-30"
-                      : "opacity-100"
-                  }`}
+              <Text className="text-center max-w-sm font-inder font-normal text-weed-black text-3xl uppercase mb-14">
+                Sign Up
+              </Text>
+              <View
+                style={{
+                  gap: Dimensions.get("window").width * 0.15,
+                }}
+                className="w-full justify-between"
+              >
+                <FlatList
+                  ref={flatListRef}
+                  horizontal
+                  pagingEnabled
+                  scrollEnabled={false}
+                  showsHorizontalScrollIndicator={false}
+                  data={pages}
+                  keyExtractor={(item) => item.key}
+                  renderItem={({ item }) => (
+                    <View
+                      className="justify-center items-center max-w-sm"
+                      style={{ width: WIDTH }}
+                    >
+                      {item.content}
+                    </View>
+                  )}
+                  onScrollToIndexFailed={() => {}}
                 />
-              </View>
-            </View>
-            <View className="flex-row items-center justify-center">
-              <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
-              <View className="bg-weed-primary-100 w-9 h-6">
-                <Text className="text-base text-white leading-6 font-inder font-normal text-center">
-                  Or
-                </Text>
-              </View>
-              <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
-            </View>
-            <View className="w-full mt-3">
-              <View className="w-full gap-4 items-center self-center">
-                <View className="w-full">
-                  <GoogleAuthButton onPress={handleOauth} />
+                <View className="pb-weed-4.8 px-5 mt-8">
+                  <DirectionButton
+                    handlePrev={goToPreviousPage}
+                    NextText={
+                      authSelector.loading
+                        ? "Loading....."
+                        : currentPage === pages.length - 1
+                        ? "Submit"
+                        : "Next"
+                    }
+                    BackText="Back"
+                    className="mt-4"
+                    backDisabled={
+                      authSelector.loading || currentPage === pages.length - 1
+                    }
+                    handleNext={goToNextPage}
+                    nextClassName={`bg-weed-primary-100 border border-white ${
+                      isDisabled ? "opacity-30" : "opacity-100"
+                      // : null
+                    }  ${
+                      authSelector.loading ? "opacity-30" : "opacity-100"
+                    }  `}
+                    disabled={isDisabled || authSelector.loading}
+                    backClassName={`${
+                      currentPage === 0
+                        ? "bg-weed-primary border-weed-primary-100 border border-weed-profile-100"
+                        : "bg-weed-primary-100 border border-white"
+                    } ${
+                      authSelector.loading || currentPage === pages.length - 1
+                        ? "opacity-30"
+                        : "opacity-100"
+                    }`}
+                  />
                 </View>
-                <View className="flex-row items-center justify-center gap-1">
-                  <Text className="text-weed-black/80 text-base font-inder font-normal">
-                    Already have an account
+              </View>
+              <View className="flex-row items-center justify-center">
+                <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
+                <View className="bg-weed-primary-100 w-9 h-6">
+                  <Text className="text-base text-white leading-6 font-inder font-normal text-center">
+                    Or
                   </Text>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("signin-screen")}
-                  >
-                    <Text className="text-weed-blue text-base font-inder font-normal">
-                      Sign in
+                </View>
+                <View className="border-t border-t-weed-primary-100 w-weed-9 h-1" />
+              </View>
+              <View className="w-full mt-3">
+                <View className="w-full gap-4 items-center self-center">
+                  <View className="w-full">
+                    <GoogleAuthButton onPress={handleOauth} />
+                  </View>
+                  <View className="flex-row items-center justify-center gap-1">
+                    <Text className="text-weed-black/80 text-base font-inder font-normal">
+                      Already have an account
                     </Text>
-                  </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("signin-screen")}
+                    >
+                      <Text className="text-weed-blue text-base font-inder font-normal">
+                        Sign in
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
+          </KeyboardAvoidingView>
         </View>
       </View>
     </ScreenView>
